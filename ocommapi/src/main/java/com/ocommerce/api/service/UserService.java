@@ -11,13 +11,16 @@ public class UserService {
 
     /** The LocalUserDAO. */
     private UserRegRepository userRegRepo;
+    private EncryptionService encryptionService;
 
     /**
      * Constructor injected by spring.
      * @param userRegRepo
+     * @param encryptionService
      */
-    public UserService(UserRegRepository userRegRepo) {
+    public UserService(UserRegRepository userRegRepo, EncryptionService encryptionService) {
         this.userRegRepo = userRegRepo;
+        this.encryptionService = encryptionService;
     }
 
     /**
@@ -36,8 +39,7 @@ public class UserService {
         user.setUsername(registrationBody.getUsername());
         user.setFirstName(registrationBody.getFirstName());
         user.setLastName(registrationBody.getLastName());
-        //TODO: Encrypt passwords!!
-        user.setPassword(registrationBody.getPassword());
+        user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
        userRegRepo.save(user);
     }
 }
