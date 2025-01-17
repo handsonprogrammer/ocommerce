@@ -15,6 +15,7 @@ import org.springframework.validation.FieldError;
 import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -48,7 +49,8 @@ public class AuthenticationController {
             userService.registerUser(registrationBody);
             return ResponseEntity.ok().build();
         } catch (UserAlreadyExistsException ex) {
-            return ResponseEntity.status(HttpStatus.CONFLICT).build();
+            FieldError error = new FieldError("Rergistration","username","username already exists");
+            return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
         }
     }
 
