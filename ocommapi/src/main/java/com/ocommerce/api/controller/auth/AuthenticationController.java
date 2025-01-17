@@ -1,23 +1,19 @@
 package com.ocommerce.api.controller.auth;
 
 import com.ocommerce.api.exception.UserAlreadyExistsException;
+import com.ocommerce.api.jpa.entities.UserReg;
 import com.ocommerce.api.model.LoginRequest;
 import com.ocommerce.api.model.LoginResponse;
 import com.ocommerce.api.model.RegistrationBody;
+import com.ocommerce.api.model.UserDetails;
 import com.ocommerce.api.service.UserService;
 import jakarta.validation.Valid;
-import jakarta.validation.ValidationException;
 import org.springframework.http.HttpStatus;
-import org.springframework.http.HttpStatusCode;
-import org.springframework.http.ProblemDetail;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
-import org.springframework.validation.Errors;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.FieldError;
-import org.springframework.web.ErrorResponse;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.server.ResponseStatusException;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -82,5 +78,15 @@ public class AuthenticationController {
             errors.put(fieldName, errorMessage);
         });
         return errors;
+    }
+
+    /**
+     * Gets the profile of the currently logged-in user and returns it.
+     * @param user The authentication principal object.
+     * @return The user profile.
+     */
+    @GetMapping("/@self")
+    public UserDetails getLoggedInUserProfile(@AuthenticationPrincipal UserDetails user) {
+        return user;
     }
 }
