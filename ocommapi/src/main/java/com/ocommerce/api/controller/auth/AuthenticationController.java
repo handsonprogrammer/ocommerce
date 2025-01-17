@@ -1,6 +1,8 @@
 package com.ocommerce.api.controller.auth;
 
 import com.ocommerce.api.exception.UserAlreadyExistsException;
+import com.ocommerce.api.model.LoginRequest;
+import com.ocommerce.api.model.LoginResponse;
 import com.ocommerce.api.model.RegistrationBody;
 import com.ocommerce.api.service.UserService;
 import jakarta.validation.Valid;
@@ -49,8 +51,24 @@ public class AuthenticationController {
             userService.registerUser(registrationBody);
             return ResponseEntity.ok().build();
         } catch (UserAlreadyExistsException ex) {
-            FieldError error = new FieldError("Rergistration","username","username already exists");
+            FieldError error = new FieldError("Registration","username","username already exists");
             return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+        }
+    }
+
+    /**
+     * Post Mapping to handle user logins to provide authentication token.
+     * @param loginRequest The login information.
+     * @return The authentication token if successful.
+     */
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponse> loginUser(@Valid @RequestBody LoginRequest loginRequest) {
+        String jwt = userService.loginUser(loginRequest);
+        if (jwt == null) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).build();
+        } else {
+            LoginResponse response = new LoginResponse(jwt);
+            return ResponseEntity.ok(response);
         }
     }
 

@@ -3,24 +3,31 @@ package com.ocommerce.api.service;
 import com.ocommerce.api.exception.UserAlreadyExistsException;
 import com.ocommerce.api.jpa.entities.UserReg;
 import com.ocommerce.api.jpa.repositories.UserRegRepository;
+import com.ocommerce.api.model.LoginRequest;
 import com.ocommerce.api.model.RegistrationBody;
 import org.springframework.stereotype.Service;
+
+import java.util.Optional;
 
 @Service
 public class UserService {
 
-    /** The LocalUserDAO. */
+    /** The UserRegRepository. */
     private UserRegRepository userRegRepo;
     private EncryptionService encryptionService;
+
+    private JWTService jwtService;
 
     /**
      * Constructor injected by spring.
      * @param userRegRepo
      * @param encryptionService
+     * @param jwtService
      */
-    public UserService(UserRegRepository userRegRepo, EncryptionService encryptionService) {
+    public UserService(UserRegRepository userRegRepo, EncryptionService encryptionService, JWTService jwtService) {
         this.userRegRepo = userRegRepo;
         this.encryptionService = encryptionService;
+        this.jwtService = jwtService;
     }
 
     /**
@@ -42,4 +49,21 @@ public class UserService {
         user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
        userRegRepo.save(user);
     }
+
+    /**
+     * Logins in a user and provides an authentication token back.
+     * @param loginRequest The login request.
+     * @return The authentication token. Null if the request was invalid.
+     */
+    public String loginUser(LoginRequest loginRequest) {
+        Optional<UserReg> opUser = userRegRepo.findByUsernameIgnoreCase(loginRequest.getUsername());
+        if (opUser.isPresent()) {
+            UserReg user = opUser.get();
+            if (encryptionService.verifyPassword(loginRequest.getPassword(), user.getPassword())) {
+                return jwtService.generateJWT(user);
+            }
+        }
+        return null;
+    }
+
 }
