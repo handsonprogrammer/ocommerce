@@ -1,5 +1,6 @@
 package com.ocommerce.api.jpa.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -29,16 +30,17 @@ public class Order {
     @Column(name = "order_id", nullable = false)
     private Long orderId;
     /** The user of the order. */
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private UserReg user;
     /** The shipping address of the order. */
     @ManyToOne(optional = false)
-    @JoinColumn(name = "shippingAddress_id", nullable = false)
+    @JoinColumn(name = "shippingaddress_id", nullable = false)
     private Address shippingAddress;
     /** The Billing address of the order. */
     @ManyToOne(optional = false)
-    @JoinColumn(name = "billingAddress_id", nullable = false)
+    @JoinColumn(name = "billingaddress_id", nullable = false)
     private Address billingAddress;
     /** The quantities ordered. */
     @OneToMany(mappedBy = "order", cascade = CascadeType.REMOVE, orphanRemoval = true)
