@@ -1,5 +1,6 @@
 package com.ocommerce.api.jpa.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -39,9 +40,10 @@ public class Address {
     @Column(name = "zipcode", nullable = false, length = 75)
     private String zipcode;
     /** The status of the address. T - deleted, A- active.*/
-    @Column(name = "status", nullable = false, length = 3)
-    private String status;
+    @Column(name = "status", columnDefinition = "varchar(1) not null default 'P'")
+    private char status;
     /** The user the address is associated with. */
+    @JsonIgnore
     @ManyToOne(optional = false)
     @JoinColumn(name = "user_id", nullable = false)
     private UserReg user;
