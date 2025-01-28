@@ -2,6 +2,7 @@ package com.ocommerce.api.service;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
+import com.auth0.jwt.interfaces.DecodedJWT;
 import com.ocommerce.api.jpa.entities.UserReg;
 import jakarta.annotation.PostConstruct;
 import org.springframework.beans.factory.annotation.Value;
@@ -56,7 +57,8 @@ public class JWTService {
      * @return The username stored inside.
      */
     public String getUsername(String token) {
-        return JWT.decode(token).getClaim(USERNAME_KEY).asString();
+        DecodedJWT decodedJWT = JWT.require(algorithm).build().verify(token);
+        return decodedJWT.getClaim(USERNAME_KEY).asString();
     }
 
 }
