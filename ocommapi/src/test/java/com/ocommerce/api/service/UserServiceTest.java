@@ -2,6 +2,7 @@ package com.ocommerce.api.service;
 
 
 import com.ocommerce.api.exception.UserAlreadyExistsException;
+import com.ocommerce.api.model.LoginRequest;
 import com.ocommerce.api.model.RegistrationBody;
 import jakarta.transaction.Transactional;
 import org.junit.jupiter.api.Assertions;
@@ -44,5 +45,23 @@ public class UserServiceTest {
         Assertions.assertDoesNotThrow(() -> userService.registerUser(body),
                 "User should register successfully.");
 
+    }
+
+    /**
+     * Tests the loginUser method.
+     * @throws UserNotVerifiedException
+     * @throws EmailFailureException
+     */
+    @Test
+    @Transactional
+    public void testLoginUser(){
+        LoginRequest body = new LoginRequest();
+        body.setUsername("UserA-NotExists");
+        body.setPassword("PasswordA123-BadPassword");
+        Assertions.assertNull(userService.loginUser(body), "The user should not exist.");
+        body.setUsername("testuser1");
+        Assertions.assertNull(userService.loginUser(body), "The password should be incorrect.");
+        body.setPassword("test1234");
+        Assertions.assertNotNull(userService.loginUser(body), "The user should login successfully.");
     }
 }
