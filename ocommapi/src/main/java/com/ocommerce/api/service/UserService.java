@@ -1,6 +1,7 @@
 package com.ocommerce.api.service;
 
 import com.ocommerce.api.exception.UserAlreadyExistsException;
+import com.ocommerce.api.exception.UserNotFoundException;
 import com.ocommerce.api.jpa.entities.UserReg;
 import com.ocommerce.api.jpa.repositories.UserRegRepository;
 import com.ocommerce.api.model.LoginRequest;
@@ -20,6 +21,7 @@ public class UserService {
 
     /**
      * Constructor injected by spring.
+     * 
      * @param userRegRepo
      * @param encryptionService
      * @param jwtService
@@ -32,9 +34,11 @@ public class UserService {
 
     /**
      * Attempts to register a user given the information provided.
+     * 
      * @param registrationBody The registration information.
      * @return The local user that has been written to the database.
-     * @throws UserAlreadyExistsException Thrown if there is already a user with the given information.
+     * @throws UserAlreadyExistsException Thrown if there is already a user with the
+     *                                    given information.
      */
     public void registerUser(RegistrationBody registrationBody) throws UserAlreadyExistsException {
         if (userRegRepo.findByEmailIgnoreCase(registrationBody.getEmail()).isPresent()
@@ -47,11 +51,12 @@ public class UserService {
         user.setFirstName(registrationBody.getFirstName());
         user.setLastName(registrationBody.getLastName());
         user.setPassword(encryptionService.encryptPassword(registrationBody.getPassword()));
-       userRegRepo.save(user);
+        userRegRepo.save(user);
     }
 
     /**
      * Logins in a user and provides an authentication token back.
+     * 
      * @param loginRequest The login request.
      * @return The authentication token. Null if the request was invalid.
      */
@@ -64,6 +69,17 @@ public class UserService {
             }
         }
         return null;
+    }
+
+    /**
+     * Gets the user by ID.
+     * 
+     * @param userId The user ID.
+     * @return The user if found, otherwise null.
+     * @throws UserNotFoundException
+     */
+    public UserReg getUserById(Long userId) throws UserNotFoundException {
+        return userRegRepo.findById(userId).orElseThrow(UserNotFoundException::new);
     }
 
 }
