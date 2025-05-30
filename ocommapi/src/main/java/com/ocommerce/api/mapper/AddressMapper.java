@@ -1,6 +1,8 @@
 package com.ocommerce.api.mapper;
 
-import com.ocommerce.api.constants.AddressStatus;
+import java.util.List;
+import java.util.stream.Collectors;
+
 import com.ocommerce.api.jpa.entities.Address;
 import com.ocommerce.api.model.AddressDto;
 
@@ -15,7 +17,7 @@ public class AddressMapper {
         dto.setCity(address.getCity());
         dto.setCountry(address.getCountry());
         dto.setZipcode(address.getZipcode());
-        dto.setStatus(address.getStatus() != null ? address.getStatus().name() : null);
+        dto.setStatus(address.getStatus() != null ? address.getStatus().getCode() : null);
         dto.setDefaultAddress(address.isDefaultAddress());
         dto.setUserId(address.getUser() != null ? address.getUser().getId() : null);
         return dto;
@@ -34,5 +36,11 @@ public class AddressMapper {
         // Status, Default Address and user should be set in service layer as they may
         // require lookups
         return address;
+    }
+
+    public static List<AddressDto> toDtoList(List<Address> addresses) {
+        return addresses.stream()
+                .map(AddressMapper::toDto)
+                .collect(Collectors.toList());
     }
 }

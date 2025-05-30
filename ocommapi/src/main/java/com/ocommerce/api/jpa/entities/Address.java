@@ -44,7 +44,6 @@ public class Address {
     @Column(name = "zipcode", nullable = false, length = 75)
     private String zipcode;
     /** The status of the address. T - deleted, A- active. */
-    @Enumerated(EnumType.ORDINAL)
     @Column(name = "status", columnDefinition = "varchar(1) not null default 'A'")
     private AddressStatus status = AddressStatus.ACTIVE;
     /** Field to specify if password is expired. */

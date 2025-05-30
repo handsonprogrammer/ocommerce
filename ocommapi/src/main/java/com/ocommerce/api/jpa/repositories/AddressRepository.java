@@ -64,13 +64,14 @@ public interface AddressRepository extends ListCrudRepository<Address, Long> {
     void unsetDefaultForOtherAddresses(Long userId, Long addressId);
 
     /**
-     * Deletes an address by its ID.
+     * Marks an address as terminated by its addressId and userId.
      *
+     * @param userId    The ID of the user.
      * @param addressId The ID of the address to delete.
      */
     @Modifying
     @Transactional
-    @Query("UPDATE Address a SET a.status = com.ocommerce.api.constants.AddressStatus.TERMINATED WHERE a.user.id = :userId")
-    void deleteUserAddressByUserId(Long userId);
+    @Query("UPDATE Address a SET a.status = com.ocommerce.api.constants.AddressStatus.TERMINATED WHERE a.user.id = :userId AND a.id = :addressId")
+    void deleteAddressByUserIdAndAddressId(Long userId, Long addressId);
 
 }

@@ -3,18 +3,19 @@ package com.ocommerce.api.service;
 import com.ocommerce.api.exception.AddressNotFoundException;
 import com.ocommerce.api.exception.ProductNotFoundException;
 import com.ocommerce.api.exception.UserNotFoundException;
-import com.ocommerce.api.jpa.entities.Address;
 import com.ocommerce.api.jpa.entities.Order;
 import com.ocommerce.api.jpa.entities.OrderItems;
 import com.ocommerce.api.jpa.entities.Product;
 import com.ocommerce.api.jpa.entities.UserReg;
 import com.ocommerce.api.jpa.repositories.OrderRepository;
+import com.ocommerce.api.mapper.AddressMapper;
 import com.ocommerce.api.model.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 import com.ocommerce.api.model.AddOrderItemsRequest;
+import com.ocommerce.api.model.AddressDto;
 
 @Service
 public class OrderService {
@@ -64,12 +65,14 @@ public class OrderService {
 
             // Assign addresses
             if (request.getShippingAddressId() != null) {
-                Address shipping = addressService.getAddressById(request.getShippingAddressId());
-                order.setShippingAddress(shipping);
+                AddressDto shipping = addressService.getAddressByUserIdAndAddressId(user.getUserId(),
+                        request.getShippingAddressId());
+                order.setShippingAddress(AddressMapper.toEntity(shipping));
             }
             if (request.getBillingAddressId() != null) {
-                Address billing = addressService.getAddressById(request.getBillingAddressId());
-                order.setBillingAddress(billing);
+                AddressDto billing = addressService.getAddressByUserIdAndAddressId(user.getUserId(),
+                        request.getBillingAddressId());
+                order.setBillingAddress(AddressMapper.toEntity(billing));
             }
             order = orderRepository.save(order);
         }

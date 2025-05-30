@@ -4,7 +4,6 @@ import com.ocommerce.api.constants.AddressStatus;
 import com.ocommerce.api.exception.AddressNotFoundException;
 import com.ocommerce.api.exception.UserNotFoundException;
 import com.ocommerce.api.jpa.entities.Address;
-import com.ocommerce.api.jpa.entities.UserReg;
 import com.ocommerce.api.jpa.repositories.AddressRepository;
 import com.ocommerce.api.mapper.AddressMapper;
 import com.ocommerce.api.model.AddressDto;
@@ -25,10 +24,11 @@ public class AddressService {
         this.addressRepository = addressRepository;
     }
 
-    public Address getDefaultAddressForUser(Long userId) throws AddressNotFoundException {
-        return addressRepository.findDefaultAddressByUserId(userId)
+    public AddressDto getDefaultAddressForUser(Long userId) throws AddressNotFoundException {
+        Address address = addressRepository.findDefaultAddressByUserId(userId)
                 .or(() -> addressRepository.findFirstByUserId(userId))
                 .orElseThrow(() -> new AddressNotFoundException("Address not found for user id: " + userId));
+        return AddressMapper.toDto(address);
     }
 
     /**
@@ -40,10 +40,11 @@ public class AddressService {
      * @throws AddressNotFoundException if the address is not found for the given
      *                                  user and address IDs.
      */
-    public Address getAddressByUserIdAndAddressId(Long userId, Long addressId) throws AddressNotFoundException {
-        return addressRepository.findAddressByUserIdAndAddressId(userId, addressId)
+    public AddressDto getAddressByUserIdAndAddressId(Long userId, Long addressId) throws AddressNotFoundException {
+        Address address = addressRepository.findAddressByUserIdAndAddressId(userId, addressId)
                 .orElseThrow(() -> new AddressNotFoundException(
                         "Address not found for user id: " + userId + " and address id: " + addressId));
+        return AddressMapper.toDto(address);
     }
 
     /**
@@ -52,8 +53,8 @@ public class AddressService {
      * @param userId The ID of the user.
      * @return A list of active addresses for the user.
      */
-    public List<Address> getAllActiveAddressesByUserId(Long userId) {
-        return addressRepository.findAllActiveByUserId(userId);
+    public List<AddressDto> getAllActiveAddressesByUserId(Long userId) {
+        return AddressMapper.toDtoList(addressRepository.findAllActiveByUserId(userId));
     }
 
     @Transactional
@@ -63,7 +64,6 @@ public class AddressService {
         }
         Address address = AddressMapper.toEntity(addressDto);
         address.setUser(userService.getUserById(user.getUserId()));
-        address.setStatus(AddressStatus.ACTIVE);
         boolean isDefault = Boolean.TRUE.equals(address.isDefaultAddress());
         Address saved = addressRepository.save(address);
         if (isDefault) {
@@ -90,7 +90,6 @@ public class AddressService {
         Address address = AddressMapper.toEntity(addressDto);
         address.setAddressId(null);
         address.setUser(userService.getUserById(user.getUserId()));
-        address.setStatus(AddressStatus.ACTIVE);
         boolean isDefault = Boolean.TRUE.equals(address.isDefaultAddress());
         Address saved = addressRepository.save(address);
         if (isDefault) {
@@ -99,12 +98,41 @@ public class AddressService {
         return AddressMapper.toDto(saved);
     }
 
-    public void deleteAddress(Long addressId) {
-        addressRepository.deleteById(addressId);
+    /**
+     * Deletes an address by user ID and address ID.
+     *
+     * @param userId    The ID of the user.
+     * @param addressId The ID of the address to delete.
+     * @throws AddressNotFoundException if the address is not found for the given
+     *                                  user and address IDs.
+     * @throws UserNotFoundException    if the user is not found.
+     */
+    @Transactional
+    public void deleteAddress(Long userId, Long addressId) throws AddressNotFoundException, UserNotFoundException {
+        Address address = addressRepository.findAddressByUserIdAndAddressId(userId, addressId)
+                .orElseThrow(() -> new AddressNotFoundException(
+                        "Address not found for user id: " + userId + " and address id: " + addressId));
+        address.setStatus(AddressStatus.TERMINATED);
+        addressRepository.save(address);
     }
 
-    public Address getAddressById(Long addressId) throws AddressNotFoundException {
-        return addressRepository.findById(addressId)
-                .orElseThrow(() -> new AddressNotFoundException("Address not found with address id: " + addressId));
+    /**
+     * Sets the given address as the default address for the user.
+     * 
+     * @param userId    The ID of the user.
+     * @param addressId The ID of the address to set as default.
+     * @throws AddressNotFoundException if the address is not found for the given
+     *                                  user and address IDs.
+     * @throws UserNotFoundException    if the user is not found.
+     */
+    @Transactional
+    public void setDefaultAddress(Long userId, Long addressId) throws AddressNotFoundException, UserNotFoundException {
+        Address address = addressRepository.findAddressByUserIdAndAddressId(userId, addressId)
+                .orElseThrow(() -> new AddressNotFoundException(
+                        "Address not found for user id: " + userId + " and address id: " + addressId));
+        addressRepository.unsetDefaultForOtherAddresses(userId, address.getAddressId());
+        address.setDefaultAddress(true);
+        addressRepository.save(address);
     }
+
 }

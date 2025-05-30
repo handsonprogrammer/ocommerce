@@ -43,13 +43,13 @@ public class AuthenticationController {
      * @return Response to front end.
      */
     @PostMapping("/register")
-    public ResponseEntity registerUser(@Valid @RequestBody RegistrationBody registrationBody) {
+    public ResponseEntity<?> registerUser(@Valid @RequestBody RegistrationBody registrationBody) {
         try {
             userService.registerUser(registrationBody);
             return ResponseEntity.ok().build();
         } catch (UserAlreadyExistsException ex) {
             FieldError error = new FieldError("Registration", "username", "username already exists");
-            return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
+            return new ResponseEntity<FieldError>(error, HttpStatus.BAD_REQUEST);
         }
     }
 
