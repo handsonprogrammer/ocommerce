@@ -63,17 +63,23 @@ public class OrderService {
             // You may want to set addresses here as well
             order = orderRepository.save(order);
 
-            // Assign addresses
-            if (request.getShippingAddressId() != null) {
-                AddressDto shipping = addressService.getAddressByUserIdAndAddressId(user.getUserId(),
-                        request.getShippingAddressId());
-                order.setShippingAddress(AddressMapper.toEntity(shipping));
+            // Set shipping address
+            AddressDto shipping = request
+                    .getShippingAddressId() != null ? addressService.getAddressByUserIdAndAddressId(user.getUserId(),
+                            request.getShippingAddressId()) : addressService.getDefaultAddressForUser(user.getUserId());
+            if (shipping == null) {
+                throw new AddressNotFoundException("Shipping address not found");
             }
-            if (request.getBillingAddressId() != null) {
-                AddressDto billing = addressService.getAddressByUserIdAndAddressId(user.getUserId(),
-                        request.getBillingAddressId());
-                order.setBillingAddress(AddressMapper.toEntity(billing));
+            order.setShippingAddress(AddressMapper.toEntity(shipping));
+
+            // Set billing address
+            AddressDto billing = request
+                    .getBillingAddressId() != null ? addressService.getAddressByUserIdAndAddressId(user.getUserId(),
+                            request.getBillingAddressId()) : addressService.getDefaultAddressForUser(user.getUserId());
+            if (billing == null) {
+                throw new AddressNotFoundException("Billing address not found");
             }
+            order.setBillingAddress(AddressMapper.toEntity(billing));
             order = orderRepository.save(order);
         }
 
