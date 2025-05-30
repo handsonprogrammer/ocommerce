@@ -1,4 +1,4 @@
-package com.ocommerce.api.controller.product;
+package com.ocommerce.api.controller;
 
 import com.ocommerce.api.jpa.entities.Product;
 import com.ocommerce.api.service.ProductService;
@@ -20,6 +20,7 @@ public class ProductController {
 
     /**
      * Constructor for spring injection.
+     * 
      * @param productService
      */
     public ProductController(ProductService productService) {
@@ -28,6 +29,7 @@ public class ProductController {
 
     /**
      * Gets the list of products available.
+     * 
      * @return The list of products.
      */
     @GetMapping

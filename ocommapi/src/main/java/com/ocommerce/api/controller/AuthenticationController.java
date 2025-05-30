@@ -1,7 +1,6 @@
-package com.ocommerce.api.controller.auth;
+package com.ocommerce.api.controller;
 
 import com.ocommerce.api.exception.UserAlreadyExistsException;
-import com.ocommerce.api.jpa.entities.UserReg;
 import com.ocommerce.api.model.LoginRequest;
 import com.ocommerce.api.model.LoginResponse;
 import com.ocommerce.api.model.RegistrationBody;
@@ -30,6 +29,7 @@ public class AuthenticationController {
 
     /**
      * Spring injected constructor.
+     * 
      * @param userService
      */
     public AuthenticationController(UserService userService) {
@@ -38,6 +38,7 @@ public class AuthenticationController {
 
     /**
      * Post Mapping to handle registering users.
+     * 
      * @param registrationBody The registration information.
      * @return Response to front end.
      */
@@ -47,13 +48,14 @@ public class AuthenticationController {
             userService.registerUser(registrationBody);
             return ResponseEntity.ok().build();
         } catch (UserAlreadyExistsException ex) {
-            FieldError error = new FieldError("Registration","username","username already exists");
+            FieldError error = new FieldError("Registration", "username", "username already exists");
             return new ResponseEntity(error, HttpStatus.BAD_REQUEST);
         }
     }
 
     /**
      * Post Mapping to handle user logins to provide authentication token.
+     * 
      * @param loginRequest The login information.
      * @return The authentication token if successful.
      */
@@ -82,6 +84,7 @@ public class AuthenticationController {
 
     /**
      * Gets the profile of the currently logged-in user and returns it.
+     * 
      * @param user The authentication principal object.
      * @return The user profile.
      */

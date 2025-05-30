@@ -5,6 +5,8 @@ import com.ocommerce.api.constants.AddressStatus;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -42,8 +44,9 @@ public class Address {
     @Column(name = "zipcode", nullable = false, length = 75)
     private String zipcode;
     /** The status of the address. T - deleted, A- active. */
+    @Enumerated(EnumType.ORDINAL)
     @Column(name = "status", columnDefinition = "varchar(1) not null default 'A'")
-    private String status = AddressStatus.ACTIVE.getCode();
+    private AddressStatus status = AddressStatus.ACTIVE;
     /** Field to specify if password is expired. */
     @Column(columnDefinition = "boolean default false")
     private boolean isDefaultAddress = false;

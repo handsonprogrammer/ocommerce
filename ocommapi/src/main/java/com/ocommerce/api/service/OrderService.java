@@ -80,7 +80,7 @@ public class OrderService {
             orderItem.setOrder(order);
             orderItem.setProduct(product);
             orderItem.setQuantity(itemDto.getQuantity());
-            order.getQuantities().add(orderItem);
+            order.getOrderItems().add(orderItem);
         }
         return orderRepository.save(order);
     }

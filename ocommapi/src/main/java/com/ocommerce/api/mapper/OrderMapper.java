@@ -16,7 +16,7 @@ public class OrderMapper {
         dto.setUserId(order.getUser().getId());
         dto.setShippingAddressId(order.getShippingAddress() != null ? order.getShippingAddress().getAddressId() : null);
         dto.setBillingAddressId(order.getBillingAddress() != null ? order.getBillingAddress().getAddressId() : null);
-        dto.setItems(order.getQuantities().stream().map(OrderMapper::toOrderItemDto).collect(Collectors.toList()));
+        dto.setItems(order.getOrderItems().stream().map(OrderMapper::toOrderItemDto).collect(Collectors.toList()));
         return dto;
     }
 
