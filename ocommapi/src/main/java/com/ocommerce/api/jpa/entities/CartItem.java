@@ -14,17 +14,15 @@ import lombok.EqualsAndHashCode;
 @Entity
 @Data
 @EqualsAndHashCode(callSuper = false)
-@Table(name = "orderitems")
-public class OrderItems extends BaseOrederItemEntity {
-
+@Table(name = "cartitems")
+public class CartItem extends BaseOrederItemEntity {
     /** The unqiue id of the order quantity. */
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "orderitems_id", nullable = false)
-    private Long orderItems_Id;
+    @Column(name = "cartitems_id", nullable = false)
+    private Long cartItems_Id;
 
-    /** The order itself. */
     @ManyToOne(optional = false)
-    @JoinColumn(name = "order_id", nullable = false)
-    private Order order;
+    @JoinColumn(name = "cart_id", nullable = false)
+    private Cart cart;
 }

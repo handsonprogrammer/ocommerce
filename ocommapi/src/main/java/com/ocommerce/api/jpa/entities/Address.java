@@ -1,8 +1,12 @@
 package com.ocommerce.api.jpa.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.ocommerce.api.constants.AddressStatus;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.EnumType;
+import jakarta.persistence.Enumerated;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -39,9 +43,12 @@ public class Address {
     /** The country of the address. */
     @Column(name = "zipcode", nullable = false, length = 75)
     private String zipcode;
-    /** The status of the address. T - deleted, A- active.*/
-    @Column(name = "status", columnDefinition = "varchar(1) not null default 'P'")
-    private char status;
+    /** The status of the address. T - deleted, A- active. */
+    @Column(name = "status", columnDefinition = "varchar(1) not null default 'A'")
+    private AddressStatus status = AddressStatus.ACTIVE;
+    /** Field to specify if password is expired. */
+    @Column(columnDefinition = "boolean default false")
+    private boolean isDefaultAddress = false;
     /** The user the address is associated with. */
     @JsonIgnore
     @ManyToOne(optional = false)
