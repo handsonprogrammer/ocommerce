@@ -45,12 +45,12 @@ public class OrderController {
         return orderService.getOrdersByUserId(user.getUserId());
     }
 
-    @PostMapping("/add-items")
-    public ResponseEntity<Order> addItemsToOrder(
+    @PostMapping("/add-item")
+    public ResponseEntity<Order> addItemToOrder(
             @AuthenticationPrincipal UserDetails user,
             @RequestBody AddOrderItemsRequest request) {
         try {
-            Order order = orderService.addItemsToOrder(user, request);
+            Order order = orderService.addItemToOrder(user, request);
             return ResponseEntity.ok(order);
         } catch (ProductNotFoundException | UserNotFoundException | AddressNotFoundException e) {
             return ResponseEntity.badRequest().build();

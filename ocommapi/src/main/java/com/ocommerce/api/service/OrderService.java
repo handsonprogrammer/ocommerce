@@ -44,53 +44,34 @@ public class OrderService {
     }
 
     @Transactional
-    public Order addItemsToOrder(UserDetails user, AddOrderItemsRequest request)
+    public Order addItemToOrder(UserDetails user, AddOrderItemsRequest request)
             throws ProductNotFoundException, UserNotFoundException, AddressNotFoundException {
-        Order order;
-        if (request.getOrderId() != null) {
-            order = orderRepository.findById(request.getOrderId())
-                    .orElseThrow(() -> new IllegalArgumentException("Order not found"));
-            if (!order.getUser().getId().equals(user.getUserId())) {
-                throw new IllegalArgumentException("Order does not belong to user");
-            }
-        } else {
-            UserReg userReg = userService.getUserById(user.getUserId());
-            if (userReg == null) {
-                throw new IllegalArgumentException("User not found");
-            }
-            order = new Order();
-            order.setUser(userReg);
-            // You may want to set addresses here as well
-            order = orderRepository.save(order);
 
-            // Set shipping address
-            AddressDto shipping = request
-                    .getShippingAddressId() != null ? addressService.getAddressByUserIdAndAddressId(user.getUserId(),
-                            request.getShippingAddressId()) : addressService.getDefaultAddressForUser(user.getUserId());
-            if (shipping == null) {
-                throw new AddressNotFoundException("Shipping address not found");
-            }
-            order.setShippingAddress(AddressMapper.toEntity(shipping));
-
-            // Set billing address
-            AddressDto billing = request
-                    .getBillingAddressId() != null ? addressService.getAddressByUserIdAndAddressId(user.getUserId(),
-                            request.getBillingAddressId()) : addressService.getDefaultAddressForUser(user.getUserId());
-            if (billing == null) {
-                throw new AddressNotFoundException("Billing address not found");
-            }
-            order.setBillingAddress(AddressMapper.toEntity(billing));
-            order = orderRepository.save(order);
+        UserReg userReg = userService.getUserById(user.getUserId());
+        if (userReg == null) {
+            throw new IllegalArgumentException("User not found");
         }
+        Order order = getPendingOrderByUserId(userReg);
 
-        for (AddOrderItemsRequest.OrderItemDto itemDto : request.getItems()) {
-            Product product = productService.getProductById(itemDto.getProductId());
-            OrderItems orderItem = new OrderItems();
-            orderItem.setOrder(order);
-            orderItem.setProduct(product);
-            orderItem.setQuantity(itemDto.getQuantity());
-            order.getOrderItems().add(orderItem);
+        Product product = productService.getProductById(request.getProductId());
+        if (product == null) {
+            throw new ProductNotFoundException("Product not found with id: " + request.getProductId());
         }
+        OrderItems orderItem = new OrderItems();
+        orderItem.setOrder(order);
+        orderItem.setProduct(product);
+        orderItem.setQuantity(request.getQuantity());
+        order.getOrderItems().add(orderItem);
         return orderRepository.save(order);
+    }
+
+    // Get Pending Order
+    public Order getPendingOrderByUserId(UserReg userReg) {
+        return orderRepository.findFirstPendingOrderByUserIdAndNotLocked(userReg.getId())
+                .orElseGet(() -> {
+                    Order order = new Order();
+                    order.setUser(userReg);
+                    return orderRepository.save(order);
+                });
     }
 }
