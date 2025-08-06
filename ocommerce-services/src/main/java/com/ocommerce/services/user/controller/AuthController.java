@@ -9,6 +9,7 @@ import io.swagger.v3.oas.annotations.media.Content;
 import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.slf4j.Logger;
@@ -16,6 +17,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
@@ -76,12 +79,15 @@ public class AuthController {
      * Refresh token endpoint
      */
     @PostMapping("/refresh")
+    @SecurityRequirement(name = "Bearer Authentication")
     @Operation(summary = "Refresh access token", description = "Generate new access token using valid refresh token")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Token refreshed successfully", content = @Content(schema = @Schema(implementation = AuthResponse.class))),
             @ApiResponse(responseCode = "401", description = "Invalid or expired refresh token")
     })
-    public ResponseEntity<AuthResponse> refreshToken(@RequestBody Map<String, String> request) {
+    public ResponseEntity<AuthResponse> refreshToken(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @RequestBody Map<String, String> request) {
         String refreshToken = request.get("refreshToken");
 
         if (refreshToken == null || refreshToken.trim().isEmpty()) {
@@ -90,7 +96,7 @@ public class AuthController {
 
         logger.info("Token refresh request");
 
-        AuthResponse authResponse = authenticationService.refreshToken(refreshToken);
+        AuthResponse authResponse = authenticationService.refreshTokenForUser(userDetails.getUsername(), refreshToken);
 
         return ResponseEntity.ok(authResponse);
     }
@@ -99,16 +105,19 @@ public class AuthController {
      * Logout endpoint
      */
     @PostMapping("/logout")
+    @SecurityRequirement(name = "Bearer Authentication")
     @Operation(summary = "Logout user", description = "Revoke refresh token to logout user from current device")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User logged out successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request")
     })
-    public ResponseEntity<Map<String, String>> logout(@RequestBody Map<String, String> request) {
+    public ResponseEntity<Map<String, String>> logout(
+            @AuthenticationPrincipal UserDetails userDetails,
+            @RequestBody Map<String, String> request) {
         String refreshToken = request.get("refreshToken");
 
         if (refreshToken != null && !refreshToken.trim().isEmpty()) {
-            authenticationService.logout(refreshToken);
+            authenticationService.logout(userDetails.getUsername(), refreshToken);
         }
 
         logger.info("Logout request processed");
@@ -120,12 +129,14 @@ public class AuthController {
      * Logout from all devices endpoint
      */
     @PostMapping("/logout-all")
+    @SecurityRequirement(name = "Bearer Authentication")
     @Operation(summary = "Logout from all devices", description = "Revoke all refresh tokens for user to logout from all devices")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "User logged out from all devices successfully"),
             @ApiResponse(responseCode = "400", description = "Invalid request")
     })
-    public ResponseEntity<Map<String, String>> logoutFromAllDevices(@RequestBody Map<String, String> request) {
+    public ResponseEntity<Map<String, String>> logoutFromAllDevices(@AuthenticationPrincipal UserDetails userDetails,
+            @RequestBody Map<String, String> request) {
         String email = request.get("email");
 
         if (email == null || email.trim().isEmpty()) {

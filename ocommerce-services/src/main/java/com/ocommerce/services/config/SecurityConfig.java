@@ -60,8 +60,9 @@ public class SecurityConfig {
                 // Configure authorization rules
                 .authorizeHttpRequests(authz -> authz
                         // Public endpoints - no authentication required
-                        .requestMatchers(HttpMethod.POST, "/api/v*/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/auth/health").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v*/auth/signup").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v*/auth/login").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v*/auth/health").permitAll()
 
                         // Documentation and monitoring endpoints - context path is /api/v1
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()

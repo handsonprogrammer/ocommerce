@@ -25,7 +25,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * @param token the token string
      * @return Optional containing the refresh token if found
      */
-    Optional<RefreshToken> findByToken(String token);
+    Optional<RefreshToken> findByUserAndToken(User user, String token);
 
     /**
      * Find valid (non-revoked and non-expired) refresh token by token string
@@ -68,8 +68,8 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * @param token the token string
      */
     @Modifying
-    @Query("UPDATE RefreshToken rt SET rt.revoked = true WHERE rt.token = :token")
-    void revokeByToken(@Param("token") String token);
+    @Query("UPDATE RefreshToken rt SET rt.revoked = true WHERE rt.token = :token AND rt.user = :user")
+    void revokeByTokenAndUser(@Param("token") String token, @Param("user") User user);
 
     /**
      * Delete expired refresh tokens (cleanup job)

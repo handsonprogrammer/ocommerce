@@ -33,10 +33,11 @@ public class RefreshTokenService {
     }
 
     /**
-     * Create a new refresh token for user
+     * Create a new refresh token for the specified user
+     * Generates a unique UUID-based token with expiration date from JwtUtil
      * 
-     * @param user the user
-     * @return created refresh token
+     * @param user the user for whom to create the refresh token
+     * @return the created and saved refresh token
      */
     public RefreshToken createRefreshToken(User user) {
         // Generate unique token
@@ -54,21 +55,22 @@ public class RefreshTokenService {
     }
 
     /**
-     * Find refresh token by token string
+     * Find refresh token by user and token string
      * 
-     * @param token token string
-     * @return refresh token if found
+     * @param user  the user who owns the token
+     * @param token the token string to search for
+     * @return optional containing the refresh token if found
      */
     @Transactional(readOnly = true)
-    public Optional<RefreshToken> findByToken(String token) {
-        return refreshTokenRepository.findByToken(token);
+    public Optional<RefreshToken> findByUserAndToken(User user, String token) {
+        return refreshTokenRepository.findByUserAndToken(user, token);
     }
 
     /**
-     * Find valid refresh token by token string
+     * Find valid (non-expired, non-revoked) refresh token by token string
      * 
-     * @param token token string
-     * @return valid refresh token if found
+     * @param token the token string to search for
+     * @return optional containing the valid refresh token if found and not expired
      */
     @Transactional(readOnly = true)
     public Optional<RefreshToken> findValidToken(String token) {
@@ -76,15 +78,19 @@ public class RefreshTokenService {
     }
 
     /**
-     * Verify and get refresh token
+     * Verify and get refresh token for a specific user
+     * Validates token exists, belongs to user, and is still valid (not expired or
+     * revoked)
      * 
-     * @param token token string
-     * @return valid refresh token
-     * @throws InvalidRefreshTokenException if token is invalid
+     * @param token the token string to verify
+     * @param user  the user who should own the token
+     * @return the valid refresh token
+     * @throws InvalidRefreshTokenException if token is not found, doesn't belong to
+     *                                      user, or is invalid
      */
     @Transactional(readOnly = true)
-    public RefreshToken verifyToken(String token) {
-        RefreshToken refreshToken = refreshTokenRepository.findByToken(token)
+    public RefreshToken verifyTokenForUser(String token, User user) {
+        RefreshToken refreshToken = refreshTokenRepository.findByUserAndToken(user, token)
                 .orElseThrow(() -> new InvalidRefreshTokenException("Refresh token not found"));
 
         if (!refreshToken.isValid()) {
@@ -96,19 +102,23 @@ public class RefreshTokenService {
     }
 
     /**
-     * Revoke refresh token
+     * Revoke a specific refresh token for a user
+     * Marks the token as revoked in the database
      * 
-     * @param token token string
+     * @param token the token string to revoke
+     * @param user  the user who owns the token
      */
-    public void revokeToken(String token) {
-        refreshTokenRepository.revokeByToken(token);
-        logger.info("Refresh token revoked");
+    public void revokeTokenForUser(String token, User user) {
+        refreshTokenRepository.revokeByTokenAndUser(token, user);
+        logger.info("Refresh token revoked for user: {}", user.getId());
     }
 
     /**
-     * Revoke all refresh tokens for user
+     * Revoke all refresh tokens for a specific user
+     * Marks all tokens belonging to the user as revoked in the database
+     * Useful for logout from all devices or security-related token invalidation
      * 
-     * @param user the user
+     * @param user the user whose tokens should be revoked
      */
     public void revokeAllTokensForUser(User user) {
         refreshTokenRepository.revokeAllByUser(user);
@@ -116,9 +126,11 @@ public class RefreshTokenService {
     }
 
     /**
-     * Delete token (hard delete)
+     * Physically delete a refresh token from the database (hard delete)
+     * Use this for immediate token removal, as opposed to soft deletion via
+     * revocation
      * 
-     * @param refreshToken the token to delete
+     * @param refreshToken the refresh token entity to delete
      */
     public void deleteToken(RefreshToken refreshToken) {
         refreshTokenRepository.delete(refreshToken);
@@ -126,7 +138,9 @@ public class RefreshTokenService {
     }
 
     /**
-     * Clean up expired tokens (scheduled job)
+     * Clean up expired tokens from the database (scheduled job)
+     * Removes all tokens that have passed their expiry date
+     * Typically called by a scheduled task for database maintenance
      */
     public void cleanupExpiredTokens() {
         refreshTokenRepository.deleteExpiredTokens(LocalDateTime.now());
@@ -134,7 +148,9 @@ public class RefreshTokenService {
     }
 
     /**
-     * Clean up revoked tokens (scheduled job)
+     * Clean up revoked tokens from the database (scheduled job)
+     * Removes all tokens that have been marked as revoked
+     * Typically called by a scheduled task for database maintenance
      */
     public void cleanupRevokedTokens() {
         refreshTokenRepository.deleteRevokedTokens();
@@ -142,10 +158,12 @@ public class RefreshTokenService {
     }
 
     /**
-     * Count valid tokens for user
+     * Count the number of valid (non-expired, non-revoked) tokens for a specific
+     * user
+     * Useful for implementing token limits per user or monitoring active sessions
      * 
-     * @param user the user
-     * @return count of valid tokens
+     * @param user the user whose valid tokens should be counted
+     * @return the count of valid refresh tokens for the user
      */
     @Transactional(readOnly = true)
     public long countValidTokensForUser(User user) {
@@ -153,15 +171,16 @@ public class RefreshTokenService {
     }
 
     /**
-     * Generate unique token string
+     * Generate a unique token string using UUID
+     * Ensures uniqueness by checking against existing tokens in the database
      * 
-     * @return unique token
+     * @return a unique UUID-based token string
      */
     private String generateUniqueToken() {
         String token;
         do {
             token = UUID.randomUUID().toString();
-        } while (refreshTokenRepository.findByToken(token).isPresent());
+        } while (refreshTokenRepository.findValidByToken(token, LocalDateTime.now()).isPresent());
 
         return token;
     }
