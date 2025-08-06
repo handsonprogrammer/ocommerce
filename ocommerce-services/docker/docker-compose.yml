@@ -1,0 +1,81 @@
+version: "3.8"
+
+services:
+  postgresql:
+    image: postgres:15-alpine
+    container_name: ocommerce-postgres
+    environment:
+      POSTGRES_DB: ocommerce_dev
+      POSTGRES_USER: ocommerce_user
+      POSTGRES_PASSWORD: ocommerce_pass
+    ports:
+      - "5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    networks:
+      - ocommerce-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ocommerce_user -d ocommerce_dev"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  mongodb:
+    image: mongo:7.0
+    container_name: ocommerce-mongo
+    environment:
+      MONGO_INITDB_DATABASE: ocommerce_catalog_dev
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      - ocommerce-network
+    healthcheck:
+      test: ["CMD", "mongosh", "--eval", "db.runCommand('ping').ok"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+  # Optional: MongoDB Express for database administration
+  mongo-express:
+    image: mongo-express:1.0.0
+    container_name: ocommerce-mongo-express
+    environment:
+      ME_CONFIG_MONGODB_URL: mongodb://mongodb:27017/
+      ME_CONFIG_BASICAUTH: false
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongodb
+    networks:
+      - ocommerce-network
+    profiles:
+      - admin
+
+  # Optional: pgAdmin for PostgreSQL administration
+  pgadmin:
+    image: dpage/pgadmin4:latest
+    container_name: ocommerce-pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@ocommerce.com
+      PGADMIN_DEFAULT_PASSWORD: admin123
+      PGADMIN_CONFIG_SERVER_MODE: "False"
+    ports:
+      - "8080:80"
+    depends_on:
+      - postgresql
+    networks:
+      - ocommerce-network
+    profiles:
+      - admin
+
+volumes:
+  postgres_data:
+    driver: local
+  mongo_data:
+    driver: local
+
+networks:
+  ocommerce-network:
+    driver: bridge
