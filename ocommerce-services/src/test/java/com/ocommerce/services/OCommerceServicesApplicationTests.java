@@ -6,11 +6,10 @@ import org.springframework.test.context.ActiveProfiles;
 
 /**
  * Basic integration test for the Spring Boot application context.
- * Excludes MongoDB auto-configuration for testing.
+ * Uses the test profile which has no MongoDB URI configured,
+ * so MongoDB configuration is disabled via @ConditionalOnProperty.
  */
-@SpringBootTest(classes = OCommerceServicesApplication.class, properties = {
-        "spring.autoconfigure.exclude=org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration,org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration"
-})
+@SpringBootTest
 @ActiveProfiles("test")
 class OCommerceServicesApplicationTests {
 

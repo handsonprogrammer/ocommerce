@@ -4,7 +4,7 @@
 
 ### 1. Create a new Spring Boot project [x]
 
-### 2. User Domain [ ]
+### 2. User Domain [x]
 
 ### 3. Catalog Domain [ ]
 
