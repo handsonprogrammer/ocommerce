@@ -60,15 +60,16 @@ public class SecurityConfig {
                 // Configure authorization rules
                 .authorizeHttpRequests(authz -> authz
                         // Public endpoints - no authentication required
-                        .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
-                        .requestMatchers(HttpMethod.GET, "/api/v1/auth/health").permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v*/auth/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/auth/health").permitAll()
 
-                        // Documentation and monitoring endpoints
-                        .requestMatchers("/api/v1/swagger-ui/**", "/api/v1/api-docs/**").permitAll()
-                        .requestMatchers("/api/v1/actuator/health/**", "/api/v1/actuator/info").permitAll()
+                        // Documentation and monitoring endpoints - context path is /api/v1
+                        .requestMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers("/api-docs/**", "/v3/api-docs/**").permitAll()
+                        .requestMatchers("/actuator/health/**", "/actuator/info").permitAll()
 
                         // Root endpoints
-                        .requestMatchers("/", "/api/v1/").permitAll()
+                        .requestMatchers("/", "/health").permitAll()
 
                         // All other endpoints require authentication
                         .anyRequest().authenticated())
