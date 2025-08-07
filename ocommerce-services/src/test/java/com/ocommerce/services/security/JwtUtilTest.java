@@ -18,8 +18,19 @@ class JwtUtilTest {
     private JwtUtil jwtUtil;
 
     @BeforeEach
-    void setUp() {
-        jwtUtil = new JwtUtil();
+    void setUp() throws NoSuchFieldException, IllegalAccessException {
+        jwtUtil = org.mockito.Mockito.spy(new JwtUtil());
+        java.lang.reflect.Field accessTokenExpField = JwtUtil.class.getDeclaredField("accessTokenExpirationMs");
+        accessTokenExpField.setAccessible(true);
+        accessTokenExpField.set(jwtUtil, 3600L);
+
+        java.lang.reflect.Field refreshTokenExpField = JwtUtil.class.getDeclaredField("refreshTokenExpirationMs");
+        refreshTokenExpField.setAccessible(true);
+        refreshTokenExpField.set(jwtUtil, 86400L);
+
+        java.lang.reflect.Field jwtSecretField = JwtUtil.class.getDeclaredField("jwtSecret");
+        jwtSecretField.setAccessible(true);
+        jwtSecretField.set(jwtUtil, "bXlTdXBlclNlY3JldEtleUZvckpXVFRva2VuR2VuZXJhdGlvbkFuZFZhbGlkYXRpb25JbkVDb21tZXJjZVNlcnZpY2Vz"); // 32 characters for HMAC-SHA256
     }
 
     @Test
@@ -27,8 +38,12 @@ class JwtUtilTest {
     void generateAccessToken_WithAuthentication_ShouldReturnValidToken() {
         // Given
         String email = "test@example.com";
-        Authentication authentication = new UsernamePasswordAuthenticationToken(
-                email, "password", Collections.emptyList());
+        UserDetails userDetails = User.builder()
+                .username(email)
+                .password("password")
+                .authorities(Collections.emptyList())
+                .build();
+        Authentication authentication = new UsernamePasswordAuthenticationToken(userDetails, null, userDetails.getAuthorities());
 
         // When
         String token = jwtUtil.generateAccessToken(authentication);

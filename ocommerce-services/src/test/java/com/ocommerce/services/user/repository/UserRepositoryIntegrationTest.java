@@ -1,18 +1,23 @@
 package com.ocommerce.services.user.repository;
 
 import com.ocommerce.services.user.domain.User;
+import org.junit.jupiter.api.AfterAll;
+import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.context.annotation.Import;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.DynamicPropertyRegistry;
+import org.springframework.test.context.DynamicPropertySource;
 import org.testcontainers.containers.PostgreSQLContainer;
 import org.testcontainers.junit.jupiter.Container;
 import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.Optional;
-import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -26,15 +31,32 @@ import static org.assertj.core.api.Assertions.assertThat;
 class UserRepositoryIntegrationTest {
 
     @Container
-    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15")
-            .withDatabaseName("testdb")
-            .withUsername("testuser")
-            .withPassword("testpass");
+    static PostgreSQLContainer<?> postgres = new PostgreSQLContainer<>("postgres:15-alpine")
+            .withDatabaseName("test_db")
+            .withUsername("test_user")
+            .withPassword("test_pass");
+
+    @DynamicPropertySource
+    static void registerDynamicProperties(DynamicPropertyRegistry registry) {
+        registry.add("spring.datasource.url", postgres::getJdbcUrl);
+        registry.add("spring.datasource.username", postgres::getUsername);
+        registry.add("spring.datasource.password", postgres::getPassword);
+    }
 
     @Autowired
     private UserRepository userRepository;
 
     private User testUser;
+
+    @BeforeAll
+    static void beforeAll(){
+        postgres.start();
+    }
+
+    @AfterAll
+    static void afterAll(){
+        postgres.stop();
+    }
 
     @BeforeEach
     void setUp() {
@@ -128,25 +150,26 @@ class UserRepositoryIntegrationTest {
     @Test
     void countActiveUsers_WhenActiveUsersExist_ShouldReturnCount() {
         // Given
+
         User user1 = createTestUser();
         user1.setEmail("user1@example.com");
         user1.setAccountEnabled(true);
-        user1.setDeleted(false);
+        user1.setAccountLocked(false);
 
         User user2 = createTestUser();
         user2.setEmail("user2@example.com");
         user2.setAccountEnabled(true);
-        user2.setDeleted(false);
+        user2.setAccountLocked(false);
 
         User disabledUser = createTestUser();
         disabledUser.setEmail("disabled@example.com");
         disabledUser.setAccountEnabled(false);
-        disabledUser.setDeleted(false);
+        disabledUser.setAccountLocked(false);
 
         User deletedUser = createTestUser();
         deletedUser.setEmail("deleted@example.com");
         deletedUser.setAccountEnabled(true);
-        deletedUser.setDeleted(true);
+        deletedUser.setAccountLocked(true);
 
         userRepository.save(user1);
         userRepository.save(user2);
@@ -179,7 +202,7 @@ class UserRepositoryIntegrationTest {
 
         // When
         savedUser.setFirstName("Updated Name");
-        User updatedUser = userRepository.save(savedUser);
+        User updatedUser = userRepository.saveAndFlush(savedUser);
 
         // Then
         assertThat(updatedUser.getFirstName()).isEqualTo("Updated Name");
