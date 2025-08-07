@@ -118,6 +118,8 @@ public class AuthController {
 
         if (refreshToken != null && !refreshToken.trim().isEmpty()) {
             authenticationService.logout(userDetails.getUsername(), refreshToken);
+        } else {
+            return ResponseEntity.badRequest().body(Map.of("error", "Refresh token is required"));
         }
 
         logger.info("Logout request processed");

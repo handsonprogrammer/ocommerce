@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.http.HttpMethod;
+import org.springframework.http.HttpStatus;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.configuration.AuthenticationConfiguration;
@@ -17,6 +18,7 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
+import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
@@ -79,7 +81,20 @@ public class SecurityConfig {
                 .addFilterBefore(jwtAuthenticationFilter, UsernamePasswordAuthenticationFilter.class)
 
                 // Configure authentication provider
-                .authenticationProvider(authenticationProvider());
+                .authenticationProvider(authenticationProvider())
+
+                // Handle unauthorized and access denied responses
+                .exceptionHandling(e->
+                                    e.accessDeniedHandler( (request, response, accessDeniedException)->response.setStatus(403))
+                                            .authenticationEntryPoint(new HttpStatusEntryPoint(HttpStatus.UNAUTHORIZED)))
+              // Disable default login form; we use JWT
+                .formLogin(AbstractHttpConfigurer::disable)
+
+                // Disable logout functionality; we handle token invalidation manually
+                .logout(AbstractHttpConfigurer::disable)
+
+                // Disable basic authentication; we use JWT instead
+                .httpBasic(AbstractHttpConfigurer::disable);
 
         return http.build();
     }
