@@ -72,7 +72,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void createAddress_WithValidData_ShouldCreateAddressAndReturnCreated() throws Exception {
         // When/Then
-        mockMvc.perform(post("/api/v1/addresses")
+        mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -97,7 +97,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         // Missing type, streetAddress, city, etc.
 
         // When/Then
-        mockMvc.perform(post("/api/v1/addresses")
+        mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(invalidRequest)))
@@ -109,7 +109,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void createAddress_WithoutAuthentication_ShouldReturnUnauthorized() throws Exception {
         // When/Then
-        mockMvc.perform(post("/api/v1/addresses")
+        mockMvc.perform(post("/api/v1/address")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
                 .andExpect(status().isUnauthorized());
@@ -118,7 +118,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void createAddress_WithInvalidToken_ShouldReturnUnauthorized() throws Exception {
         // When/Then
-        mockMvc.perform(post("/api/v1/addresses")
+        mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer invalid-token")
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -128,7 +128,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void getUserAddresses_WithValidToken_ShouldReturnAddressList() throws Exception {
         // Given - Create an address first
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -136,7 +136,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
                 .andReturn().getResponse().getContentAsString();
 
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses")
+        mockMvc.perform(get("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
@@ -148,7 +148,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void getUserAddresses_WithNoAddresses_ShouldReturnEmptyList() throws Exception {
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses")
+        mockMvc.perform(get("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
@@ -158,14 +158,14 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void getUserAddresses_WithoutAuthentication_ShouldReturnUnauthorized() throws Exception {
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses"))
+        mockMvc.perform(get("/api/v1/address"))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
     void getAddressById_WithValidId_ShouldReturnAddress() throws Exception {
         // Given - Create an address first
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -175,7 +175,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         String addressId = objectMapper.readTree(createResponse).get("id").asText();
 
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses/{addressId}", addressId)
+        mockMvc.perform(get("/api/v1/address/{addressId}", addressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(addressId))
@@ -186,7 +186,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void getAddressById_WithNonExistentId_ShouldReturnNotFound() throws Exception {
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses/{addressId}", "550e8400-e29b-41d4-a716-446655440000")
+        mockMvc.perform(get("/api/v1/address/{addressId}", "550e8400-e29b-41d4-a716-446655440000")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.status").value(404))
@@ -196,7 +196,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void updateAddress_WithValidData_ShouldUpdateAndReturnAddress() throws Exception {
         // Given - Create an address first
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -213,7 +213,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         testAddressRequest.setPostalCode("02101");
 
         // When/Then
-        mockMvc.perform(put("/api/v1/addresses/{addressId}", addressId)
+        mockMvc.perform(put("/api/v1/address/{addressId}", addressId)
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -229,7 +229,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void updateAddress_WithNonExistentId_ShouldReturnNotFound() throws Exception {
         // When/Then
-        mockMvc.perform(put("/api/v1/addresses/{addressId}", "550e8400-e29b-41d4-a716-446655440000")
+        mockMvc.perform(put("/api/v1/address/{addressId}", "550e8400-e29b-41d4-a716-446655440000")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -241,7 +241,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void updateAddress_WithInvalidData_ShouldReturnBadRequest() throws Exception {
         // Given - Create an address first
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -255,7 +255,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         // Missing required fields
 
         // When/Then
-        mockMvc.perform(put("/api/v1/addresses/{addressId}", addressId)
+        mockMvc.perform(put("/api/v1/address/{addressId}", addressId)
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(invalidRequest)))
@@ -267,7 +267,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void deleteAddress_WithValidId_ShouldDeleteAndReturnNoContent() throws Exception {
         // Given - Create an address first
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -277,12 +277,12 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         String addressId = objectMapper.readTree(createResponse).get("id").asText();
 
         // When/Then
-        mockMvc.perform(delete("/api/v1/addresses/{addressId}", addressId)
+        mockMvc.perform(delete("/api/v1/address/{addressId}", addressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNoContent());
 
         // Verify address is deleted
-        mockMvc.perform(get("/api/v1/addresses/{addressId}", addressId)
+        mockMvc.perform(get("/api/v1/address/{addressId}", addressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNotFound());
     }
@@ -290,7 +290,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void deleteAddress_WithNonExistentId_ShouldReturnNotFound() throws Exception {
         // When/Then
-        mockMvc.perform(delete("/api/v1/addresses/{addressId}", "550e8400-e29b-41d4-a716-446655440000")
+        mockMvc.perform(delete("/api/v1/address/{addressId}", "550e8400-e29b-41d4-a716-446655440000")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNotFound())
                 .andExpect(jsonPath("$.status").value(404))
@@ -300,14 +300,14 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void deleteAddress_WithoutAuthentication_ShouldReturnUnauthorized() throws Exception {
         // When/Then
-        mockMvc.perform(delete("/api/v1/addresses/{addressId}", "550e8400-e29b-41d4-a716-446655440000"))
+        mockMvc.perform(delete("/api/v1/address/{addressId}", "550e8400-e29b-41d4-a716-446655440000"))
                 .andExpect(status().isUnauthorized());
     }
 
     @Test
     void setDefaultAddress_WithValidId_ShouldSetDefaultAndReturnNoContent() throws Exception {
         // Given - Create an address first
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -317,12 +317,12 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         String addressId = objectMapper.readTree(createResponse).get("id").asText();
 
         // When/Then
-        mockMvc.perform(put("/api/v1/addresses/{addressId}/default", addressId)
+        mockMvc.perform(put("/api/v1/address/{addressId}/default", addressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNoContent());
 
         // Verify address is set as default
-        mockMvc.perform(get("/api/v1/addresses/{addressId}", addressId)
+        mockMvc.perform(get("/api/v1/address/{addressId}", addressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.isDefault").value(true));
@@ -331,7 +331,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void getDefaultAddress_WithExistingDefault_ShouldReturnDefaultAddress() throws Exception {
         // Given - Create an address and set as default
-        String createResponse = mockMvc.perform(post("/api/v1/addresses")
+        String createResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(testAddressRequest)))
@@ -340,12 +340,12 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
 
         String addressId = objectMapper.readTree(createResponse).get("id").asText();
 
-        mockMvc.perform(put("/api/v1/addresses/{addressId}/default", addressId)
+        mockMvc.perform(put("/api/v1/address/{addressId}/default", addressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNoContent());
 
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses/default")
+        mockMvc.perform(get("/api/v1/address/default")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.id").value(addressId))
@@ -355,7 +355,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
     @Test
     void getDefaultAddress_WithNoDefault_ShouldReturnNotFound() throws Exception {
         // When/Then
-        mockMvc.perform(get("/api/v1/addresses/default")
+        mockMvc.perform(get("/api/v1/address/default")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNotFound());
     }
@@ -380,7 +380,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
         workAddress.setCountry("United States");
 
         // Create home address
-        String homeResponse = mockMvc.perform(post("/api/v1/addresses")
+        String homeResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(homeAddress)))
@@ -388,7 +388,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
                 .andReturn().getResponse().getContentAsString();
 
         // Create work address
-        String workResponse = mockMvc.perform(post("/api/v1/addresses")
+        String workResponse = mockMvc.perform(post("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken)
                         .contentType(MediaType.APPLICATION_JSON)
                         .content(objectMapper.writeValueAsString(workAddress)))
@@ -396,7 +396,7 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
                 .andReturn().getResponse().getContentAsString();
 
         // Verify user has two addresses
-        mockMvc.perform(get("/api/v1/addresses")
+        mockMvc.perform(get("/api/v1/address")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
@@ -404,12 +404,12 @@ public class AddressControllerE2ETest extends AbstractIntegrationTest {
 
         // Set work address as default
         String workAddressId = objectMapper.readTree(workResponse).get("id").asText();
-        mockMvc.perform(put("/api/v1/addresses/{addressId}/default", workAddressId)
+        mockMvc.perform(put("/api/v1/address/{addressId}/default", workAddressId)
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isNoContent());
 
         // Verify default address
-        mockMvc.perform(get("/api/v1/addresses/default")
+        mockMvc.perform(get("/api/v1/address/default")
                         .header("Authorization", "Bearer " + accessToken))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.type").value("work"));

@@ -28,7 +28,7 @@ import java.util.UUID;
  * REST controller for address management operations
  */
 @RestController
-@RequestMapping("/api/v1/addresses")
+@RequestMapping("/api/v1/address")
 @Tag(name = "Address Management", description = "APIs for managing user addresses")
 @SecurityRequirement(name = "bearerAuth")
 public class AddressController {

@@ -86,7 +86,7 @@ public class AddressControllerTest {
         when(addressService.getUserAddresses(testUser)).thenReturn(addresses);
 
        // Act & Assert
-        mockMvc.perform(get("/api/v1/addresses")
+        mockMvc.perform(get("/api/v1/address")
                         .header("Authorization", "Bearer test-jwt-token"))
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$").isArray())
@@ -111,7 +111,7 @@ public class AddressControllerTest {
 
         when(addressService.getAddressById(any(User.class), Mockito.eq(addressId))).thenReturn(address);
 
-        mockMvc.perform(get("/api/v1/addresses/" + addressId)
+        mockMvc.perform(get("/api/v1/address/" + addressId)
                 .header("Authorization", "Bearer test-jwt-token"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.type").value("work"))
@@ -142,7 +142,7 @@ public class AddressControllerTest {
             """;
 
         mockMvc.perform(
-                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/api/v1/addresses")
+                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post("/api/v1/address")
                     .header("Authorization", "Bearer test-jwt-token")
                     .contentType("application/json")
                     .content(requestBody))
@@ -176,7 +176,7 @@ public class AddressControllerTest {
             """;
 
         mockMvc.perform(
-                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/v1/addresses/" + addressId)
+                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/v1/address/" + addressId)
                     .header("Authorization", "Bearer test-jwt-token")
                     .contentType("application/json")
                     .content(requestBody))
@@ -191,7 +191,7 @@ public class AddressControllerTest {
         UUID addressId = UUID.randomUUID();
 
         mockMvc.perform(
-                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete("/api/v1/addresses/" + addressId)
+                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete("/api/v1/address/" + addressId)
                     .header("Authorization", "Bearer test-jwt-token"))
             .andExpect(status().isNoContent());
     }
@@ -209,7 +209,7 @@ public class AddressControllerTest {
 
         when(addressService.getDefaultAddress(any(User.class))).thenReturn(address);
 
-        mockMvc.perform(get("/api/v1/addresses/default")
+        mockMvc.perform(get("/api/v1/address/default")
                 .header("Authorization", "Bearer test-jwt-token"))
             .andExpect(status().isOk())
             .andExpect(jsonPath("$.type").value("home"))
@@ -222,7 +222,7 @@ public class AddressControllerTest {
         UUID addressId = UUID.randomUUID();
 
         mockMvc.perform(
-                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/v1/addresses/" + addressId + "/default")
+                org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put("/api/v1/address/" + addressId + "/default")
                     .header("Authorization", "Bearer test-jwt-token"))
             .andExpect(status().isNoContent());
     }
