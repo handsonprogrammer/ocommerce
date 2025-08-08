@@ -69,7 +69,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * 
      * @param token the token string
      */
-    @Modifying
+    @Modifying(clearAutomatically = true)
     @Transactional
     @Query("UPDATE RefreshToken rt SET rt.revoked = true WHERE rt.token = :token AND rt.user = :user")
     void revokeByTokenAndUser(@Param("token") String token, @Param("user") User user);

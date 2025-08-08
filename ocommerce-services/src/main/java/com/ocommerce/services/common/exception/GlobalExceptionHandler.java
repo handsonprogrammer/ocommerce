@@ -1,7 +1,9 @@
 package com.ocommerce.services.common.exception;
 
+import com.ocommerce.services.user.exception.AddressNotFoundException;
+import com.ocommerce.services.user.exception.UserAlreadyExistsException;
+import com.ocommerce.services.user.exception.UserNotFoundException;
 import com.ocommerce.services.user.service.RefreshTokenService;
-import com.ocommerce.services.user.service.UserService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -72,7 +74,7 @@ public class GlobalExceptionHandler {
     /**
      * Handle user not found exception
      */
-    @ExceptionHandler({ UserService.UserNotFoundException.class, UsernameNotFoundException.class })
+    @ExceptionHandler({ UserNotFoundException.class, UsernameNotFoundException.class })
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(
             RuntimeException ex, WebRequest request) {
 
@@ -90,9 +92,9 @@ public class GlobalExceptionHandler {
     /**
      * Handle user already exists exception
      */
-    @ExceptionHandler(UserService.UserAlreadyExistsException.class)
+    @ExceptionHandler(UserAlreadyExistsException.class)
     public ResponseEntity<ErrorResponse> handleUserAlreadyExistsException(
-            UserService.UserAlreadyExistsException ex, WebRequest request) {
+            UserAlreadyExistsException ex, WebRequest request) {
 
         ErrorResponse errorResponse = new ErrorResponse(
                 HttpStatus.CONFLICT.value(),
@@ -121,6 +123,24 @@ public class GlobalExceptionHandler {
 
         logger.warn("Invalid refresh token: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
+    }
+
+    /**
+     * Handle address not found exception
+     */
+    @ExceptionHandler(AddressNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleAddressNotFoundException(
+            AddressNotFoundException ex, WebRequest request) {
+
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Address not found",
+                ex.getMessage(),
+                request.getDescription(false),
+                LocalDateTime.now());
+
+        logger.warn("Address not found: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
     /**

@@ -3,6 +3,9 @@ package com.ocommerce.services.user.service;
 import com.ocommerce.services.user.domain.User;
 import com.ocommerce.services.user.dto.SignupRequest;
 import com.ocommerce.services.user.dto.UserResponse;
+import com.ocommerce.services.user.dto.UserUpdateRequest;
+import com.ocommerce.services.user.exception.UserAlreadyExistsException;
+import com.ocommerce.services.user.exception.UserNotFoundException;
 import com.ocommerce.services.user.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -75,7 +78,7 @@ class UserServiceTest {
 
         // When/Then
         assertThatThrownBy(() -> userService.registerUser(signupRequest))
-                .isInstanceOf(UserService.UserAlreadyExistsException.class)
+                .isInstanceOf(UserAlreadyExistsException.class)
                 .hasMessageContaining("already exists");
 
         verify(userRepository).existsByEmailIgnoreCase(signupRequest.getEmail());
@@ -164,7 +167,7 @@ class UserServiceTest {
 
         // When/Then
         assertThatThrownBy(() -> userService.getUserProfile(email))
-                .isInstanceOf(UserService.UserNotFoundException.class)
+                .isInstanceOf(UserNotFoundException.class)
                 .hasMessageContaining("User not found");
 
         verify(userRepository).findByEmailWithActiveAddresses(email);
@@ -174,7 +177,7 @@ class UserServiceTest {
     void updateUserProfile_WhenUserExists_ShouldUpdateAndReturnUser() {
         // Given
         String email = "test@example.com";
-        UserService.UserUpdateRequest updateRequest = new UserService.UserUpdateRequest();
+        UserUpdateRequest updateRequest = new UserUpdateRequest();
         updateRequest.setFirstName("Updated First Name");
         updateRequest.setLastName("Updated Last Name");
         updateRequest.setPhoneNumber("+1234567890");

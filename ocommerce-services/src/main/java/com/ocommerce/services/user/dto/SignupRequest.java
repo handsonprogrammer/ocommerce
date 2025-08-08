@@ -14,26 +14,26 @@ public class SignupRequest {
 
     @NotBlank(message = "First name is required")
     @Size(max = 100, message = "First name cannot exceed 100 characters")
-    @Schema(description = "User's first name", example = "John", required = true)
+    @Schema(description = "User's first name", example = "John", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("firstName")
     private String firstName;
 
     @NotBlank(message = "Last name is required")
     @Size(max = 100, message = "Last name cannot exceed 100 characters")
-    @Schema(description = "User's last name", example = "Doe", required = true)
+    @Schema(description = "User's last name", example = "Doe", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("lastName")
     private String lastName;
 
     @NotBlank(message = "Email is required")
     @Email(message = "Email should be valid")
     @Size(max = 255, message = "Email cannot exceed 255 characters")
-    @Schema(description = "User's email address", example = "john.doe@example.com", required = true)
+    @Schema(description = "User's email address", example = "john.doe@example.com", requiredMode = Schema.RequiredMode.REQUIRED)
     @JsonProperty("email")
     private String email;
 
     @NotBlank(message = "Password is required")
     @Size(min = 8, message = "Password must be at least 8 characters")
-    @Schema(description = "User's password", example = "securePassword123", required = true, minLength = 8)
+    @Schema(description = "User's password", example = "securePassword123", requiredMode = Schema.RequiredMode.REQUIRED, minLength = 8)
     @JsonProperty("password")
     private String password;
 

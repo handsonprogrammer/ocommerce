@@ -3,7 +3,11 @@ package com.ocommerce.services.user.service;
 import com.ocommerce.services.user.domain.User;
 import com.ocommerce.services.user.dto.SignupRequest;
 import com.ocommerce.services.user.dto.UserResponse;
+import com.ocommerce.services.user.dto.UserUpdateRequest;
+import com.ocommerce.services.user.exception.UserAlreadyExistsException;
+import com.ocommerce.services.user.exception.UserNotFoundException;
 import com.ocommerce.services.user.repository.UserRepository;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -123,14 +127,14 @@ public class UserService {
         User user = userRepository.findByEmailIgnoreCase(email)
                 .orElseThrow(() -> new UserNotFoundException("User not found with email: " + email));
 
-        // Update fields if provided
-        if (updateRequest.getFirstName() != null) {
+
+        if (StringUtils.isNotBlank(updateRequest.getFirstName())) {
             user.setFirstName(updateRequest.getFirstName());
         }
-        if (updateRequest.getLastName() != null) {
+        if (StringUtils.isNotBlank(updateRequest.getLastName())) {
             user.setLastName(updateRequest.getLastName());
         }
-        if (updateRequest.getPhoneNumber() != null) {
+        if (StringUtils.isNotBlank(updateRequest.getPhoneNumber())) {
             user.setPhoneNumber(updateRequest.getPhoneNumber());
         }
 
@@ -209,53 +213,5 @@ public class UserService {
         UserResponse response = convertToUserResponse(user);
         // Address conversion will be handled by AddressService
         return response;
-    }
-
-    // Exception classes (should be in separate files)
-    public static class UserAlreadyExistsException extends RuntimeException {
-        public UserAlreadyExistsException(String message) {
-            super(message);
-        }
-    }
-
-    public static class UserNotFoundException extends RuntimeException {
-        public UserNotFoundException(String message) {
-            super(message);
-        }
-    }
-
-    // Helper DTO class (should be in separate file)
-    public static class UserUpdateRequest {
-        private String firstName;
-        private String lastName;
-        private String phoneNumber;
-
-        // Constructors, getters, and setters
-        public UserUpdateRequest() {
-        }
-
-        public String getFirstName() {
-            return firstName;
-        }
-
-        public void setFirstName(String firstName) {
-            this.firstName = firstName;
-        }
-
-        public String getLastName() {
-            return lastName;
-        }
-
-        public void setLastName(String lastName) {
-            this.lastName = lastName;
-        }
-
-        public String getPhoneNumber() {
-            return phoneNumber;
-        }
-
-        public void setPhoneNumber(String phoneNumber) {
-            this.phoneNumber = phoneNumber;
-        }
     }
 }
