@@ -7,6 +7,7 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -58,7 +59,8 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * 
      * @param user the user
      */
-    @Modifying
+    @Modifying(clearAutomatically = true)
+    @Transactional
     @Query("UPDATE RefreshToken rt SET rt.revoked = true WHERE rt.user = :user")
     void revokeAllByUser(@Param("user") User user);
 
@@ -68,6 +70,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * @param token the token string
      */
     @Modifying
+    @Transactional
     @Query("UPDATE RefreshToken rt SET rt.revoked = true WHERE rt.token = :token AND rt.user = :user")
     void revokeByTokenAndUser(@Param("token") String token, @Param("user") User user);
 
@@ -77,6 +80,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * @param now current timestamp
      */
     @Modifying
+    @Transactional
     @Query("DELETE FROM RefreshToken rt WHERE rt.expiryDate < :now")
     void deleteExpiredTokens(@Param("now") LocalDateTime now);
 
@@ -84,6 +88,7 @@ public interface RefreshTokenRepository extends JpaRepository<RefreshToken, UUID
      * Delete all revoked refresh tokens (cleanup job)
      */
     @Modifying
+    @Transactional
     @Query("DELETE FROM RefreshToken rt WHERE rt.revoked = true")
     void deleteRevokedTokens();
 

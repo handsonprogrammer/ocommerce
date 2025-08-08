@@ -79,14 +79,12 @@ public class AuthController {
      * Refresh token endpoint
      */
     @PostMapping("/refresh")
-    @SecurityRequirement(name = "Bearer Authentication")
     @Operation(summary = "Refresh access token", description = "Generate new access token using valid refresh token")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Token refreshed successfully", content = @Content(schema = @Schema(implementation = AuthResponse.class))),
             @ApiResponse(responseCode = "401", description = "Invalid or expired refresh token")
     })
     public ResponseEntity<AuthResponse> refreshToken(
-            @AuthenticationPrincipal UserDetails userDetails,
             @RequestBody Map<String, String> request) {
         String refreshToken = request.get("refreshToken");
 
@@ -96,7 +94,7 @@ public class AuthController {
 
         logger.info("Token refresh request");
 
-        AuthResponse authResponse = authenticationService.refreshTokenForUser(userDetails.getUsername(), refreshToken);
+        AuthResponse authResponse = authenticationService.refreshToken(refreshToken);
 
         return ResponseEntity.ok(authResponse);
     }

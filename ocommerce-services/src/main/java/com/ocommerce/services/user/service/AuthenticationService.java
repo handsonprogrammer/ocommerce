@@ -8,7 +8,6 @@ import com.ocommerce.services.user.dto.LoginRequest;
 import com.ocommerce.services.user.dto.SignupRequest;
 import com.ocommerce.services.user.dto.UserResponse;
 
-import org.mapstruct.control.MappingControl.Use;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -122,55 +121,38 @@ public class AuthenticationService {
     }
 
     /**
-     * Refresh access token using a valid refresh token with automatic token
-     * rotation
-     * Validates the refresh token belongs to the specified user, generates new
-     * tokens,
-     * and revokes the old refresh token for enhanced security
-     * 
-     * @param email              the email address of the user requesting token
-     *                           refresh
-     * @param refreshTokenString the refresh token to be used for generating new
-     *                           tokens
-     * @return new authentication response with fresh access and refresh tokens
-     * @throws UserService.UserNotFoundException                if the user with
-     *                                                          given email is not
-     *                                                          found
-     * @throws RefreshTokenService.InvalidRefreshTokenException if refresh token is
-     *                                                          invalid, expired, or
-     *                                                          doesn't belong to
-     *                                                          user
-     */
-    public AuthResponse refreshTokenForUser(String email, String refreshTokenString) {
+         * Refresh access token using a valid refresh token.
+         * Validates the refresh token, generates a new access token and rotates the refresh token.
+         * Revokes the old refresh token for security.
+         *
+         * @param refreshTokenString the refresh token to be used for generating new tokens
+         * @return authentication response with new access token, refresh token, and expiration time
+         * @throws RefreshTokenService.InvalidRefreshTokenException if the refresh token is invalid or expired
+         */
+    public AuthResponse refreshToken(String refreshTokenString) {
         logger.info("Token refresh attempt");
 
-        try {
-            User user = userService.findByEmail(email)
-                    .orElseThrow(() -> new UserService.UserNotFoundException("User not found"));
-            // Verify refresh token this will throw exceptio if invalid
-            RefreshToken refreshToken = refreshTokenService.findByUserAndToken(user, refreshTokenString)
-                    .orElseThrow(() -> new RefreshTokenService.InvalidRefreshTokenException("Refresh token not found"));
+        // Validate the refresh token
+        RefreshToken refreshToken = refreshTokenService.findValidToken(refreshTokenString)
+                .orElseThrow(() -> new RefreshTokenService.InvalidRefreshTokenException("Invalid or expired refresh token"));
 
-            // Generate new access token
-            String newAccessToken = jwtUtil.generateAccessToken(user.getEmail());
+        // Get the user associated with the refresh token
+        User user = refreshToken.getUser();
 
-            // Optionally rotate refresh token (create new one and revoke old one)
-            RefreshToken newRefreshToken = refreshTokenService.createRefreshToken(user);
-            refreshTokenService.revokeTokenForUser(refreshToken.getToken(), user);
+        // Generate new access token
+        String newAccessToken = jwtUtil.generateAccessToken(user.getEmail());
 
-            logger.info("Token refreshed successfully for user: {}", user.getEmail());
+        // Optionally rotate the refresh token
+        RefreshToken newRefreshToken = refreshTokenService.createRefreshToken(user);
+        refreshTokenService.revokeTokenForUser(refreshToken.getToken(), user);
 
-            return new AuthResponse(
-                    newAccessToken,
-                    newRefreshToken.getToken(),
-                    jwtUtil.getAccessTokenExpirationSeconds());
+        logger.info("Access token refreshed successfully for user: {}", user.getEmail());
 
-        } catch (RefreshTokenService.InvalidRefreshTokenException e) {
-            logger.warn("Invalid refresh token used for token refresh");
-            throw e;
-        }
+        return new AuthResponse(
+                newAccessToken,
+                newRefreshToken.getToken(),
+                jwtUtil.getAccessTokenExpirationSeconds());
     }
-
     /**
      * Logout user from current session by revoking the specific refresh token
      * Finds and revokes the refresh token for the specified user
