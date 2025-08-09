@@ -71,7 +71,7 @@ docker-compose --profile admin up -d
 
 ```bash
 # Development mode
-mvn spring-boot:run -Dspring.profiles.active=dev
+mvn spring-boot:run -Dspring-boot.run.profiles=dev
 
 # Or compile and run
 mvn clean compile
