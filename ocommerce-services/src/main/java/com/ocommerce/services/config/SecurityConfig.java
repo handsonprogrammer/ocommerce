@@ -66,6 +66,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/v*/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v*/auth/refresh").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v*/auth/health").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v*/categories/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v*/products/**").permitAll()
 
                         // Documentation and monitoring endpoints - context path is /api/v1
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()

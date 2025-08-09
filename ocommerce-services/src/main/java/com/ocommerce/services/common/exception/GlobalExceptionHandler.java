@@ -3,6 +3,9 @@ package com.ocommerce.services.common.exception;
 import com.ocommerce.services.user.exception.AddressNotFoundException;
 import com.ocommerce.services.user.exception.UserAlreadyExistsException;
 import com.ocommerce.services.user.exception.UserNotFoundException;
+import com.ocommerce.services.catalog.exception.CategoryNotFoundException;
+import com.ocommerce.services.catalog.exception.ProductNotFoundException;
+import com.ocommerce.services.user.service.AddressService;
 import com.ocommerce.services.user.service.RefreshTokenService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -140,6 +143,42 @@ public class GlobalExceptionHandler {
                 LocalDateTime.now());
 
         logger.warn("Address not found: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle category not found exception
+     */
+    @ExceptionHandler(CategoryNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleCategoryNotFoundException(
+            CategoryNotFoundException ex, WebRequest request) {
+
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Category not found",
+                ex.getMessage(),
+                request.getDescription(false),
+                LocalDateTime.now());
+
+        logger.warn("Category not found: {}", ex.getMessage());
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
+    }
+
+    /**
+     * Handle product not found exception
+     */
+    @ExceptionHandler(ProductNotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleProductNotFoundException(
+            ProductNotFoundException ex, WebRequest request) {
+
+        ErrorResponse errorResponse = new ErrorResponse(
+                HttpStatus.NOT_FOUND.value(),
+                "Product not found",
+                ex.getMessage(),
+                request.getDescription(false),
+                LocalDateTime.now());
+
+        logger.warn("Product not found: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
