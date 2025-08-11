@@ -1,0 +1,149 @@
+[
+  {
+    "productName": "iPhone 4",
+    "sku": "IPH4-16GB-BLK",
+    "variantName": "16GB Black",
+    "price": 199.99,
+    "compareAtPrice": 299.99,
+    "costPrice": 150.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-4-16gb-black.jpg"],
+    "weight": 0.137,
+    "inventory": {
+      "quantity": 5,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 4",
+    "sku": "IPH4-16GB-WHT",
+    "variantName": "16GB White",
+    "price": 199.99,
+    "compareAtPrice": 299.99,
+    "costPrice": 150.00,
+    "position": 2,
+    "attributes": {
+      "storage": "16GB",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/iphone-4-16gb-white.jpg"],
+    "weight": 0.137,
+    "inventory": {
+      "quantity": 3,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 4",
+    "sku": "IPH4-32GB-BLK",
+    "variantName": "32GB Black",
+    "price": 299.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 220.00,
+    "position": 3,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-4-32gb-black.jpg"],
+    "weight": 0.137,
+    "inventory": {
+      "quantity": 8,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPad",
+    "sku": "IPAD10-16GB-WIFI",
+    "variantName": "16GB Wi-Fi",
+    "price": 499.99,
+    "compareAtPrice": 599.99,
+    "costPrice": 350.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "connectivity": "Wi-Fi"
+    },
+    "imageUrls": ["https://images.example.com/ipad-2010-16gb-wifi.jpg"],
+    "weight": 0.68,
+    "inventory": {
+      "quantity": 12,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPad",
+    "sku": "IPAD10-32GB-WIFI",
+    "variantName": "32GB Wi-Fi",
+    "price": 599.99,
+    "compareAtPrice": 699.99,
+    "costPrice": 420.00,
+    "position": 2,
+    "attributes": {
+      "storage": "32GB",
+      "connectivity": "Wi-Fi"
+    },
+    "imageUrls": ["https://images.example.com/ipad-2010-32gb-wifi.jpg"],
+    "weight": 0.68,
+    "inventory": {
+      "quantity": 15,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPad",
+    "sku": "IPAD10-64GB-WIFI",
+    "variantName": "64GB Wi-Fi",
+    "price": 699.99,
+    "compareAtPrice": 799.99,
+    "costPrice": 500.00,
+    "position": 3,
+    "attributes": {
+      "storage": "64GB",
+      "connectivity": "Wi-Fi"
+    },
+    "imageUrls": ["https://images.example.com/ipad-2010-64gb-wifi.jpg"],
+    "weight": 0.68,
+    "inventory": {
+      "quantity": 10,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPad",
+    "sku": "IPAD10-16GB-3G",
+    "variantName": "16GB Wi-Fi + 3G",
+    "price": 629.99,
+    "compareAtPrice": 729.99,
+    "costPrice": 450.00,
+    "position": 4,
+    "attributes": {
+      "storage": "16GB",
+      "connectivity": "Wi-Fi + 3G"
+    },
+    "imageUrls": ["https://images.example.com/ipad-2010-16gb-3g.jpg"],
+    "weight": 0.73,
+    "inventory": {
+      "quantity": 8,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

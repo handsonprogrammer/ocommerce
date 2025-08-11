@@ -1,0 +1,52 @@
+[
+  {
+    "name": "iPhone 4S",
+    "shortDescription": "iPhone with Siri and improved camera",
+    "longDescription": "iPhone 4S introduces Siri voice assistant, 8MP camera with 1080p HD video recording, and dual-core A5 chip for faster performance.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-4s.jpg",
+    "imageUrls": ["https://images.example.com/iphone-4s-1.jpg", "https://images.example.com/iphone-4s-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.140,
+    "dimensions": {
+      "length": 11.54,
+      "width": 5.86,
+      "height": 0.93,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 5",
+      "screen_size": "3.5 inch Retina",
+      "camera": "8MP with 1080p HD video",
+      "processor": "A5 dual-core",
+      "connectivity": "3G, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "iPad 2",
+    "shortDescription": "Thinner, lighter iPad with dual cameras",
+    "longDescription": "iPad 2 features a thinner design, dual cameras for FaceTime and photos, and the powerful A5 chip for faster performance.",
+    "basePrice": 499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-2.jpg",
+    "imageUrls": ["https://images.example.com/ipad-2-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.601,
+    "dimensions": {
+      "length": 24.12,
+      "width": 18.57,
+      "height": 0.88,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 4.3",
+      "screen_size": "9.7 inch",
+      "camera": "VGA front, 0.7MP rear",
+      "processor": "A5 dual-core",
+      "connectivity": "Wi-Fi, Bluetooth"
+    }
+  }
+]

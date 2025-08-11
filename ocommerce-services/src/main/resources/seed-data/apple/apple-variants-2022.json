@@ -1,0 +1,45 @@
+[
+  {
+    "productName": "iPhone 14 Pro",
+    "sku": "IPH14P-128-PUR",
+    "variantName": "128GB Deep Purple",
+    "price": 999.99,
+    "compareAtPrice": 1099.99,
+    "costPrice": 750.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Deep Purple"
+    },
+    "imageUrls": ["https://images.example.com/iphone-14-pro-purple.jpg"],
+    "weight": 0.206,
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Air M2",
+    "sku": "MBA-M2-256-MID",
+    "variantName": "M2 256GB Midnight",
+    "price": 1199.99,
+    "compareAtPrice": 1399.99,
+    "costPrice": 900.00,
+    "position": 1,
+    "attributes": {
+      "processor": "M2",
+      "storage": "256GB",
+      "color": "Midnight"
+    },
+    "imageUrls": ["https://images.example.com/macbook-air-m2-midnight.jpg"],
+    "weight": 1.24,
+    "inventory": {
+      "quantity": 25,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

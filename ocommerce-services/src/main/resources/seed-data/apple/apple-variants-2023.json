@@ -1,0 +1,238 @@
+[
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPH15P-128-NAT",
+    "variantName": "128GB Natural Titanium",
+    "price": 999.99,
+    "compareAtPrice": 1099.99,
+    "costPrice": 750.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Natural Titanium"
+    },
+    "imageUrls": ["https://images.example.com/iphone-15-pro-natural.jpg"],
+    "weight": 0.187,
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPH15P-256-NAT",
+    "variantName": "256GB Natural Titanium",
+    "price": 1099.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 820.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Natural Titanium"
+    },
+    "imageUrls": ["https://images.example.com/iphone-15-pro-natural.jpg"],
+    "weight": 0.187,
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPH15P-512-BLU",
+    "variantName": "512GB Blue Titanium",
+    "price": 1299.99,
+    "compareAtPrice": 1399.99,
+    "costPrice": 970.00,
+    "position": 3,
+    "attributes": {
+      "storage": "512GB",
+      "color": "Blue Titanium"
+    },
+    "imageUrls": ["https://images.example.com/iphone-15-pro-blue.jpg"],
+    "weight": 0.187,
+    "inventory": {
+      "quantity": 85,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro Max",
+    "sku": "IPH15PM-256-NAT",
+    "variantName": "256GB Natural Titanium",
+    "price": 1199.99,
+    "compareAtPrice": 1299.99,
+    "costPrice": 900.00,
+    "position": 1,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Natural Titanium"
+    },
+    "imageUrls": ["https://images.example.com/iphone-15-pro-max-natural.jpg"],
+    "weight": 0.221,
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro Max",
+    "sku": "IPH15PM-512-BLK",
+    "variantName": "512GB Black Titanium",
+    "price": 1399.99,
+    "compareAtPrice": 1499.99,
+    "costPrice": 1050.00,
+    "position": 2,
+    "attributes": {
+      "storage": "512GB",
+      "color": "Black Titanium"
+    },
+    "imageUrls": ["https://images.example.com/iphone-15-pro-max-black.jpg"],
+    "weight": 0.221,
+    "inventory": {
+      "quantity": 75,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Pro 14-inch M3",
+    "sku": "MBP14M3-512-SG",
+    "variantName": "M3 512GB Space Gray",
+    "price": 1599.99,
+    "compareAtPrice": 1799.99,
+    "costPrice": 1200.00,
+    "position": 1,
+    "attributes": {
+      "processor": "M3 8-core CPU",
+      "storage": "512GB SSD",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/mbp-14-m3-space-gray.jpg"],
+    "weight": 1.55,
+    "inventory": {
+      "quantity": 45,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Pro 14-inch M3",
+    "sku": "MBP14M3-1TB-SIL",
+    "variantName": "M3 1TB Silver",
+    "price": 1799.99,
+    "compareAtPrice": 1999.99,
+    "costPrice": 1350.00,
+    "position": 2,
+    "attributes": {
+      "processor": "M3 8-core CPU",
+      "storage": "1TB SSD",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/mbp-14-m3-silver.jpg"],
+    "weight": 1.55,
+    "inventory": {
+      "quantity": 35,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Pro 16-inch M3",
+    "sku": "MBP16M3P-512-SG",
+    "variantName": "M3 Pro 512GB Space Gray",
+    "price": 2499.99,
+    "compareAtPrice": 2699.99,
+    "costPrice": 1850.00,
+    "position": 1,
+    "attributes": {
+      "processor": "M3 Pro 12-core CPU",
+      "storage": "512GB SSD",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/mbp-16-m3-space-gray.jpg"],
+    "weight": 2.15,
+    "inventory": {
+      "quantity": 25,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iMac 24-inch M3",
+    "sku": "IMAC24M3-256-BLU",
+    "variantName": "M3 256GB Blue",
+    "price": 1299.99,
+    "compareAtPrice": 1499.99,
+    "costPrice": 950.00,
+    "position": 1,
+    "attributes": {
+      "processor": "M3 8-core CPU",
+      "storage": "256GB SSD",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/imac-24-m3-blue.jpg"],
+    "weight": 4.46,
+    "inventory": {
+      "quantity": 30,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iMac 24-inch M3",
+    "sku": "IMAC24M3-512-SIL",
+    "variantName": "M3 512GB Silver",
+    "price": 1499.99,
+    "compareAtPrice": 1699.99,
+    "costPrice": 1100.00,
+    "position": 2,
+    "attributes": {
+      "processor": "M3 8-core CPU",
+      "storage": "512GB SSD",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/imac-24-m3-silver.jpg"],
+    "weight": 4.46,
+    "inventory": {
+      "quantity": 25,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "AirPods Pro (3rd generation)",
+    "sku": "APPRO3-USBC-WHT",
+    "variantName": "USB-C White",
+    "price": 249.99,
+    "compareAtPrice": 279.99,
+    "costPrice": 180.00,
+    "position": 1,
+    "attributes": {
+      "charging": "USB-C",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/airpods-pro-3rd-usbc.jpg"],
+    "weight": 0.061,
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

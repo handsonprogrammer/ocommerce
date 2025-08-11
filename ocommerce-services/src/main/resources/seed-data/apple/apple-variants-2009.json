@@ -1,0 +1,86 @@
+[
+  {
+    "productName": "iPhone 3GS",
+    "sku": "IPH3GS-16GB-BLK",
+    "variantName": "16GB Black",
+    "price": 199.99,
+    "compareAtPrice": 299.99,
+    "costPrice": 120.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3gs-16gb-black.jpg"],
+    "weight": 0.135,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 3GS",
+    "sku": "IPH3GS-16GB-WHT",
+    "variantName": "16GB White",
+    "price": 199.99,
+    "compareAtPrice": 299.99,
+    "costPrice": 120.00,
+    "position": 2,
+    "attributes": {
+      "storage": "16GB",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3gs-16gb-white.jpg"],
+    "weight": 0.135,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 3GS",
+    "sku": "IPH3GS-32GB-BLK",
+    "variantName": "32GB Black",
+    "price": 299.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 180.00,
+    "position": 3,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3gs-32gb-black.jpg"],
+    "weight": 0.135,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 3GS",
+    "sku": "IPH3GS-32GB-WHT",
+    "variantName": "32GB White",
+    "price": 299.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 180.00,
+    "position": 4,
+    "attributes": {
+      "storage": "32GB",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3gs-32gb-white.jpg"],
+    "weight": 0.135,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

@@ -1,0 +1,101 @@
+[
+  {
+    "name": "iPhone 6",
+    "shortDescription": "Bigger iPhone with 4.7-inch display",
+    "longDescription": "iPhone 6 with 4.7-inch Retina HD display, A8 chip, and iOS 8. Bigger than bigger.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6-1.jpg", "https://images.example.com/iphone-6-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.129,
+    "dimensions": {
+      "length": 13.81,
+      "width": 6.7,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 8.0",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "8MP with OIS",
+      "processor": "A8",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "iPhone 6 Plus",
+    "shortDescription": "Largest iPhone with 5.5-inch display",
+    "longDescription": "iPhone 6 Plus with 5.5-inch Retina HD display, A8 chip, and optical image stabilization. The biggest advancement in iPhone history.",
+    "basePrice": 299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6-plus.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6-plus-1.jpg", "https://images.example.com/iphone-6-plus-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 15.86,
+      "width": 7.79,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 8.0",
+      "screen_size": "5.5 inch Retina HD",
+      "camera": "8MP with OIS",
+      "processor": "A8",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "iPad Air 2",
+    "shortDescription": "Thinnest iPad with Touch ID",
+    "longDescription": "iPad Air 2 with A8X chip, Touch ID, and remarkably thin design. The most advanced iPad yet.",
+    "basePrice": 499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-air-2-2014.jpg",
+    "imageUrls": ["https://images.example.com/ipad-air-2-2014-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.437,
+    "dimensions": {
+      "length": 24.0,
+      "width": 16.95,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 8.1",
+      "screen_size": "9.7 inch Retina",
+      "camera": "8MP rear, 1.2MP front",
+      "processor": "A8X",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "iMac 27-inch with Retina 5K",
+    "shortDescription": "All-in-one with 5K Retina display",
+    "longDescription": "27-inch iMac with stunning 5K Retina display, Intel Core i5 processor, and sleek design. The ultimate creative workspace.",
+    "basePrice": 2499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/imac-27-5k-2014.jpg",
+    "imageUrls": ["https://images.example.com/imac-27-5k-2014-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 9.54,
+    "dimensions": {
+      "length": 65.0,
+      "width": 20.3,
+      "height": 51.6,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "Mac OS X 10.10",
+      "processor": "Intel Core i5",
+      "screen_size": "27 inch 5K Retina",
+      "connectivity": "Wi-Fi, Bluetooth, Ethernet"
+    }
+  }
+]

@@ -1,0 +1,103 @@
+[
+  {
+    "name": "iPhone 7",
+    "shortDescription": "iPhone with improved camera and no headphone jack",
+    "longDescription": "iPhone 7 with improved 12MP camera, A10 Fusion chip, water resistance, and iOS 10. This is iPhone.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-7.jpg",
+    "imageUrls": ["https://images.example.com/iphone-7-1.jpg", "https://images.example.com/iphone-7-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.138,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 10.0",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "12MP with OIS",
+      "processor": "A10 Fusion",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP67"
+    }
+  },
+  {
+    "name": "iPhone 7 Plus",
+    "shortDescription": "iPhone with dual camera system",
+    "longDescription": "iPhone 7 Plus with dual 12MP cameras, Portrait mode, A10 Fusion chip, and water resistance. The best iPhone cameras ever.",
+    "basePrice": 299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-7-plus.jpg",
+    "imageUrls": ["https://images.example.com/iphone-7-plus-1.jpg", "https://images.example.com/iphone-7-plus-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.188,
+    "dimensions": {
+      "length": 15.88,
+      "width": 7.79,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 10.0",
+      "screen_size": "5.5 inch Retina HD",
+      "camera": "Dual 12MP with Portrait mode",
+      "processor": "A10 Fusion",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP67"
+    }
+  },
+  {
+    "name": "iPad Pro 9.7-inch",
+    "shortDescription": "Smaller iPad Pro with True Tone display",
+    "longDescription": "9.7-inch iPad Pro with True Tone display, A9X chip, Apple Pencil support, and Smart Keyboard compatibility.",
+    "basePrice": 599.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-9-2016.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-9-2016-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.437,
+    "dimensions": {
+      "length": 24.0,
+      "width": 16.95,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 9.3",
+      "screen_size": "9.7 inch Retina",
+      "camera": "12MP rear, 5MP front",
+      "processor": "A9X",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "MacBook Pro 13-inch with Touch Bar",
+    "shortDescription": "MacBook Pro with revolutionary Touch Bar",
+    "longDescription": "13-inch MacBook Pro with Touch Bar, Intel Core i5 processor, and USB-C. The most advanced MacBook Pro ever.",
+    "basePrice": 1799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-13-touchbar-2016.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-13-touchbar-2016-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.37,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.49,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS 10.12",
+      "processor": "Intel Core i5",
+      "screen_size": "13.3 inch Retina",
+      "connectivity": "Wi-Fi, Bluetooth, USB-C"
+    }
+  }
+]

@@ -1,0 +1,129 @@
+[
+  {
+    "name": "iPhone XR",
+    "shortDescription": "iPhone with Liquid Retina display",
+    "longDescription": "iPhone XR with Liquid Retina display, A12 Bionic chip, and advanced camera system. The most advanced LCD ever in a smartphone.",
+    "basePrice": 749.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-xr.jpg",
+    "imageUrls": ["https://images.example.com/iphone-xr-1.jpg", "https://images.example.com/iphone-xr-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12.0",
+      "screen_size": "6.1 inch Liquid Retina",
+      "camera": "12MP with Smart HDR",
+      "processor": "A12 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP67"
+    }
+  },
+  {
+    "name": "iPhone XS",
+    "shortDescription": "iPhone with Super Retina display and dual cameras",
+    "longDescription": "iPhone XS with Super Retina display, A12 Bionic chip, and dual camera system. The most advanced iPhone ever.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-xs.jpg",
+    "imageUrls": ["https://images.example.com/iphone-xs-1.jpg", "https://images.example.com/iphone-xs-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.177,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12.0",
+      "screen_size": "5.8 inch Super Retina",
+      "camera": "Dual 12MP with Smart HDR",
+      "processor": "A12 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "iPhone XS Max",
+    "shortDescription": "Largest iPhone with 6.5-inch display",
+    "longDescription": "iPhone XS Max with 6.5-inch Super Retina display, A12 Bionic chip, and dual cameras. The biggest iPhone display ever.",
+    "basePrice": 1099.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-xs-max.jpg",
+    "imageUrls": ["https://images.example.com/iphone-xs-max-1.jpg", "https://images.example.com/iphone-xs-max-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.208,
+    "dimensions": {
+      "length": 15.75,
+      "width": 7.68,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12.0",
+      "screen_size": "6.5 inch Super Retina",
+      "camera": "Dual 12MP with Smart HDR",
+      "processor": "A12 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "iPad Pro 11-inch",
+    "shortDescription": "All-screen iPad Pro with Face ID",
+    "longDescription": "11-inch iPad Pro with Liquid Retina display, A12X Bionic chip, Face ID, and USB-C. The new iPad Pro is all screen and full of possibilities.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-11-2018.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-11-2018-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.468,
+    "dimensions": {
+      "length": 24.76,
+      "width": 17.85,
+      "height": 0.59,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12.1",
+      "screen_size": "11 inch Liquid Retina",
+      "camera": "12MP rear, 7MP front",
+      "processor": "A12X Bionic",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "MacBook Air 13-inch",
+    "shortDescription": "MacBook Air with Retina display",
+    "longDescription": "13-inch MacBook Air with Retina display, Intel Core i5 processor, and all-day battery life. The most loved Mac is now even more capable.",
+    "basePrice": 1199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-13-2018.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-13-2018-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.25,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.56,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS 10.14",
+      "processor": "Intel Core i5",
+      "screen_size": "13.3 inch Retina",
+      "connectivity": "Wi-Fi, Bluetooth, USB-C"
+    }
+  }
+]

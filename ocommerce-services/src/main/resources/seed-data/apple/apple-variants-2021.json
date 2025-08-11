@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone 13 mini",
+    "sku": "IPH13M-128GB-PNK",
+    "variantName": "128GB Pink",
+    "price": 629.99,
+    "compareAtPrice": 629.99,
+    "costPrice": 290.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Pink"
+    },
+    "imageUrls": ["https://images.example.com/iphone-13-mini-128gb-pink.jpg"],
+    "weight": 0.141,
+    "dimensions": {
+      "length": 13.15,
+      "width": 6.42,
+      "height": 0.765,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 13",
+    "sku": "IPH13-128GB-BLU",
+    "variantName": "128GB Blue",
+    "price": 699.99,
+    "compareAtPrice": 699.99,
+    "costPrice": 320.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-13-128gb-blue.jpg"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.765,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 40,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 13",
+    "sku": "IPH13-256GB-MDN",
+    "variantName": "256GB Midnight",
+    "price": 799.99,
+    "compareAtPrice": 799.99,
+    "costPrice": 340.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Midnight"
+    },
+    "imageUrls": ["https://images.example.com/iphone-13-256gb-midnight.jpg"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.765,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 13 Pro",
+    "sku": "IPH13P-128GB-SBU",
+    "variantName": "128GB Sierra Blue",
+    "price": 999.99,
+    "compareAtPrice": 999.99,
+    "costPrice": 460.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Sierra Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-13-pro-128gb-sierra-blue.jpg"],
+    "weight": 0.204,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.765,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 13 Pro Max",
+    "sku": "IPH13PM-256GB-GLD",
+    "variantName": "256GB Gold",
+    "price": 1199.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 510.00,
+    "position": 1,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-13-pro-max-256gb-gold.jpg"],
+    "weight": 0.240,
+    "dimensions": {
+      "length": 16.08,
+      "width": 7.81,
+      "height": 0.765,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 16,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

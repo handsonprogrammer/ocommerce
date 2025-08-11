@@ -1,0 +1,49 @@
+[
+  {
+    "name": "iPhone 3G",
+    "shortDescription": "iPhone with 3G connectivity and GPS",
+    "longDescription": "Second generation iPhone with 3G cellular connectivity, built-in GPS, and iPhone OS 2.0. Features the App Store and improved design.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-3g.jpg",
+    "imageUrls": ["https://images.example.com/iphone-3g-1.jpg", "https://images.example.com/iphone-3g-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.133,
+    "dimensions": {
+      "length": 11.55,
+      "width": 6.2,
+      "height": 1.23,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPhone OS 2.0",
+      "screen_size": "3.5 inch",
+      "camera": "2MP",
+      "connectivity": "3G, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "MacBook Air",
+    "shortDescription": "Ultra-thin laptop computer",
+    "longDescription": "Revolutionary ultra-thin laptop with Intel Core 2 Duo processor. The world's thinnest notebook at 0.76 inches thick.",
+    "basePrice": 1799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-2008.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-2008-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.36,
+    "dimensions": {
+      "length": 32.5,
+      "width": 22.7,
+      "height": 1.94,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "Mac OS X 10.5",
+      "screen_size": "13.3 inch",
+      "processor": "Intel Core 2 Duo"
+    }
+  }
+]

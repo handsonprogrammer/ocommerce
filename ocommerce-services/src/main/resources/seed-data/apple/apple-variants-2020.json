@@ -1,0 +1,66 @@
+[
+  {
+    "productName": "iPhone 12",
+    "sku": "IPH12-64-BLK",
+    "variantName": "64GB Black",
+    "price": 699.99,
+    "compareAtPrice": 799.99,
+    "costPrice": 520.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-12-black.jpg"],
+    "weight": 0.164,
+    "inventory": {
+      "quantity": 25,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 12",
+    "sku": "IPH12-128-BLU",
+    "variantName": "128GB Blue",
+    "price": 749.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 560.00,
+    "position": 2,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-12-blue.jpg"],
+    "weight": 0.164,
+    "inventory": {
+      "quantity": 30,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Air M1",
+    "sku": "MBA-M1-256-SIL",
+    "variantName": "M1 256GB Silver",
+    "price": 999.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 750.00,
+    "position": 1,
+    "attributes": {
+      "processor": "M1",
+      "storage": "256GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/macbook-air-m1-silver.jpg"],
+    "weight": 1.29,
+    "inventory": {
+      "quantity": 15,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

@@ -1,0 +1,129 @@
+[
+  {
+    "name": "iPhone 8",
+    "shortDescription": "iPhone with glass design and wireless charging",
+    "longDescription": "iPhone 8 with glass design, A11 Bionic chip, wireless charging, and improved camera. A new generation of iPhone.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-8.jpg",
+    "imageUrls": ["https://images.example.com/iphone-8-1.jpg", "https://images.example.com/iphone-8-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.148,
+    "dimensions": {
+      "length": 13.84,
+      "width": 6.73,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 11.0",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "12MP with OIS",
+      "processor": "A11 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP67"
+    }
+  },
+  {
+    "name": "iPhone 8 Plus",
+    "shortDescription": "Larger iPhone with Portrait Lighting",
+    "longDescription": "iPhone 8 Plus with dual cameras, Portrait Lighting, A11 Bionic chip, and wireless charging. The most advanced iPhone cameras.",
+    "basePrice": 299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-8-plus.jpg",
+    "imageUrls": ["https://images.example.com/iphone-8-plus-1.jpg", "https://images.example.com/iphone-8-plus-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.202,
+    "dimensions": {
+      "length": 15.87,
+      "width": 7.81,
+      "height": 0.75,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 11.0",
+      "screen_size": "5.5 inch Retina HD",
+      "camera": "Dual 12MP with Portrait Lighting",
+      "processor": "A11 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP67"
+    }
+  },
+  {
+    "name": "iPhone X",
+    "shortDescription": "iPhone with Face ID and edge-to-edge display",
+    "longDescription": "iPhone X with Super Retina display, Face ID, A11 Bionic chip, and wireless charging. The future of the smartphone.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-x.jpg",
+    "imageUrls": ["https://images.example.com/iphone-x-1.jpg", "https://images.example.com/iphone-x-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 11.0",
+      "screen_size": "5.8 inch Super Retina",
+      "camera": "Dual 12MP with Portrait mode",
+      "processor": "A11 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS",
+      "water_resistance": "IP67"
+    }
+  },
+  {
+    "name": "iPad Pro 10.5-inch",
+    "shortDescription": "iPad Pro with ProMotion technology",
+    "longDescription": "10.5-inch iPad Pro with ProMotion technology, A10X Fusion chip, and Apple Pencil support. The most advanced iPad display ever.",
+    "basePrice": 649.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-10-2017.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-10-2017-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.469,
+    "dimensions": {
+      "length": 25.06,
+      "width": 17.41,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 10.3",
+      "screen_size": "10.5 inch Retina",
+      "camera": "12MP rear, 7MP front",
+      "processor": "A10X Fusion",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "iMac Pro",
+    "shortDescription": "All-in-one workstation with Xeon processors",
+    "longDescription": "iMac Pro with Intel Xeon processors, Radeon Pro Vega graphics, and 27-inch 5K Retina display. The most powerful Mac ever.",
+    "basePrice": 4999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/imac-pro-2017.jpg",
+    "imageUrls": ["https://images.example.com/imac-pro-2017-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 9.7,
+    "dimensions": {
+      "length": 65.0,
+      "width": 20.3,
+      "height": 51.6,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS 10.13",
+      "processor": "Intel Xeon W",
+      "screen_size": "27 inch 5K Retina",
+      "connectivity": "Wi-Fi, Bluetooth, Ethernet"
+    }
+  }
+]

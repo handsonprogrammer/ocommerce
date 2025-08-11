@@ -1,0 +1,527 @@
+[
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPHP-128-NAT",
+    "variantName": "128GB Natural Titanium",
+    "price": 999.99,
+    "compareAtPrice": 1099.99,
+    "costPrice": 750.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Natural Titanium"
+    },
+    "imageUrls": [
+      "https://images.example.com/iphone-15-pro-natural-1.jpg",
+      "https://images.example.com/iphone-15-pro-natural-2.jpg"
+    ],
+    "weight": 0.187,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.08,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPHP-256-NAT",
+    "variantName": "256GB Natural Titanium",
+    "price": 1099.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 820.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Natural Titanium"
+    },
+    "imageUrls": [
+      "https://images.example.com/iphone-15-pro-natural-1.jpg"
+    ],
+    "weight": 0.187,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.08,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPHP-512-NAT",
+    "variantName": "512GB Natural Titanium",
+    "price": 1299.99,
+    "compareAtPrice": 1399.99,
+    "costPrice": 970.00,
+    "position": 3,
+    "attributes": {
+      "storage": "512GB",
+      "color": "Natural Titanium"
+    },
+    "imageUrls": [
+      "https://images.example.com/iphone-15-pro-natural-1.jpg"
+    ],
+    "weight": 0.187,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.08,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 15 Pro",
+    "sku": "IPHP-128-BLU",
+    "variantName": "128GB Blue Titanium",
+    "price": 999.99,
+    "compareAtPrice": 1099.99,
+    "costPrice": 750.00,
+    "position": 4,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Blue Titanium"
+    },
+    "imageUrls": [
+      "https://images.example.com/iphone-15-pro-blue-1.jpg"
+    ],
+    "weight": 0.187,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.08,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 130,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Samsung Galaxy S24 Ultra",
+    "sku": "GSUL-256-BLK",
+    "variantName": "256GB Titanium Black",
+    "price": 1299.99,
+    "compareAtPrice": 1399.99,
+    "costPrice": 950.00,
+    "position": 1,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Titanium Black"
+    },
+    "imageUrls": [
+      "https://images.example.com/galaxy-s24-ultra-black-1.jpg"
+    ],
+    "weight": 0.232,
+    "dimensions": {
+      "length": 16.26,
+      "width": 7.9,
+      "height": 0.86,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Samsung Galaxy S24 Ultra",
+    "sku": "GSUL-512-BLK",
+    "variantName": "512GB Titanium Black",
+    "price": 1419.99,
+    "compareAtPrice": 1519.99,
+    "costPrice": 1050.00,
+    "position": 2,
+    "attributes": {
+      "storage": "512GB",
+      "color": "Titanium Black"
+    },
+    "imageUrls": [
+      "https://images.example.com/galaxy-s24-ultra-black-1.jpg"
+    ],
+    "weight": 0.232,
+    "dimensions": {
+      "length": 16.26,
+      "width": 7.9,
+      "height": 0.86,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 75,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Pro 16-inch",
+    "sku": "MBP16-M3P-SG",
+    "variantName": "M3 Pro 512GB Space Gray",
+    "price": 2499.99,
+    "compareAtPrice": 2699.99,
+    "costPrice": 1850.00,
+    "position": 1,
+    "attributes": {
+      "processor": "M3 Pro",
+      "storage": "512GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": [
+      "https://images.example.com/macbook-pro-16-space-gray-1.jpg"
+    ],
+    "weight": 2.15,
+    "dimensions": {
+      "length": 35.57,
+      "width": 24.81,
+      "height": 1.68,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 50,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": true
+    }
+  },
+  {
+    "productName": "MacBook Pro 16-inch",
+    "sku": "MBP16-M3P-SIL",
+    "variantName": "M3 Pro 512GB Silver",
+    "price": 2499.99,
+    "compareAtPrice": 2699.99,
+    "costPrice": 1850.00,
+    "position": 2,
+    "attributes": {
+      "processor": "M3 Pro",
+      "storage": "512GB",
+      "color": "Silver"
+    },
+    "imageUrls": [
+      "https://images.example.com/macbook-pro-16-silver-1.jpg"
+    ],
+    "weight": 2.15,
+    "dimensions": {
+      "length": 35.57,
+      "width": 24.81,
+      "height": 1.68,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 45,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": true
+    }
+  },
+  {
+    "productName": "Classic Cotton T-Shirt",
+    "sku": "TSH-S-BLK",
+    "variantName": "Small Black",
+    "price": 29.99,
+    "compareAtPrice": 34.99,
+    "costPrice": 15.00,
+    "position": 1,
+    "attributes": {
+      "size": "S",
+      "color": "Black"
+    },
+    "imageUrls": [
+      "https://images.example.com/mens-tshirt-black-s.jpg"
+    ],
+    "weight": 0.15,
+    "dimensions": {
+      "length": 70.0,
+      "width": 50.0,
+      "height": 1.0,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Classic Cotton T-Shirt",
+    "sku": "TSH-M-BLK",
+    "variantName": "Medium Black",
+    "price": 29.99,
+    "compareAtPrice": 34.99,
+    "costPrice": 15.00,
+    "position": 2,
+    "attributes": {
+      "size": "M",
+      "color": "Black"
+    },
+    "imageUrls": [
+      "https://images.example.com/mens-tshirt-black-m.jpg"
+    ],
+    "weight": 0.15,
+    "dimensions": {
+      "length": 72.0,
+      "width": 52.0,
+      "height": 1.0,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 250,
+      "lowStockThreshold": 35,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Classic Cotton T-Shirt",
+    "sku": "TSH-L-BLK",
+    "variantName": "Large Black",
+    "price": 29.99,
+    "compareAtPrice": 34.99,
+    "costPrice": 15.00,
+    "position": 3,
+    "attributes": {
+      "size": "L",
+      "color": "Black"
+    },
+    "imageUrls": [
+      "https://images.example.com/mens-tshirt-black-l.jpg"
+    ],
+    "weight": 0.15,
+    "dimensions": {
+      "length": 74.0,
+      "width": 54.0,
+      "height": 1.0,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 220,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Classic Cotton T-Shirt",
+    "sku": "TSH-M-WHT",
+    "variantName": "Medium White",
+    "price": 29.99,
+    "compareAtPrice": 34.99,
+    "costPrice": 15.00,
+    "position": 4,
+    "attributes": {
+      "size": "M",
+      "color": "White"
+    },
+    "imageUrls": [
+      "https://images.example.com/mens-tshirt-white-m.jpg"
+    ],
+    "weight": 0.15,
+    "dimensions": {
+      "length": 72.0,
+      "width": 52.0,
+      "height": 1.0,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 180,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Slim Fit Jeans",
+    "sku": "JNS-32-BLU",
+    "variantName": "32x34 Medium Blue",
+    "price": 79.99,
+    "compareAtPrice": 89.99,
+    "costPrice": 40.00,
+    "position": 1,
+    "attributes": {
+      "waist": "32",
+      "length": "34",
+      "wash": "Medium Blue"
+    },
+    "imageUrls": [
+      "https://images.example.com/mens-jeans-32-blue.jpg"
+    ],
+    "weight": 0.6,
+    "dimensions": {
+      "length": 108.0,
+      "width": 40.0,
+      "height": 2.0,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Slim Fit Jeans",
+    "sku": "JNS-34-BLU",
+    "variantName": "34x34 Medium Blue",
+    "price": 79.99,
+    "compareAtPrice": 89.99,
+    "costPrice": 40.00,
+    "position": 2,
+    "attributes": {
+      "waist": "34",
+      "length": "34",
+      "wash": "Medium Blue"
+    },
+    "imageUrls": [
+      "https://images.example.com/mens-jeans-34-blue.jpg"
+    ],
+    "weight": 0.6,
+    "dimensions": {
+      "length": 108.0,
+      "width": 42.0,
+      "height": 2.0,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 140,
+      "lowStockThreshold": 18,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Summer Floral Dress",
+    "sku": "DRS-S-FLR",
+    "variantName": "Small Floral",
+    "price": 89.99,
+    "compareAtPrice": 99.99,
+    "costPrice": 45.00,
+    "position": 1,
+    "attributes": {
+      "size": "S",
+      "pattern": "Floral"
+    },
+    "imageUrls": [
+      "https://images.example.com/womens-dress-floral-s.jpg"
+    ],
+    "weight": 0.25,
+    "dimensions": {
+      "length": 95.0,
+      "width": 45.0,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 12,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Summer Floral Dress",
+    "sku": "DRS-M-FLR",
+    "variantName": "Medium Floral",
+    "price": 89.99,
+    "compareAtPrice": 99.99,
+    "costPrice": 45.00,
+    "position": 2,
+    "attributes": {
+      "size": "M",
+      "pattern": "Floral"
+    },
+    "imageUrls": [
+      "https://images.example.com/womens-dress-floral-m.jpg"
+    ],
+    "weight": 0.25,
+    "dimensions": {
+      "length": 97.0,
+      "width": 47.0,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 95,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "Sony WH-1000XM5 Headphones",
+    "sku": "SNYX5-BLK",
+    "variantName": "Black",
+    "price": 399.99,
+    "compareAtPrice": 449.99,
+    "costPrice": 280.00,
+    "position": 1,
+    "attributes": {
+      "color": "Black"
+    },
+    "imageUrls": [
+      "https://images.example.com/sony-wh1000xm5-black.jpg"
+    ],
+    "weight": 0.25,
+    "dimensions": {
+      "length": 26.4,
+      "width": 19.5,
+      "height": 7.3,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 60,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": true
+    }
+  },
+  {
+    "productName": "Sony WH-1000XM5 Headphones",
+    "sku": "SNYX5-SIL",
+    "variantName": "Silver",
+    "price": 399.99,
+    "compareAtPrice": 449.99,
+    "costPrice": 280.00,
+    "position": 2,
+    "attributes": {
+      "color": "Silver"
+    },
+    "imageUrls": [
+      "https://images.example.com/sony-wh1000xm5-silver.jpg"
+    ],
+    "weight": 0.25,
+    "dimensions": {
+      "length": 26.4,
+      "width": 19.5,
+      "height": 7.3,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 45,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": true
+    }
+  }
+]

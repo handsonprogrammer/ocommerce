@@ -1,0 +1,188 @@
+[
+  {
+    "name": "iPhone 13",
+    "shortDescription": "iPhone with A15 Bionic chip and improved cameras",
+    "longDescription": "iPhone 13 features A15 Bionic chip, improved dual-camera system with Cinematic mode, longer battery life, and 6.1-inch Super Retina XDR display.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-13.jpg",
+    "imageUrls": ["https://images.example.com/iphone-13-1.jpg", "https://images.example.com/iphone-13-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 15",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP Ultra Wide + 12MP Wide with Cinematic mode",
+      "processor": "A15 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0, MagSafe",
+      "colors": ["Pink", "Blue", "Midnight", "Starlight", "Red"],
+      "storage_options": ["128GB", "256GB", "512GB"]
+    }
+  },
+  {
+    "name": "iPhone 13 Pro",
+    "shortDescription": "Pro iPhone with ProMotion display",
+    "longDescription": "iPhone 13 Pro features 6.1-inch Super Retina XDR display with ProMotion, A15 Bionic chip, triple-camera system with macro photography, and ProRes video recording.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-13-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-13-pro-1.jpg", "https://images.example.com/iphone-13-pro-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.204,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 15",
+      "screen_size": "6.1 inch Super Retina XDR with ProMotion",
+      "camera": "12MP Ultra Wide + 12MP Wide + 12MP Telephoto with macro",
+      "processor": "A15 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0, MagSafe",
+      "colors": ["Graphite", "Gold", "Silver", "Sierra Blue", "Alpine Green"],
+      "storage_options": ["128GB", "256GB", "512GB", "1TB"]
+    }
+  },
+  {
+    "name": "MacBook Pro 14-inch",
+    "shortDescription": "Professional laptop with M1 Pro chip",
+    "longDescription": "14-inch MacBook Pro with M1 Pro chip, Liquid Retina XDR display, advanced connectivity including HDMI and SD card slot, and professional performance.",
+    "basePrice": 1999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-14.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-14-1.jpg", "https://images.example.com/macbook-pro-14-2.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.6,
+    "dimensions": {
+      "length": 31.26,
+      "width": 22.12,
+      "height": 1.55,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "Apple M1 Pro (configurable to M1 Max)",
+      "screen_size": "14.2 inch Liquid Retina XDR",
+      "memory": "16GB unified memory (configurable to 64GB)",
+      "storage": "512GB SSD (configurable to 8TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt 4, HDMI, SDXC",
+      "colors": ["Space Gray", "Silver"]
+    }
+  },
+  {
+    "name": "MacBook Pro 16-inch (M1 Pro)",
+    "shortDescription": "Powerful laptop with M1 Pro chip",
+    "longDescription": "16-inch MacBook Pro with M1 Pro chip, Liquid Retina XDR display, studio-quality audio, and all-day battery life for professional workflows.",
+    "basePrice": 2499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-16-m1pro.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-16-m1pro-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 2.1,
+    "dimensions": {
+      "length": 35.57,
+      "width": 24.81,
+      "height": 1.68,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "Apple M1 Pro (configurable to M1 Max)",
+      "screen_size": "16.2 inch Liquid Retina XDR",
+      "memory": "16GB unified memory (configurable to 64GB)",
+      "storage": "512GB SSD (configurable to 8TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt 4, HDMI, SDXC",
+      "colors": ["Space Gray", "Silver"]
+    }
+  },
+  {
+    "name": "iPad Pro (M1)",
+    "shortDescription": "iPad Pro with Apple M1 chip",
+    "longDescription": "iPad Pro with Apple M1 chip delivers desktop-class performance. Features Liquid Retina XDR display on 12.9-inch model and Thunderbolt connectivity.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-m1.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-m1-1.jpg", "https://images.example.com/ipad-pro-m1-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.466,
+    "dimensions": {
+      "length": 24.76,
+      "width": 17.85,
+      "height": 0.59,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 14",
+      "processor": "Apple M1",
+      "screen_size": "11 inch or 12.9 inch Liquid Retina XDR",
+      "memory": "8GB or 16GB",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt/USB 4",
+      "colors": ["Space Gray", "Silver"],
+      "storage_options": ["128GB", "256GB", "512GB", "1TB", "2TB"]
+    }
+  },
+  {
+    "name": "iMac 24-inch",
+    "shortDescription": "Colorful iMac with M1 chip",
+    "longDescription": "24-inch iMac with Apple M1 chip, 4.5K Retina display, and available in seven vibrant colors. Features studio-quality microphones and 1080p FaceTime HD camera.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/imac-24-m1.jpg",
+    "imageUrls": ["https://images.example.com/imac-24-m1-1.jpg", "https://images.example.com/imac-24-m1-2.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 4.46,
+    "dimensions": {
+      "length": 54.7,
+      "width": 46.1,
+      "height": 14.7,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Big Sur",
+      "processor": "Apple M1",
+      "screen_size": "24 inch 4.5K Retina",
+      "memory": "8GB unified memory (configurable to 16GB)",
+      "storage": "256GB SSD (configurable to 2TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt/USB 4",
+      "colors": ["Blue", "Green", "Pink", "Silver", "Yellow", "Orange", "Purple"]
+    }
+  },
+  {
+    "name": "AirPods (3rd generation)",
+    "shortDescription": "Wireless earbuds with spatial audio",
+    "longDescription": "AirPods (3rd generation) feature spatial audio, Adaptive EQ, longer battery life, and water resistance. Includes MagSafe charging case.",
+    "basePrice": 179.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/airpods-3rd.jpg",
+    "imageUrls": ["https://images.example.com/airpods-3rd-1.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.038,
+    "dimensions": {
+      "length": 3.05,
+      "width": 1.84,
+      "height": 1.84,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "connectivity": "Bluetooth 5.0",
+      "battery_life": "6 hours listening time, 30 hours with case",
+      "features": ["Spatial Audio", "Adaptive EQ", "Water Resistant IPX4"],
+      "compatibility": "iPhone, iPad, Mac, Apple Watch, Apple TV"
+    }
+  }
+]

@@ -40,11 +40,8 @@ public class ProductService {
     private final ProductRepository productRepository;
     private final CategoryPathService categoryPathService;
 
-    private MongoTemplate mongoTemplate;
-
     @Autowired
-    public ProductService(ProductRepository productRepository, CategoryPathService categoryPathService, MongoTemplate mongoTemplate) {
-        this.mongoTemplate = mongoTemplate;
+    public ProductService(ProductRepository productRepository, CategoryPathService categoryPathService) {
         this.productRepository = productRepository;
         this.categoryPathService = categoryPathService;
     }

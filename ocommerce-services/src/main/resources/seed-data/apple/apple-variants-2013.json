@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone 5S",
+    "sku": "IPH5S-16GB-GLD",
+    "variantName": "16GB Gold",
+    "price": 199.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 191.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5s-16gb-gold.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5S",
+    "sku": "IPH5S-32GB-SLV",
+    "variantName": "32GB Silver",
+    "price": 299.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 211.00,
+    "position": 2,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5s-32gb-silver.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 65,
+      "lowStockThreshold": 12,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5S",
+    "sku": "IPH5S-64GB-GRY",
+    "variantName": "64GB Space Gray",
+    "price": 399.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 231.00,
+    "position": 3,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5s-64gb-gray.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 35,
+      "lowStockThreshold": 8,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5C",
+    "sku": "IPH5C-16GB-BLU",
+    "variantName": "16GB Blue",
+    "price": 99.99,
+    "compareAtPrice": 549.99,
+    "costPrice": 173.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5c-16gb-blue.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.45,
+      "width": 5.97,
+      "height": 0.89,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5C",
+    "sku": "IPH5C-32GB-GRN",
+    "variantName": "32GB Green",
+    "price": 199.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 193.00,
+    "position": 2,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Green"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5c-32gb-green.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.45,
+      "width": 5.97,
+      "height": 0.89,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 95,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

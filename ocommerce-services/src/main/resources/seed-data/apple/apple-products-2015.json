@@ -1,0 +1,101 @@
+[
+  {
+    "name": "iPhone 6S",
+    "shortDescription": "iPhone with 3D Touch and 12MP camera",
+    "longDescription": "iPhone 6S with 3D Touch, 12MP camera, A9 chip, and iOS 9. The only thing that's changed is everything.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6s.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6s-1.jpg", "https://images.example.com/iphone-6s-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.143,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 9.0",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "12MP with 4K video",
+      "processor": "A9",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "iPhone 6S Plus",
+    "shortDescription": "Larger iPhone with 3D Touch",
+    "longDescription": "iPhone 6S Plus with 3D Touch, 12MP camera, optical image stabilization, and A9 chip. Live Photos bring memories to life.",
+    "basePrice": 299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6s-plus.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6s-plus-1.jpg", "https://images.example.com/iphone-6s-plus-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.192,
+    "dimensions": {
+      "length": 15.88,
+      "width": 7.79,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 9.0",
+      "screen_size": "5.5 inch Retina HD",
+      "camera": "12MP with OIS and 4K video",
+      "processor": "A9",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "iPad Pro 12.9-inch",
+    "shortDescription": "Largest iPad with Apple Pencil support",
+    "longDescription": "iPad Pro with 12.9-inch Retina display, A9X chip, and Apple Pencil support. The most capable iPad ever.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-12-2015.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-12-2015-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.713,
+    "dimensions": {
+      "length": 30.57,
+      "width": 22.06,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 9.1",
+      "screen_size": "12.9 inch Retina",
+      "camera": "8MP rear, 1.2MP front",
+      "processor": "A9X",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "MacBook 12-inch",
+    "shortDescription": "Ultra-portable laptop with Retina display",
+    "longDescription": "12-inch MacBook with Retina display, Intel Core M processor, and incredibly thin design. The future of the notebook.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-12-2015.jpg",
+    "imageUrls": ["https://images.example.com/macbook-12-2015-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 0.92,
+    "dimensions": {
+      "length": 28.05,
+      "width": 19.65,
+      "height": 1.31,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "Mac OS X 10.10",
+      "processor": "Intel Core M",
+      "screen_size": "12 inch Retina",
+      "connectivity": "Wi-Fi, Bluetooth"
+    }
+  }
+]

@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone 6",
+    "sku": "IPH6-16GB-GLD",
+    "variantName": "16GB Gold",
+    "price": 199.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 200.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6-16gb-gold.jpg"],
+    "weight": 0.129,
+    "dimensions": {
+      "length": 13.81,
+      "width": 6.7,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6",
+    "sku": "IPH6-64GB-SLV",
+    "variantName": "64GB Silver",
+    "price": 299.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 220.00,
+    "position": 2,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6-64gb-silver.jpg"],
+    "weight": 0.129,
+    "dimensions": {
+      "length": 13.81,
+      "width": 6.7,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 110,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6",
+    "sku": "IPH6-128GB-GRY",
+    "variantName": "128GB Space Gray",
+    "price": 399.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 240.00,
+    "position": 3,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6-128gb-gray.jpg"],
+    "weight": 0.129,
+    "dimensions": {
+      "length": 13.81,
+      "width": 6.7,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 75,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6 Plus",
+    "sku": "IPH6P-16GB-GLD",
+    "variantName": "16GB Gold",
+    "price": 299.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 216.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6-plus-16gb-gold.jpg"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 15.86,
+      "width": 7.79,
+      "height": 0.72,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6 Plus",
+    "sku": "IPH6P-64GB-SLV",
+    "variantName": "64GB Silver",
+    "price": 399.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 236.00,
+    "position": 2,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6-plus-64gb-silver.jpg"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 15.86,
+      "width": 7.79,
+      "height": 0.72,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 18,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

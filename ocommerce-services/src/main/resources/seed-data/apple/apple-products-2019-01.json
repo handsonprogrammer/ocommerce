@@ -1,0 +1,77 @@
+[
+  {
+    "name": "iPhone 11",
+    "shortDescription": "iPhone with dual-camera system and A13 Bionic",
+    "longDescription": "iPhone 11 features dual-camera system with Ultra Wide lens, A13 Bionic chip, and all-day battery life.",
+    "basePrice": 699.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-11.jpg",
+    "imageUrls": ["https://images.example.com/iphone-11-1.jpg", "https://images.example.com/iphone-11-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 13",
+      "screen_size": "6.1 inch Liquid Retina",
+      "camera": "12MP dual camera with Ultra Wide",
+      "processor": "A13 Bionic",
+      "connectivity": "4G LTE, Wi-Fi 6, Bluetooth, Face ID, Wireless charging"
+    }
+  },
+  {
+    "name": "iPhone 11 Pro",
+    "shortDescription": "Pro iPhone with triple-camera system",
+    "longDescription": "iPhone 11 Pro features triple-camera system, Super Retina XDR display, A13 Bionic chip, and pro-level photography.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-11-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-11-pro-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.188,
+    "dimensions": {
+      "length": 14.4,
+      "width": 7.14,
+      "height": 0.81,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 13",
+      "screen_size": "5.8 inch Super Retina XDR OLED",
+      "camera": "12MP triple camera system",
+      "processor": "A13 Bionic",
+      "connectivity": "4G LTE, Wi-Fi 6, Bluetooth, Face ID, Wireless charging"
+    }
+  },
+  {
+    "name": "Mac Pro",
+    "shortDescription": "Most powerful Mac ever designed",
+    "longDescription": "Mac Pro with Intel Xeon processors, massive memory capacity, and unprecedented expansion capabilities for professionals.",
+    "basePrice": 5999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/mac-pro-2019.jpg",
+    "imageUrls": ["https://images.example.com/mac-pro-2019-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 17.9,
+    "dimensions": {
+      "length": 52.9,
+      "width": 21.8,
+      "height": 45.0,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Catalina",
+      "processor": "Intel Xeon W",
+      "memory": "32GB",
+      "storage": "256GB SSD",
+      "graphics": "Radeon Pro 580X"
+    }
+  }
+]

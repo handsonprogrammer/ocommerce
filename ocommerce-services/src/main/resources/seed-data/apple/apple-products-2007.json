@@ -1,0 +1,26 @@
+[
+  {
+    "name": "iPhone (1st generation)",
+    "shortDescription": "Revolutionary mobile phone with touchscreen",
+    "longDescription": "The original iPhone that changed everything. Features a 3.5-inch touchscreen, 2MP camera, and runs iPhone OS. Available in 4GB and 8GB models.",
+    "basePrice": 499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-2007.jpg",
+    "imageUrls": ["https://images.example.com/iphone-2007-1.jpg", "https://images.example.com/iphone-2007-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.135,
+    "dimensions": {
+      "length": 11.5,
+      "width": 6.1,
+      "height": 1.15,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPhone OS 1.0",
+      "screen_size": "3.5 inch",
+      "camera": "2MP",
+      "connectivity": "2G, Wi-Fi, Bluetooth"
+    }
+  }
+]

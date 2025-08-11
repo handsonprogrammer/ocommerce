@@ -1,0 +1,52 @@
+[
+  {
+    "name": "iPhone 6S",
+    "shortDescription": "iPhone with 3D Touch and 12MP camera",
+    "longDescription": "iPhone 6S introduces 3D Touch, 12MP iSight camera with 4K video, Live Photos, and A9 chip.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6s.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6s-1.jpg", "https://images.example.com/iphone-6s-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.143,
+    "dimensions": {
+      "length": 13.81,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 9",
+      "screen_size": "4.7 inch Retina HD with 3D Touch",
+      "camera": "12MP with 4K video and Live Photos",
+      "processor": "A9",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, NFC"
+    }
+  },
+  {
+    "name": "iPad Pro",
+    "shortDescription": "Professional iPad with Apple Pencil support",
+    "longDescription": "12.9-inch iPad Pro with A9X chip, support for Apple Pencil and Smart Keyboard, designed for professional workflows.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-2015.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-2015-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.713,
+    "dimensions": {
+      "length": 30.57,
+      "width": 22.06,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 9",
+      "screen_size": "12.9 inch Retina",
+      "camera": "8MP iSight camera",
+      "processor": "A9X",
+      "connectivity": "Wi-Fi, Bluetooth, Apple Pencil support"
+    }
+  }
+]

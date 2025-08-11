@@ -1,0 +1,146 @@
+[
+  {
+    "name": "iPhone 14",
+    "shortDescription": "iPhone with improved cameras and safety features",
+    "longDescription": "iPhone 14 features improved Main camera, Action mode for video, and Emergency SOS via satellite for safety in remote areas.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-14.jpg",
+    "imageUrls": ["https://images.example.com/iphone-14-1.jpg", "https://images.example.com/iphone-14-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 16",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP Main + 12MP Ultra Wide",
+      "processor": "A15 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3"
+    }
+  },
+  {
+    "name": "iPhone 14 Pro",
+    "shortDescription": "Pro iPhone with Dynamic Island",
+    "longDescription": "iPhone 14 Pro introduces Dynamic Island, 48MP Main camera, Always-On display, and A16 Bionic chip for ultimate performance.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-14-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-14-pro-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.206,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.79,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 16",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "48MP Main + 12MP Ultra Wide + 12MP Telephoto",
+      "processor": "A16 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3"
+    }
+  },
+  {
+    "name": "iPad (10th generation)",
+    "shortDescription": "All-screen iPad with A14 Bionic",
+    "longDescription": "iPad features a beautiful 10.9-inch Liquid Retina display, A14 Bionic chip, and supports Apple Pencil (1st generation).",
+    "basePrice": 449.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-10th.jpg",
+    "imageUrls": ["https://images.example.com/ipad-10th-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.477,
+    "dimensions": {
+      "length": 24.86,
+      "width": 17.93,
+      "height": 0.7,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 16",
+      "screen_size": "10.9 inch",
+      "processor": "A14 Bionic",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.2"
+    }
+  },
+  {
+    "name": "MacBook Air M2",
+    "shortDescription": "MacBook Air with M2 chip and new design",
+    "longDescription": "Completely redesigned MacBook Air with M2 chip, 13.6-inch Liquid Retina display, and four stunning colors.",
+    "basePrice": 1199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-m2.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-m2-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.24,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.5,
+      "height": 1.13,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "M2",
+      "screen_size": "13.6 inch",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "Mac Studio",
+    "shortDescription": "Compact pro desktop with M1 Max",
+    "longDescription": "Mac Studio delivers extraordinary performance in a compact design with M1 Max chip, perfect for creative professionals.",
+    "basePrice": 1999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/mac-studio.jpg",
+    "imageUrls": ["https://images.example.com/mac-studio-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 2.7,
+    "dimensions": {
+      "length": 19.7,
+      "width": 19.7,
+      "height": 9.5,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "M1 Max",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "AirPods Pro (2nd generation)",
+    "shortDescription": "Next-generation AirPods Pro with H2 chip",
+    "longDescription": "AirPods Pro (2nd generation) with H2 chip deliver richer audio and smarter noise cancellation with up to 2x more noise cancellation.",
+    "basePrice": 249.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/airpods-pro-2nd.jpg",
+    "imageUrls": ["https://images.example.com/airpods-pro-2nd-1.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.056,
+    "dimensions": {
+      "length": 6.1,
+      "width": 4.5,
+      "height": 2.17,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "connectivity": "Bluetooth 5.3",
+      "battery_life": "6 hours with ANC",
+      "features": "H2 chip, Adaptive Transparency"
+    }
+  }
+]

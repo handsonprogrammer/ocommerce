@@ -1,0 +1,123 @@
+[
+  {
+    "name": "iPhone 12",
+    "shortDescription": "iPhone with 5G and A14 Bionic chip",
+    "longDescription": "iPhone 12 features 5G connectivity, A14 Bionic chip, and Ceramic Shield front. First iPhone with 5G technology and improved durability.",
+    "basePrice": 699.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-12.jpg",
+    "imageUrls": ["https://images.example.com/iphone-12-1.jpg", "https://images.example.com/iphone-12-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.164,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 14",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP dual camera system",
+      "processor": "A14 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "iPhone 12 Pro",
+    "shortDescription": "Pro iPhone with LiDAR Scanner",
+    "longDescription": "iPhone 12 Pro with Pro camera system, LiDAR Scanner for enhanced AR experiences, and premium stainless steel design.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-12-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-12-pro-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.189,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 14",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP Pro triple camera + LiDAR",
+      "processor": "A14 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "iPad Air (4th generation)",
+    "shortDescription": "iPad Air with A14 Bionic and all-screen design",
+    "longDescription": "iPad Air features A14 Bionic chip, 10.9-inch Liquid Retina display, and supports Apple Pencil (2nd generation) and Magic Keyboard.",
+    "basePrice": 599.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-air-4.jpg",
+    "imageUrls": ["https://images.example.com/ipad-air-4-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.458,
+    "dimensions": {
+      "length": 24.76,
+      "width": 17.85,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 14",
+      "screen_size": "10.9 inch",
+      "processor": "A14 Bionic",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "MacBook Air M1",
+    "shortDescription": "MacBook Air with Apple M1 chip",
+    "longDescription": "Revolutionary MacBook Air with Apple M1 chip delivers incredible performance and all-day battery life in a fanless design.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-m1.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-m1-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.29,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Big Sur",
+      "processor": "Apple M1",
+      "screen_size": "13.3 inch",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "AirPods Pro",
+    "shortDescription": "Active Noise Cancellation wireless earbuds",
+    "longDescription": "AirPods Pro feature Active Noise Cancellation, Transparency mode, and adaptive EQ for superior sound quality.",
+    "basePrice": 249.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/airpods-pro.jpg",
+    "imageUrls": ["https://images.example.com/airpods-pro-1.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.056,
+    "dimensions": {
+      "length": 6.1,
+      "width": 4.5,
+      "height": 2.17,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "connectivity": "Bluetooth 5.0",
+      "battery_life": "4.5 hours with ANC",
+      "features": "Active Noise Cancellation, Transparency mode"
+    }
+  }
+]

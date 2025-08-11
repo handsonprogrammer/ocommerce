@@ -1,5 +1,7 @@
 package com.ocommerce.services.catalog.domain;
 
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
 
 import java.math.BigDecimal;
@@ -12,10 +14,12 @@ import java.util.UUID;
  */
 public class ProductVariant {
 
+    @Id
     @Field("variant_id")
     private UUID variantId;
 
     @Field("sku")
+    @Indexed(unique = true)
     private String sku;
 
     @Field("barcode")
