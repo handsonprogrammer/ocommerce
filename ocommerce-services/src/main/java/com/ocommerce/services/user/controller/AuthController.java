@@ -12,8 +12,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,12 +25,11 @@ import java.util.Map;
 /**
  * REST controller for authentication endpoints
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/auth")
 @Tag(name = "Authentication", description = "User authentication operations")
 public class AuthController {
-
-    private static final Logger logger = LoggerFactory.getLogger(AuthController.class);
 
     private final AuthenticationService authenticationService;
 
@@ -51,7 +49,7 @@ public class AuthController {
             @ApiResponse(responseCode = "401", description = "Invalid credentials")
     })
     public ResponseEntity<AuthResponse> login(@Valid @RequestBody LoginRequest loginRequest) {
-        logger.info("Login request for email: {}", loginRequest.getEmail());
+        log.info("Login request for email: {}", loginRequest.getEmail());
 
         AuthResponse authResponse = authenticationService.login(loginRequest);
 
@@ -68,7 +66,7 @@ public class AuthController {
             @ApiResponse(responseCode = "400", description = "Invalid request data or user already exists")
     })
     public ResponseEntity<AuthResponse> signup(@Valid @RequestBody SignupRequest signupRequest) {
-        logger.info("Signup request for email: {}", signupRequest.getEmail());
+        log.info("Signup request for email: {}", signupRequest.getEmail());
 
         AuthResponse authResponse = authenticationService.signup(signupRequest);
 
@@ -92,7 +90,7 @@ public class AuthController {
             return ResponseEntity.badRequest().build();
         }
 
-        logger.info("Token refresh request");
+        log.info("Token refresh request");
 
         AuthResponse authResponse = authenticationService.refreshToken(refreshToken);
 
@@ -120,7 +118,7 @@ public class AuthController {
             return ResponseEntity.badRequest().body(Map.of("error", "Refresh token is required"));
         }
 
-        logger.info("Logout request processed");
+        log.info("Logout request processed");
 
         return ResponseEntity.ok(Map.of("message", "Logged out successfully"));
     }
@@ -145,7 +143,7 @@ public class AuthController {
 
         authenticationService.logoutFromAllDevices(email);
 
-        logger.info("Logout from all devices request processed for email: {}", email);
+        log.info("Logout from all devices request processed for email: {}", email);
 
         return ResponseEntity.ok(Map.of("message", "Logged out from all devices successfully"));
     }

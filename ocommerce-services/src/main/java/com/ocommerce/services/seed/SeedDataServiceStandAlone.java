@@ -5,13 +5,11 @@ import com.ocommerce.services.catalog.domain.Category;
 import com.ocommerce.services.catalog.domain.Product;
 import com.ocommerce.services.catalog.repository.CategoryRepository;
 import com.ocommerce.services.catalog.repository.ProductRepository;
-import com.ocommerce.services.catalog.service.CategoryPathService;
 import com.ocommerce.services.user.domain.Address;
 import com.ocommerce.services.user.domain.User;
 import com.ocommerce.services.user.repository.AddressRepository;
 import com.ocommerce.services.user.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Profile;
@@ -26,9 +24,8 @@ import java.util.*;
  */
 //@Component
 //@Profile("dev")
+@Slf4j
 public class SeedDataServiceStandAlone implements CommandLineRunner {
-
-    private static final Logger logger = LoggerFactory.getLogger(SeedDataServiceStandAlone.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -43,22 +40,19 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
     private ProductRepository productRepository;
 
     @Autowired
-    private CategoryPathService categoryPathService;
-
-    @Autowired
     private PasswordEncoder passwordEncoder;
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("Starting seed data generation...");
+        log.info("Starting seed data generation...");
 
         if (shouldSeedData()) {
             seedUsers();
             seedCategories();
             seedProducts();
-            logger.info("Seed data generation completed successfully!");
+            log.info("Seed data generation completed successfully!");
         } else {
-            logger.info("Data already exists, skipping seed data generation.");
+            log.info("Data already exists, skipping seed data generation.");
         }
     }
 
@@ -73,7 +67,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
      * Seed user data with sample users and addresses
      */
     private void seedUsers() {
-        logger.info("Seeding user data...");
+        log.info("Seeding user data...");
 
         // Create admin user
         User admin = createUser(
@@ -110,7 +104,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
         // Create addresses for users
         seedAddresses(customer1, customer2, customer3);
 
-        logger.info("Created {} users", userRepository.count());
+        log.info("Created {} users", userRepository.count());
     }
 
     /**
@@ -133,7 +127,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
      * Seed addresses for users
      */
     private void seedAddresses(User... users) {
-        logger.info("Seeding address data...");
+        log.info("Seeding address data...");
 
         // Addresses for Alice Johnson
         addressRepository.save(createAddress(users[0], "Home", "123 Main St", "",
@@ -151,7 +145,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
         addressRepository.save(createAddress(users[2], "Office", "654 Corporate Blvd", "Floor 15",
                 "Chicago", "IL", "60602", "USA", false, false));
 
-        logger.info("Created {} addresses", addressRepository.count());
+        log.info("Created {} addresses", addressRepository.count());
     }
 
     /**
@@ -178,7 +172,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
      * Seed category hierarchy
      */
     private void seedCategories() {
-        logger.info("Seeding category data...");
+        log.info("Seeding category data...");
 
         Map<String, UUID> categoryIds = new HashMap<>();
 
@@ -239,7 +233,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
         createCategory("Tops", "Women's shirts and blouses",
                 womenClothingId, 2, "/clothing/womens/tops", 2, categoryIds);
 
-        logger.info("Created {} categories", categoryRepository.count());
+        log.info("Created {} categories", categoryRepository.count());
     }
 
     /**
@@ -273,7 +267,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
      * Seed products with sample data
      */
     private void seedProducts() {
-        logger.info("Seeding product data...");
+        log.info("Seeding product data...");
 
         // Get category IDs for product assignment
         List<Category> categories = categoryRepository.findAll();
@@ -387,7 +381,7 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
                 "https://images.example.com/camping-tent.jpg",
                 Arrays.asList("https://images.example.com/camping-tent-1.jpg", "https://images.example.com/camping-tent-2.jpg"));
 
-        logger.info("Created {} products", productRepository.count());
+        log.info("Created {} products", productRepository.count());
     }
 
     /**

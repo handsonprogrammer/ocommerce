@@ -14,11 +14,10 @@ import com.ocommerce.services.user.domain.Address;
 import com.ocommerce.services.user.domain.User;
 import com.ocommerce.services.user.repository.AddressRepository;
 import com.ocommerce.services.user.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.core.io.Resource;
 import org.springframework.core.io.support.PathMatchingResourcePatternResolver;
@@ -43,11 +42,8 @@ import java.util.*;
 /**
  * Interactive seed data service that provides menu options for loading different types of data
  */
-@Component
-@Profile("dev")
+@Slf4j
 public class SeedDataServiceV2 implements CommandLineRunner {
-
-    private static final Logger logger = LoggerFactory.getLogger(SeedDataServiceV2.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -73,7 +69,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("Starting interactive seed data service...");
+        log.info("Starting interactive seed data service...");
         showMainMenu();
     }
 
@@ -112,7 +108,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
                     default -> System.out.println("Invalid option. Please try again.");
                 }
             } catch (Exception e) {
-                logger.error("Error executing operation: {}", e.getMessage());
+                log.error("Error executing operation: {}", e.getMessage());
                 System.out.println("Error: " + e.getMessage());
             }
         }
@@ -288,7 +284,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
                 return loadedCount;
             }
         } catch (Exception e) {
-            logger.error("Error loading Apple products from {}: {}", filePath, e.getMessage());
+            log.error("Error loading Apple products from {}: {}", filePath, e.getMessage());
             System.out.println("Error loading file: " + e.getMessage());
             return 0;
         }
@@ -325,14 +321,14 @@ public class SeedDataServiceV2 implements CommandLineRunner {
                                 loadedCount++;
                             }
                         } else {
-                            logger.warn("Product not found for variant: {}", productName);
+                            log.warn("Product not found for variant: {}", productName);
                         }
                     }
                 }
                 return loadedCount;
             }
         } catch (Exception e) {
-            logger.error("Error loading Apple variants from {}: {}", filePath, e.getMessage());
+            log.error("Error loading Apple variants from {}: {}", filePath, e.getMessage());
             System.out.println("Error loading file: " + e.getMessage());
             return 0;
         }
@@ -386,7 +382,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
             userRepository.deleteAll();
         }
 
-        logger.info("Seeding user data...");
+        log.info("Seeding user data...");
         ClassPathResource resource = new ClassPathResource("seed-data/users.json");
 
         try (InputStream inputStream = resource.getInputStream()) {
@@ -443,7 +439,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
             categoryRepository.deleteAll();
         }
 
-        logger.info("Seeding category data...");
+        log.info("Seeding category data...");
         ClassPathResource resource = new ClassPathResource("seed-data/categories.json");
 
         try (InputStream inputStream = resource.getInputStream()) {
@@ -491,7 +487,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
             productRepository.deleteAll();
         }
 
-        logger.info("Seeding product data...");
+        log.info("Seeding product data...");
         ClassPathResource resource = new ClassPathResource("seed-data/products.json");
 
         try (InputStream inputStream = resource.getInputStream()) {
@@ -511,7 +507,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
     }
 
     private void seedProductVariants() throws IOException {
-        logger.info("Seeding product variant data...");
+        log.info("Seeding product variant data...");
         ClassPathResource resource = new ClassPathResource("seed-data/variants.json");
 
         if (!resource.exists()) {
@@ -623,7 +619,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
 
             return variant;
         } catch (Exception e) {
-            logger.error("Error mapping variant data: {}", e.getMessage());
+            log.error("Error mapping variant data: {}", e.getMessage());
             return null;
         }
     }
@@ -656,7 +652,7 @@ public class SeedDataServiceV2 implements CommandLineRunner {
 
             return product;
         } catch (Exception e) {
-            logger.error("Error mapping product data: {}", e.getMessage());
+            log.error("Error mapping product data: {}", e.getMessage());
             return null;
         }
     }

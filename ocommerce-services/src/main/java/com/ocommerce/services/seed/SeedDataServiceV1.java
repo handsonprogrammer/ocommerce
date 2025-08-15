@@ -13,11 +13,10 @@ import com.ocommerce.services.user.domain.Address;
 import com.ocommerce.services.user.domain.User;
 import com.ocommerce.services.user.repository.AddressRepository;
 import com.ocommerce.services.user.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
-import org.springframework.context.annotation.Profile;
+import org.springframework.core.annotation.Order;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -30,11 +29,8 @@ import java.util.*;
 /**
  * Seed data service that reads from JSON files in resources/seed-data/
  */
-//@Component
-//@Profile("dev")
+@Slf4j
 public class SeedDataServiceV1 implements CommandLineRunner {
-
-    private static final Logger logger = LoggerFactory.getLogger(SeedDataServiceV1.class);
 
     @Autowired
     private UserRepository userRepository;
@@ -58,16 +54,16 @@ public class SeedDataServiceV1 implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        logger.info("Starting seed data generation...");
+        log.info("Starting seed data generation...");
 
         if (shouldSeedData()) {
             seedUsers();
             seedCategories();
             seedProducts();
             seedProductVariants();
-            logger.info("Seed data generation completed successfully!");
+            log.info("Seed data generation completed successfully!");
         } else {
-            logger.info("Data already exists, skipping seed data generation.");
+            log.info("Data already exists, skipping seed data generation.");
         }
     }
 
@@ -76,7 +72,7 @@ public class SeedDataServiceV1 implements CommandLineRunner {
     }
 
     private void seedUsers() {
-        logger.info("Seeding user data...");
+        log.info("Seeding user data...");
         try {
             List<UserSeedData> usersData = readJsonFile("seed-data/users.json", new TypeReference<List<UserSeedData>>() {});
 
@@ -112,14 +108,14 @@ public class SeedDataServiceV1 implements CommandLineRunner {
                 }
             }
 
-            logger.info("Created {} users with {} addresses", userRepository.count(), addressRepository.count());
+            log.info("Created {} users with {} addresses", userRepository.count(), addressRepository.count());
         } catch (IOException e) {
-            logger.error("Error seeding users: ", e);
+            log.error("Error seeding users: ", e);
         }
     }
 
     private void seedCategories() {
-        logger.info("Seeding category data...");
+        log.info("Seeding category data...");
         try {
             List<CategorySeedData> categoriesData = readJsonFile("seed-data/categories.json", new TypeReference<List<CategorySeedData>>() {});
             Map<String, UUID> categoryIdMap = new HashMap<>();
@@ -141,9 +137,9 @@ public class SeedDataServiceV1 implements CommandLineRunner {
                 }
             }
 
-            logger.info("Created {} categories", categoryRepository.count());
+            log.info("Created {} categories", categoryRepository.count());
         } catch (IOException e) {
-            logger.error("Error seeding categories: ", e);
+            log.error("Error seeding categories: ", e);
         }
     }
 
@@ -174,7 +170,7 @@ public class SeedDataServiceV1 implements CommandLineRunner {
     }
 
     private void seedProducts() {
-        logger.info("Seeding product data...");
+        log.info("Seeding product data...");
         try {
             List<ProductSeedData> productsData = readJsonFile("seed-data/products.json", new TypeReference<List<ProductSeedData>>() {});
 
@@ -230,14 +226,14 @@ public class SeedDataServiceV1 implements CommandLineRunner {
                 productRepository.save(product);
             }
 
-            logger.info("Created {} products", productRepository.count());
+            log.info("Created {} products", productRepository.count());
         } catch (IOException e) {
-            logger.error("Error seeding products: ", e);
+            log.error("Error seeding products: ", e);
         }
     }
 
     private void seedProductVariants() {
-        logger.info("Seeding product variants...");
+        log.info("Seeding product variants...");
         try {
             List<VariantSeedData> variantsData = readJsonFile("seed-data/variants.json", new TypeReference<List<VariantSeedData>>() {});
 
@@ -294,9 +290,9 @@ public class SeedDataServiceV1 implements CommandLineRunner {
                 }
             }
 
-            logger.info("Added variants to products");
+            log.info("Added variants to products");
         } catch (IOException e) {
-            logger.error("Error seeding variants: ", e);
+            log.error("Error seeding variants: ", e);
         }
     }
 

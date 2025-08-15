@@ -10,8 +10,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -27,12 +26,11 @@ import java.util.UUID;
 /**
  * REST controller for product management endpoints
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/products")
 @Tag(name = "Product Management", description = "Product catalog operations")
 public class ProductController {
-
-    private static final Logger logger = LoggerFactory.getLogger(ProductController.class);
 
     private final ProductService productService;
 
@@ -60,7 +58,7 @@ public class ProductController {
             @Parameter(description = "Sort direction", example = "asc")
             @RequestParam(defaultValue = "asc") String sortDir) {
 
-        logger.info("GET /api/v1/products - Get all products (page: {}, size: {}, sort: {} {})",
+        log.info("GET /api/v1/products - Get all products (page: {}, size: {}, sort: {} {})",
                    page, size, sortBy, sortDir);
 
         Sort sort = sortDir.equalsIgnoreCase("desc")
@@ -86,7 +84,7 @@ public class ProductController {
     public ResponseEntity<ProductResponse> getProductById(
             @Parameter(description = "Product ID", required = true)
             @PathVariable UUID id) {
-        logger.info("GET /api/v1/products/{} - Get product by ID", id);
+        log.info("GET /api/v1/products/{} - Get product by ID", id);
 
         return productService.getProductById(id)
                 .map(ResponseEntity::ok)
@@ -106,7 +104,7 @@ public class ProductController {
     public ResponseEntity<ProductResponse> getProductBySlug(
             @Parameter(description = "Product slug", required = true, example = "macbook-pro-16-inch")
             @PathVariable String slug) {
-        logger.info("GET /api/v1/products/slug/{} - Get product by slug", slug);
+        log.info("GET /api/v1/products/slug/{} - Get product by slug", slug);
 
         return productService.getProductBySlug(slug)
                 .map(ResponseEntity::ok)
@@ -134,7 +132,7 @@ public class ProductController {
             @Parameter(description = "Sort direction", example = "asc")
             @RequestParam(defaultValue = "asc") String sortDir) {
 
-        logger.info("GET /api/v1/products/search?q={} - Search products", q);
+        log.info("GET /api/v1/products/search?q={} - Search products", q);
 
         Sort sort = sortDir.equalsIgnoreCase("desc")
                 ? Sort.by(sortBy).descending()
@@ -167,7 +165,7 @@ public class ProductController {
             @Parameter(description = "Sort direction", example = "asc")
             @RequestParam(defaultValue = "asc") String sortDir) {
 
-        logger.info("GET /api/v1/products/categories/{} - Get products by category", categoryId);
+        log.info("GET /api/v1/products/categories/{} - Get products by category", categoryId);
 
         Sort sort = sortDir.equalsIgnoreCase("desc")
                 ? Sort.by(sortBy).descending()
@@ -206,7 +204,7 @@ public class ProductController {
             @Parameter(description = "Sort direction", example = "asc")
             @RequestParam(defaultValue = "asc") String sortDir) {
 
-        logger.info("GET /api/v1/products/search/advanced - Advanced search: q={}, categories={}, price={}-{}",
+        log.info("GET /api/v1/products/search/advanced - Advanced search: q={}, categories={}, price={}-{}",
                    q, categories, minPrice, maxPrice);
 
         Sort sort = sortDir.equalsIgnoreCase("desc")
@@ -240,7 +238,7 @@ public class ProductController {
     public ResponseEntity<ProductResponse> getProductBySku(
             @Parameter(description = "Product variant SKU", required = true, example = "MBP16-SG-512")
             @PathVariable String sku) {
-        logger.info("GET /api/v1/products/sku/{} - Get product by SKU", sku);
+        log.info("GET /api/v1/products/sku/{} - Get product by SKU", sku);
 
         return productService.getProductByVariantSku(sku)
                 .map(ResponseEntity::ok)
@@ -257,7 +255,7 @@ public class ProductController {
                     content = @Content(schema = @Schema(implementation = ProductSummaryResponse.class)))
     })
     public ResponseEntity<List<ProductSummaryResponse>> getProductsWithLowStock() {
-        logger.info("GET /api/v1/products/low-stock - Get products with low stock");
+        log.info("GET /api/v1/products/low-stock - Get products with low stock");
 
         List<ProductSummaryResponse> products = productService.getProductsWithLowStock();
         return ResponseEntity.ok(products);
@@ -286,7 +284,7 @@ public class ProductController {
             @Parameter(description = "Sort direction", example = "asc")
             @RequestParam(defaultValue = "asc") String sortDir) {
 
-        logger.info("GET /api/v1/products/price-range - Get products by price range: {}-{}", minPrice, maxPrice);
+        log.info("GET /api/v1/products/price-range - Get products by price range: {}-{}", minPrice, maxPrice);
 
         Sort sort = sortDir.equalsIgnoreCase("desc")
                 ? Sort.by(sortBy).descending()

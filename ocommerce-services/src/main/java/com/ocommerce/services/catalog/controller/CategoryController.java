@@ -9,8 +9,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -21,12 +20,11 @@ import java.util.UUID;
 /**
  * REST controller for category management endpoints
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/categories")
 @Tag(name = "Category Management", description = "Category catalog operations")
 public class CategoryController {
-
-    private static final Logger logger = LoggerFactory.getLogger(CategoryController.class);
 
     private final CategoryService categoryService;
 
@@ -45,7 +43,7 @@ public class CategoryController {
                     content = @Content(schema = @Schema(implementation = CategoryResponse.class)))
     })
     public ResponseEntity<List<CategoryResponse>> getRootCategories() {
-        logger.info("GET /api/v1/categories - Get all root categories");
+        log.info("GET /api/v1/categories - Get all root categories");
         List<CategoryResponse> categories = categoryService.getRootCategories();
         return ResponseEntity.ok(categories);
     }
@@ -63,7 +61,7 @@ public class CategoryController {
     public ResponseEntity<CategoryResponse> getCategoryById(
             @Parameter(description = "Category ID", required = true)
             @PathVariable UUID id) {
-        logger.info("GET /api/v1/categories/{} - Get category by ID", id);
+        log.info("GET /api/v1/categories/{} - Get category by ID", id);
 
         return categoryService.getCategoryById(id)
                 .map(ResponseEntity::ok)
@@ -83,7 +81,7 @@ public class CategoryController {
     public ResponseEntity<CategoryResponse> getCategoryBySlug(
             @Parameter(description = "Category slug", required = true, example = "electronics")
             @PathVariable String slug) {
-        logger.info("GET /api/v1/categories/slug/{} - Get category by slug", slug);
+        log.info("GET /api/v1/categories/slug/{} - Get category by slug", slug);
 
         return categoryService.getCategoryBySlug(slug)
                 .map(ResponseEntity::ok)
@@ -102,7 +100,7 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> getChildCategories(
             @Parameter(description = "Parent category ID", required = true)
             @PathVariable UUID id) {
-        logger.info("GET /api/v1/categories/{}/children - Get child categories", id);
+        log.info("GET /api/v1/categories/{}/children - Get child categories", id);
 
         List<CategoryResponse> childCategories = categoryService.getChildCategories(id);
         return ResponseEntity.ok(childCategories);
@@ -118,7 +116,7 @@ public class CategoryController {
                     content = @Content(schema = @Schema(implementation = CategoryService.CategoryTreeResponse.class)))
     })
     public ResponseEntity<List<CategoryService.CategoryTreeResponse>> getCategoryTree() {
-        logger.info("GET /api/v1/categories/tree - Get category hierarchy tree");
+        log.info("GET /api/v1/categories/tree - Get category hierarchy tree");
 
         List<CategoryService.CategoryTreeResponse> categoryTree = categoryService.getCategoryTree();
         return ResponseEntity.ok(categoryTree);
@@ -134,7 +132,7 @@ public class CategoryController {
                     content = @Content(schema = @Schema(implementation = CategoryResponse.class)))
     })
     public ResponseEntity<List<CategoryResponse>> getAllCategories() {
-        logger.info("GET /api/v1/categories/all - Get all categories");
+        log.info("GET /api/v1/categories/all - Get all categories");
 
         List<CategoryResponse> categories = categoryService.getAllCategories();
         return ResponseEntity.ok(categories);
@@ -152,7 +150,7 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> getCategoriesByLevel(
             @Parameter(description = "Hierarchy level (0 for root, 1 for first level, etc.)", required = true)
             @PathVariable Integer level) {
-        logger.info("GET /api/v1/categories/level/{} - Get categories by level", level);
+        log.info("GET /api/v1/categories/level/{} - Get categories by level", level);
 
         List<CategoryResponse> categories = categoryService.getCategoriesByLevel(level);
         return ResponseEntity.ok(categories);
@@ -170,7 +168,7 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> searchCategories(
             @Parameter(description = "Search term", required = true, example = "electronics")
             @RequestParam String q) {
-        logger.info("GET /api/v1/categories/search?q={} - Search categories", q);
+        log.info("GET /api/v1/categories/search?q={} - Search categories", q);
 
         List<CategoryResponse> categories = categoryService.searchCategoriesByName(q);
         return ResponseEntity.ok(categories);
@@ -188,7 +186,7 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> textSearchCategories(
             @Parameter(description = "Search text", required = true, example = "electronic devices")
             @RequestParam String text) {
-        logger.info("GET /api/v1/categories/search/text?text={} - Text search categories", text);
+        log.info("GET /api/v1/categories/search/text?text={} - Text search categories", text);
 
         List<CategoryResponse> categories = categoryService.textSearchCategories(text);
         return ResponseEntity.ok(categories);
@@ -206,7 +204,7 @@ public class CategoryController {
     public ResponseEntity<List<CategoryResponse>> getCategoriesWithProducts(
             @Parameter(description = "Minimum product count", example = "1")
             @RequestParam(defaultValue = "1") Long minProducts) {
-        logger.info("GET /api/v1/categories/with-products?minProducts={} - Get categories with products", minProducts);
+        log.info("GET /api/v1/categories/with-products?minProducts={} - Get categories with products", minProducts);
 
         List<CategoryResponse> categories = categoryService.getCategoriesWithMinProducts(minProducts);
         return ResponseEntity.ok(categories);
@@ -221,7 +219,7 @@ public class CategoryController {
             @ApiResponse(responseCode = "200", description = "Category statistics retrieved successfully")
     })
     public ResponseEntity<CategoryStats> getCategoryStats() {
-        logger.info("GET /api/v1/categories/stats - Get category statistics");
+        log.info("GET /api/v1/categories/stats - Get category statistics");
 
         long activeCategoriesCount = categoryService.getActiveCategoriesCount();
         CategoryStats stats = new CategoryStats(activeCategoriesCount);

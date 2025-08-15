@@ -6,7 +6,6 @@ import com.ocommerce.services.user.dto.AddressRequest;
 import com.ocommerce.services.user.dto.AddressResponse;
 import com.ocommerce.services.user.exception.AddressNotFoundException;
 import com.ocommerce.services.user.repository.AddressRepository;
-import com.ocommerce.services.user.service.impl.AddressServiceImpl;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -32,7 +31,7 @@ class AddressServiceTest {
     private AddressRepository addressRepository;
 
     @InjectMocks
-    private AddressServiceImpl addressService;
+    private AddressService addressService;
 
     private User testUser;
     private Address testAddress;
@@ -255,4 +254,3 @@ class AddressServiceTest {
         assertThat(testAddress.isDefault()).isTrue();
     }
 }
-

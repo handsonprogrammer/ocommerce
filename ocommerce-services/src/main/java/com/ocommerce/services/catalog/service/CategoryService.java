@@ -2,11 +2,12 @@ package com.ocommerce.services.catalog.service;
 
 import com.ocommerce.services.catalog.domain.Category;
 import com.ocommerce.services.catalog.dto.CategoryResponse;
+import com.ocommerce.services.catalog.exception.CategoryNotFoundException;
 import com.ocommerce.services.catalog.repository.CategoryRepository;
-import lombok.Data;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -18,11 +19,10 @@ import java.util.stream.Collectors;
 /**
  * Service class for Category domain operations
  */
+@Slf4j
 @Service
 @Transactional
 public class CategoryService {
-
-    private static final Logger logger = LoggerFactory.getLogger(CategoryService.class);
 
     private final CategoryRepository categoryRepository;
 
@@ -36,7 +36,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> getRootCategories() {
-        logger.info("Fetching all root categories");
+        log.info("Fetching all root categories");
         List<Category> rootCategories = categoryRepository.findByParentIdIsNullAndIsActiveTrue();
         return rootCategories.stream()
                 .map(this::convertToCategoryResponse)
@@ -48,7 +48,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public Optional<CategoryResponse> getCategoryById(UUID categoryId) {
-        logger.info("Fetching category with ID: {}", categoryId);
+        log.info("Fetching category with ID: {}", categoryId);
         return categoryRepository.findById(categoryId)
                 .filter(Category::isActive)
                 .map(this::convertToCategoryResponse);
@@ -59,7 +59,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public Optional<CategoryResponse> getCategoryBySlug(String slug) {
-        logger.info("Fetching category with slug: {}", slug);
+        log.info("Fetching category with slug: {}", slug);
         return categoryRepository.findBySlugAndActive(slug)
                 .map(this::convertToCategoryResponse);
     }
@@ -69,7 +69,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> getChildCategories(UUID parentId) {
-        logger.info("Fetching child categories for parent ID: {}", parentId);
+        log.info("Fetching child categories for parent ID: {}", parentId);
         List<Category> childCategories = categoryRepository.findByParentIdAndIsActiveTrue(parentId);
         return childCategories.stream()
                 .map(this::convertToCategoryResponse)
@@ -81,7 +81,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> getAllCategories() {
-        logger.info("Fetching all active categories");
+        log.info("Fetching all active categories");
         List<Category> categories = categoryRepository.findByIsActiveTrueOrderBySortOrderAsc();
         return categories.stream()
                 .map(this::convertToCategoryResponse)
@@ -93,7 +93,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> getCategoriesByLevel(Integer level) {
-        logger.info("Fetching categories at level: {}", level);
+        log.info("Fetching categories at level: {}", level);
         List<Category> categories = categoryRepository.findByLevelAndIsActiveTrue(level);
         return categories.stream()
                 .map(this::convertToCategoryResponse)
@@ -105,7 +105,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> searchCategoriesByName(String searchTerm) {
-        logger.info("Searching categories with term: {}", searchTerm);
+        log.info("Searching categories with term: {}", searchTerm);
         List<Category> categories = categoryRepository.findByNameContainingIgnoreCaseAndActive(searchTerm);
         return categories.stream()
                 .map(this::convertToCategoryResponse)
@@ -117,7 +117,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> textSearchCategories(String searchText) {
-        logger.info("Text search in categories with: {}", searchText);
+        log.info("Text search in categories with: {}", searchText);
         List<Category> categories = categoryRepository.findByTextSearch(searchText);
         return categories.stream()
                 .map(this::convertToCategoryResponse)
@@ -129,7 +129,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryTreeResponse> getCategoryTree() {
-        logger.info("Building category tree");
+        log.info("Building category tree");
         List<Category> rootCategories = categoryRepository.findByParentIdIsNullAndIsActiveTrue();
         return rootCategories.stream()
                 .map(this::buildCategoryTree)
@@ -141,7 +141,7 @@ public class CategoryService {
      */
     @Transactional(readOnly = true)
     public List<CategoryResponse> getCategoriesWithMinProducts(Long minProductCount) {
-        logger.info("Fetching categories with at least {} products", minProductCount);
+        log.info("Fetching categories with at least {} products", minProductCount);
         List<Category> categories = categoryRepository.findByProductCountGreaterThanAndIsActiveTrue(minProductCount);
         return categories.stream()
                 .map(this::convertToCategoryResponse)

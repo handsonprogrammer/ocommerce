@@ -11,8 +11,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -22,13 +21,12 @@ import org.springframework.web.bind.annotation.*;
 /**
  * REST controller for user management endpoints
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/users")
 @Tag(name = "User Management", description = "User profile operations")
 @SecurityRequirement(name = "Bearer Authentication")
 public class UserController {
-
-    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
 
     private final UserService userService;
 
@@ -48,7 +46,7 @@ public class UserController {
             @ApiResponse(responseCode = "404", description = "User not found")
     })
     public ResponseEntity<UserResponse> getCurrentUser(@AuthenticationPrincipal UserDetails userDetails) {
-        logger.info("Get current user profile request for: {}", userDetails.getUsername());
+        log.info("Get current user profile request for: {}", userDetails.getUsername());
 
         UserResponse userResponse = userService.getUserProfile(userDetails.getUsername());
 
@@ -70,7 +68,7 @@ public class UserController {
             @AuthenticationPrincipal UserDetails userDetails,
             @Valid @RequestBody UserUpdateRequest updateRequest) {
 
-        logger.info("Update user profile request for: {}", userDetails.getUsername());
+        log.info("Update user profile request for: {}", userDetails.getUsername());
 
         UserResponse userResponse = userService.updateUserProfile(userDetails.getUsername(), updateRequest);
 
@@ -87,7 +85,7 @@ public class UserController {
             @ApiResponse(responseCode = "401", description = "User not authenticated")
     })
     public ResponseEntity<UserStats> getUserStats() {
-        logger.info("Get user statistics request");
+        log.info("Get user statistics request");
 
         long activeUsersCount = userService.getActiveUsersCount();
 

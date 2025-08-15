@@ -9,8 +9,7 @@ import com.ocommerce.services.catalog.dto.ProductResponse;
 import com.ocommerce.services.catalog.dto.ProductSummaryResponse;
 import com.ocommerce.services.catalog.dto.ProductVariantResponse;
 import com.ocommerce.services.catalog.repository.ProductRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
@@ -32,11 +31,10 @@ import static org.springframework.data.mongodb.core.query.Query.query;
 /**
  * Service class for Product domain operations
  */
+@Slf4j
 @Service
 @Transactional
 public class ProductService {
-
-    private static final Logger logger = LoggerFactory.getLogger(ProductService.class);
 
     private final ProductRepository productRepository;
     private final CategoryPathService categoryPathService;
@@ -52,7 +50,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Optional<ProductResponse> getProductById(UUID productId) {
-        logger.info("Fetching product with ID: {}", productId);
+        log.info("Fetching product with ID: {}", productId);
         return productRepository.findById(productId)
                 .filter(product -> product.getStatus() == ProductStatus.ACTIVE)
                 .map(this::convertToProductResponse);
@@ -63,7 +61,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Optional<ProductResponse> getProductBySlug(String slug) {
-        logger.info("Fetching product with slug: {}", slug);
+        log.info("Fetching product with slug: {}", slug);
         return productRepository.findBySlugAndActive(slug)
                 .map(this::convertToProductResponse);
     }
@@ -73,7 +71,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> getAllProducts(Pageable pageable) {
-        logger.info("Fetching all active products with pagination: {}", pageable);
+        log.info("Fetching all active products with pagination: {}", pageable);
         Page<Product> products = productRepository.findByStatusAndInventoryTrackingTrue(
                 ProductStatus.ACTIVE, pageable);
 
@@ -89,7 +87,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> getProductsByCategory(UUID categoryId, Pageable pageable) {
-        logger.info("Fetching products for category ID: {} with pagination: {}", categoryId, pageable);
+        log.info("Fetching products for category ID: {} with pagination: {}", categoryId, pageable);
         Page<Product> products = productRepository.findByCategoryIdAndActive(categoryId, pageable);
 
         List<ProductSummaryResponse> summaryResponses = products.getContent().stream()
@@ -104,7 +102,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> getProductsByCategories(List<UUID> categoryIds, Pageable pageable) {
-        logger.info("Fetching products for category IDs: {} with pagination: {}", categoryIds, pageable);
+        log.info("Fetching products for category IDs: {} with pagination: {}", categoryIds, pageable);
         Page<Product> products = productRepository.findByCategoryIdsInAndActive(categoryIds, pageable);
 
         List<ProductSummaryResponse> summaryResponses = products.getContent().stream()
@@ -119,7 +117,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> searchProducts(String searchText, Pageable pageable) {
-        logger.info("Searching products with text: {} and pagination: {}", searchText, pageable);
+        log.info("Searching products with text: {} and pagination: {}", searchText, pageable);
         Page<Product> products = productRepository.findByTextSearchAndActive(searchText, pageable);
 
         List<ProductSummaryResponse> summaryResponses = products.getContent().stream()
@@ -134,7 +132,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> searchProductsByName(String name, Pageable pageable) {
-        logger.info("Searching products by name: {} with pagination: {}", name, pageable);
+        log.info("Searching products by name: {} with pagination: {}", name, pageable);
         Page<Product> products = productRepository.findByNameContainingIgnoreCaseAndActive(name, pageable);
 
         List<ProductSummaryResponse> summaryResponses = products.getContent().stream()
@@ -149,7 +147,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> getProductsByPriceRange(Double minPrice, Double maxPrice, Pageable pageable) {
-        logger.info("Fetching products with price range: {} - {} with pagination: {}", minPrice, maxPrice, pageable);
+        log.info("Fetching products with price range: {} - {} with pagination: {}", minPrice, maxPrice, pageable);
         Page<Product> products = productRepository.findByBasePriceBetweenAndStatus(minPrice, maxPrice, ProductStatus.ACTIVE, pageable);
 
         List<ProductSummaryResponse> summaryResponses = products.getContent().stream()
@@ -165,7 +163,7 @@ public class ProductService {
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> complexSearch(String searchText, List<UUID> categoryIds,
                                                     Double minPrice, Double maxPrice, Pageable pageable) {
-        logger.info("Complex search - text: {}, categories: {}, price: {}-{}",
+        log.info("Complex search - text: {}, categories: {}, price: {}-{}",
                    searchText, categoryIds, minPrice, maxPrice);
 
         Page<Product> products = productRepository.findByComplexSearch(
@@ -183,7 +181,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Optional<ProductResponse> getProductByVariantSku(String sku) {
-        logger.info("Fetching product with variant SKU: {}", sku);
+        log.info("Fetching product with variant SKU: {}", sku);
         return productRepository.findByVariantSkuAndActive(sku)
                 .map(this::convertToProductResponse);
     }
@@ -201,7 +199,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public List<ProductSummaryResponse> getProductsWithLowStock() {
-        logger.info("Fetching products with low stock");
+        log.info("Fetching products with low stock");
         List<Product> products = productRepository.findProductsWithLowStock();
         return products.stream()
                 .map(this::convertToProductSummaryResponse)
@@ -212,13 +210,13 @@ public class ProductService {
      * Create a new product with automatic category path generation
      */
     public Product createProduct(Product product) {
-        logger.info("Creating new product: {}", product.getName());
+        log.info("Creating new product: {}", product.getName());
 
         // Generate category paths automatically
         if (product.getCategories() != null && !product.getCategories().isEmpty()) {
             List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategories());
             product.setCategoryPaths(categoryPaths);
-            logger.debug("Generated category paths for product {}: {}", product.getName(), categoryPaths);
+            log.debug("Generated category paths for product {}: {}", product.getName(), categoryPaths);
         }
 
         return productRepository.save(product);
@@ -228,13 +226,13 @@ public class ProductService {
      * Update an existing product with automatic category path regeneration
      */
     public Product updateProduct(Product product) {
-        logger.info("Updating product: {}", product.getId());
+        log.info("Updating product: {}", product.getId());
 
         // Regenerate category paths when updating
         if (product.getCategories() != null && !product.getCategories().isEmpty()) {
             List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategories());
             product.setCategoryPaths(categoryPaths);
-            logger.debug("Regenerated category paths for product {}: {}", product.getId(), categoryPaths);
+            log.debug("Regenerated category paths for product {}: {}", product.getId(), categoryPaths);
         } else {
             // Clear category paths if no categories are assigned
             product.setCategoryPaths(null);
@@ -248,7 +246,7 @@ public class ProductService {
      */
     @Transactional(readOnly = true)
     public Page<ProductSummaryResponse> getProductsByCategoryPath(String categoryPath, Pageable pageable) {
-        logger.info("Fetching products for category path: {} with pagination: {}", categoryPath, pageable);
+        log.info("Fetching products for category path: {} with pagination: {}", categoryPath, pageable);
         Page<Product> products = productRepository.findByCategoryPathContaining(categoryPath, pageable);
 
         List<ProductSummaryResponse> summaryResponses = products.getContent().stream()
@@ -262,7 +260,7 @@ public class ProductService {
      * Update category paths for products when categories are modified
      */
     public void updateCategoryPathsForCategory(UUID categoryId) {
-        logger.info("Updating category paths for all products in category: {}", categoryId);
+        log.info("Updating category paths for all products in category: {}", categoryId);
 
         // Find all products that belong to this category
         List<Product> products = productRepository.findByCategoryId(categoryId);
@@ -272,18 +270,18 @@ public class ProductService {
                 List<String> updatedPaths = categoryPathService.generateCategoryPaths(product.getCategories());
                 product.setCategoryPaths(updatedPaths);
                 productRepository.save(product);
-                logger.debug("Updated category paths for product {}: {}", product.getId(), updatedPaths);
+                log.debug("Updated category paths for product {}: {}", product.getId(), updatedPaths);
             }
         }
 
-        logger.info("Completed updating category paths for {} products", products.size());
+        log.info("Completed updating category paths for {} products", products.size());
     }
 
     /**
      * Bulk update category paths for all products
      */
     public void regenerateAllCategoryPaths() {
-        logger.info("Starting bulk regeneration of category paths for all products");
+        log.info("Starting bulk regeneration of category paths for all products");
 
         List<Product> allProducts = productRepository.findAll();
         int updatedCount = 0;
@@ -296,12 +294,12 @@ public class ProductService {
                 updatedCount++;
 
                 if (updatedCount % 100 == 0) {
-                    logger.info("Updated category paths for {} products", updatedCount);
+                    log.info("Updated category paths for {} products", updatedCount);
                 }
             }
         }
 
-        logger.info("Completed bulk regeneration of category paths for {} products", updatedCount);
+        log.info("Completed bulk regeneration of category paths for {} products", updatedCount);
     }
 
     // Private helper methods

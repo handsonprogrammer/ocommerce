@@ -7,8 +7,7 @@ import com.ocommerce.services.user.dto.AuthResponse;
 import com.ocommerce.services.user.dto.LoginRequest;
 import com.ocommerce.services.user.dto.SignupRequest;
 import com.ocommerce.services.user.dto.UserResponse;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -25,12 +24,11 @@ import org.springframework.transaction.annotation.Transactional;
  * token refresh, and logout functionality
  * Implements secure token rotation and multi-device session management
  */
+@Slf4j
 @Service
 @Transactional
 public class AuthenticationService {
-
-    private static final Logger logger = LoggerFactory.getLogger(AuthenticationService.class);
-
+    
     private final AuthenticationManager authenticationManager;
     private final JwtUtil jwtUtil;
     private final UserService userService;
@@ -58,7 +56,7 @@ public class AuthenticationService {
      * @throws BadCredentialsException if email or password is invalid
      */
     public AuthResponse login(LoginRequest loginRequest) {
-        logger.info("Authentication attempt for email: {}", loginRequest.getEmail());
+        log.info("Authentication attempt for email: {}", loginRequest.getEmail());
 
         try {
             // Authenticate user
@@ -73,7 +71,7 @@ public class AuthenticationService {
             String accessToken = jwtUtil.generateAccessToken(authentication);
             RefreshToken refreshToken = refreshTokenService.createRefreshToken(user);
 
-            logger.info("User authenticated successfully: {}", user.getEmail());
+            log.info("User authenticated successfully: {}", user.getEmail());
 
             return new AuthResponse(
                     accessToken,
@@ -81,7 +79,7 @@ public class AuthenticationService {
                     jwtUtil.getAccessTokenExpirationSeconds());
 
         } catch (AuthenticationException e) {
-            logger.warn("Authentication failed for email: {}", loginRequest.getEmail());
+            log.warn("Authentication failed for email: {}", loginRequest.getEmail());
             throw new BadCredentialsException("Invalid email or password");
         }
     }
@@ -98,7 +96,7 @@ public class AuthenticationService {
      *                          after creation
      */
     public AuthResponse signup(SignupRequest signupRequest) {
-        logger.info("User registration attempt for email: {}", signupRequest.getEmail());
+        log.info("User registration attempt for email: {}", signupRequest.getEmail());
 
         // Register user
         UserResponse userResponse = userService.registerUser(signupRequest);
@@ -111,7 +109,7 @@ public class AuthenticationService {
         String accessToken = jwtUtil.generateAccessToken(user.getEmail());
         RefreshToken refreshToken = refreshTokenService.createRefreshToken(user);
 
-        logger.info("User registered and authenticated successfully: {}", user.getEmail());
+        log.info("User registered and authenticated successfully: {}", user.getEmail());
 
         return new AuthResponse(
                 accessToken,
@@ -129,7 +127,7 @@ public class AuthenticationService {
          * @throws RefreshTokenService.InvalidRefreshTokenException if the refresh token is invalid or expired
          */
     public AuthResponse refreshToken(String refreshTokenString) {
-        logger.info("Token refresh attempt");
+        log.info("Token refresh attempt");
 
         // Validate the refresh token
         RefreshToken refreshToken = refreshTokenService.findValidToken(refreshTokenString)
@@ -145,7 +143,7 @@ public class AuthenticationService {
         RefreshToken newRefreshToken = refreshTokenService.createRefreshToken(user);
         refreshTokenService.revokeTokenForUser(refreshToken.getToken(), user);
 
-        logger.info("Access token refreshed successfully for user: {}", user.getEmail());
+        log.info("Access token refreshed successfully for user: {}", user.getEmail());
 
         return new AuthResponse(
                 newAccessToken,
@@ -162,7 +160,7 @@ public class AuthenticationService {
      * @param refreshTokenString the refresh token to revoke for this logout session
      */
     public void logout(String email, String refreshTokenString) {
-        logger.info("Logout attempt");
+        log.info("Logout attempt");
 
         try {
             User user = userService.findByEmail(email)
@@ -172,10 +170,10 @@ public class AuthenticationService {
                     .orElseThrow(() -> new RefreshTokenService.InvalidRefreshTokenException("Refresh token not found"));
 
             refreshTokenService.revokeTokenForUser(refreshToken.getToken(), user);
-            logger.info("User logged out successfully: {}", user.getEmail());
+            log.info("User logged out successfully: {}", user.getEmail());
 
         } catch (RefreshTokenService.InvalidRefreshTokenException e) {
-            logger.warn("Invalid refresh token used for logout");
+            log.warn("Invalid refresh token used for logout");
             // Don't throw exception on logout - fail silently
         }
     }
@@ -190,13 +188,13 @@ public class AuthenticationService {
      * @throws RuntimeException if the user with given email is not found
      */
     public void logoutFromAllDevices(String userEmail) {
-        logger.info("Logout from all devices for user: {}", userEmail);
+        log.info("Logout from all devices for user: {}", userEmail);
 
         User user = userService.findByEmail(userEmail)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
         refreshTokenService.revokeAllTokensForUser(user);
-        logger.info("User logged out from all devices: {}", userEmail);
+        log.info("User logged out from all devices: {}", userEmail);
     }
 
     /**

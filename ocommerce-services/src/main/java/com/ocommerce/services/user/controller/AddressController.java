@@ -13,8 +13,7 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -27,13 +26,12 @@ import java.util.UUID;
 /**
  * REST controller for address management operations
  */
+@Slf4j
 @RestController
 @RequestMapping("/api/v1/address")
 @Tag(name = "Address Management", description = "APIs for managing user addresses")
 @SecurityRequirement(name = "bearerAuth")
 public class AddressController {
-
-    private static final Logger logger = LoggerFactory.getLogger(AddressController.class);
 
     private final AddressService addressService;
 
@@ -54,7 +52,7 @@ public class AddressController {
             @AuthenticationPrincipal User user,
             @Valid @RequestBody AddressRequest addressRequest) {
 
-        logger.info("Creating address for user: {}", user.getEmail());
+        log.info("Creating address for user: {}", user.getEmail());
         AddressResponse response = addressService.createAddress(user, addressRequest);
         return new ResponseEntity<>(response, HttpStatus.CREATED);
     }
@@ -73,7 +71,7 @@ public class AddressController {
             @Parameter(description = "Address ID to update") @PathVariable UUID addressId,
             @Valid @RequestBody AddressRequest addressRequest) {
 
-        logger.info("Updating address {} for user: {}", addressId, user.getEmail());
+        log.info("Updating address {} for user: {}", addressId, user.getEmail());
         AddressResponse response = addressService.updateAddress(user, addressId, addressRequest);
         return ResponseEntity.ok(response);
     }
@@ -89,7 +87,7 @@ public class AddressController {
             @AuthenticationPrincipal User user,
             @Parameter(description = "Address ID to delete") @PathVariable UUID addressId) {
 
-        logger.info("Deleting address {} for user: {}", addressId, user.getEmail());
+        log.info("Deleting address {} for user: {}", addressId, user.getEmail());
         addressService.deleteAddress(user, addressId);
         return ResponseEntity.noContent().build();
     }
@@ -101,7 +99,7 @@ public class AddressController {
     })
     @GetMapping
     public ResponseEntity<List<AddressResponse>> getUserAddresses(@AuthenticationPrincipal User user) {
-        logger.info("Fetching addresses for user: {}", user.getEmail());
+        log.info("Fetching addresses for user: {}", user.getEmail());
         List<AddressResponse> addresses = addressService.getUserAddresses(user);
         return ResponseEntity.ok(addresses);
     }
@@ -118,7 +116,7 @@ public class AddressController {
             @AuthenticationPrincipal User user,
             @Parameter(description = "Address ID") @PathVariable UUID addressId) {
 
-        logger.info("Fetching address {} for user: {}", addressId, user.getEmail());
+        log.info("Fetching address {} for user: {}", addressId, user.getEmail());
         AddressResponse response = addressService.getAddressById(user, addressId);
         return ResponseEntity.ok(response);
     }
@@ -132,7 +130,7 @@ public class AddressController {
     })
     @GetMapping("/default")
     public ResponseEntity<AddressResponse> getDefaultAddress(@AuthenticationPrincipal User user) {
-        logger.info("Fetching default address for user: {}", user.getEmail());
+        log.info("Fetching default address for user: {}", user.getEmail());
         AddressResponse response = addressService.getDefaultAddress(user);
 
         if (response == null) {
@@ -153,9 +151,8 @@ public class AddressController {
             @AuthenticationPrincipal User user,
             @Parameter(description = "Address ID to set as default") @PathVariable UUID addressId) {
 
-        logger.info("Setting address {} as default for user: {}", addressId, user.getEmail());
+        log.info("Setting address {} as default for user: {}", addressId, user.getEmail());
         addressService.setDefaultAddress(user, addressId);
         return ResponseEntity.noContent().build();
     }
 }
-

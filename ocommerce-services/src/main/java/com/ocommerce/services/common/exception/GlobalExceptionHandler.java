@@ -5,14 +5,11 @@ import com.ocommerce.services.user.exception.UserAlreadyExistsException;
 import com.ocommerce.services.user.exception.UserNotFoundException;
 import com.ocommerce.services.catalog.exception.CategoryNotFoundException;
 import com.ocommerce.services.catalog.exception.ProductNotFoundException;
-import com.ocommerce.services.user.service.AddressService;
 import com.ocommerce.services.user.service.RefreshTokenService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.BadCredentialsException;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -26,10 +23,9 @@ import java.util.Map;
 /**
  * Global exception handler for standardized error responses
  */
+@Slf4j
 @RestControllerAdvice
 public class GlobalExceptionHandler {
-
-    private static final Logger logger = LoggerFactory.getLogger(GlobalExceptionHandler.class);
 
     /**
      * Handle validation errors
@@ -52,7 +48,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Validation error: {}", validationErrors);
+        log.warn("Validation error: {}", validationErrors);
         return ResponseEntity.badRequest().body(errorResponse);
     }
 
@@ -70,14 +66,14 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Authentication failed: {}", ex.getMessage());
+        log.warn("Authentication failed: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
     /**
      * Handle user not found exception
      */
-    @ExceptionHandler({ UserNotFoundException.class, UsernameNotFoundException.class })
+    @ExceptionHandler({ UserNotFoundException.class })
     public ResponseEntity<ErrorResponse> handleUserNotFoundException(
             RuntimeException ex, WebRequest request) {
 
@@ -88,7 +84,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("User not found: {}", ex.getMessage());
+        log.warn("User not found: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -106,7 +102,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("User already exists: {}", ex.getMessage());
+        log.warn("User already exists: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.CONFLICT).body(errorResponse);
     }
 
@@ -124,7 +120,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Invalid refresh token: {}", ex.getMessage());
+        log.warn("Invalid refresh token: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(errorResponse);
     }
 
@@ -142,7 +138,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Address not found: {}", ex.getMessage());
+        log.warn("Address not found: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -160,7 +156,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Category not found: {}", ex.getMessage());
+        log.warn("Category not found: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -178,7 +174,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Product not found: {}", ex.getMessage());
+        log.warn("Product not found: {}", ex.getMessage());
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 
@@ -196,7 +192,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.warn("Illegal argument: {}", ex.getMessage());
+        log.warn("Illegal argument: {}", ex.getMessage());
         return ResponseEntity.badRequest().body(errorResponse);
     }
 
@@ -214,7 +210,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.error("Unexpected runtime error", ex);
+        log.error("Unexpected runtime error", ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 
@@ -232,7 +228,7 @@ public class GlobalExceptionHandler {
                 request.getDescription(false),
                 LocalDateTime.now());
 
-        logger.error("Unexpected error", ex);
+        log.error("Unexpected error", ex);
         return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponse);
     }
 
