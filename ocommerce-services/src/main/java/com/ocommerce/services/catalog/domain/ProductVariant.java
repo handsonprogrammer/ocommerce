@@ -1,5 +1,8 @@
 package com.ocommerce.services.catalog.domain;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.mapping.Field;
@@ -12,6 +15,8 @@ import java.util.UUID;
 /**
  * Product variant embedded document within Product collection
  */
+@Data
+@NoArgsConstructor
 public class ProductVariant {
 
     @Id
@@ -19,7 +24,7 @@ public class ProductVariant {
     private UUID variantId;
 
     @Field("sku")
-    @Indexed(unique = true)
+    @Indexed(unique = true, partialFilter = "{'sku': { $exists: true } }")
     private String sku;
 
     @Field("barcode")
@@ -64,141 +69,18 @@ public class ProductVariant {
     @Field("updated_at")
     private LocalDateTime updatedAt;
 
-    // Constructors
-    public ProductVariant() {
-        this.variantId = UUID.randomUUID();
-        this.status = VariantStatus.ACTIVE;
-        this.createdAt = LocalDateTime.now();
+    // Custom initialization
+    public void initializeDefaults() {
+        if (this.variantId == null) {
+            this.variantId = UUID.randomUUID();
+        }
+        if (this.status == null) {
+            this.status = VariantStatus.ACTIVE;
+        }
+        if (this.createdAt == null) {
+            this.createdAt = LocalDateTime.now();
+        }
         this.updatedAt = LocalDateTime.now();
-    }
-
-    // Getters and Setters
-    public UUID getVariantId() {
-        return variantId;
-    }
-
-    public void setVariantId(UUID variantId) {
-        this.variantId = variantId;
-    }
-
-    public String getSku() {
-        return sku;
-    }
-
-    public void setSku(String sku) {
-        this.sku = sku;
-    }
-
-    public String getBarcode() {
-        return barcode;
-    }
-
-    public void setBarcode(String barcode) {
-        this.barcode = barcode;
-    }
-
-    public String getVariantName() {
-        return variantName;
-    }
-
-    public void setVariantName(String variantName) {
-        this.variantName = variantName;
-    }
-
-    public Double getPrice() {
-        return price;
-    }
-
-    public void setPrice(Double price) {
-        this.price = price;
-    }
-
-    public BigDecimal getCompareAtPrice() {
-        return compareAtPrice;
-    }
-
-    public void setCompareAtPrice(BigDecimal compareAtPrice) {
-        this.compareAtPrice = compareAtPrice;
-    }
-
-    public BigDecimal getCostPrice() {
-        return costPrice;
-    }
-
-    public void setCostPrice(BigDecimal costPrice) {
-        this.costPrice = costPrice;
-    }
-
-    public Map<String, String> getAttributes() {
-        return attributes;
-    }
-
-    public void setAttributes(Map<String, String> attributes) {
-        this.attributes = attributes;
-    }
-
-    public VariantInventory getInventory() {
-        return inventory;
-    }
-
-    public void setInventory(VariantInventory inventory) {
-        this.inventory = inventory;
-    }
-
-    public java.util.List<String> getImageUrls() {
-        return imageUrls;
-    }
-
-    public void setImageUrls(java.util.List<String> imageUrls) {
-        this.imageUrls = imageUrls;
-    }
-
-    public Double getWeight() {
-        return weight;
-    }
-
-    public void setWeight(Double weight) {
-        this.weight = weight;
-    }
-
-    public Product.ProductDimensions getDimensions() {
-        return dimensions;
-    }
-
-    public void setDimensions(Product.ProductDimensions dimensions) {
-        this.dimensions = dimensions;
-    }
-
-    public VariantStatus getStatus() {
-        return status;
-    }
-
-    public void setStatus(VariantStatus status) {
-        this.status = status;
-    }
-
-    public Integer getPosition() {
-        return position;
-    }
-
-    public void setPosition(Integer position) {
-        this.position = position;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
     }
 
     /**
@@ -211,8 +93,11 @@ public class ProductVariant {
     }
 
     /**
-     * Embedded inventory information for variants
+     * Variant inventory tracking
      */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class VariantInventory {
         @Field("quantity")
         private Integer quantity;
@@ -232,66 +117,9 @@ public class ProductVariant {
         @Field("inventory_policy")
         private InventoryPolicy inventoryPolicy;
 
-        // Constructors
-        public VariantInventory() {
-            this.quantity = 0;
-            this.reservedQuantity = 0;
-            this.trackInventory = true;
-            this.allowBackorder = false;
-            this.inventoryPolicy = InventoryPolicy.DENY;
-        }
-
-        // Getters and Setters
-        public Integer getQuantity() {
-            return quantity;
-        }
-
-        public void setQuantity(Integer quantity) {
-            this.quantity = quantity;
-        }
-
-        public Integer getReservedQuantity() {
-            return reservedQuantity;
-        }
-
-        public void setReservedQuantity(Integer reservedQuantity) {
-            this.reservedQuantity = reservedQuantity;
-        }
-
+        // Helper methods
         public Integer getAvailableQuantity() {
             return quantity - reservedQuantity;
-        }
-
-        public Integer getLowStockThreshold() {
-            return lowStockThreshold;
-        }
-
-        public void setLowStockThreshold(Integer lowStockThreshold) {
-            this.lowStockThreshold = lowStockThreshold;
-        }
-
-        public boolean isTrackInventory() {
-            return trackInventory;
-        }
-
-        public void setTrackInventory(boolean trackInventory) {
-            this.trackInventory = trackInventory;
-        }
-
-        public boolean isAllowBackorder() {
-            return allowBackorder;
-        }
-
-        public void setAllowBackorder(boolean allowBackorder) {
-            this.allowBackorder = allowBackorder;
-        }
-
-        public InventoryPolicy getInventoryPolicy() {
-            return inventoryPolicy;
-        }
-
-        public void setInventoryPolicy(InventoryPolicy inventoryPolicy) {
-            this.inventoryPolicy = inventoryPolicy;
         }
 
         public boolean isInStock() {

@@ -1,10 +1,9 @@
 package com.ocommerce.services.config;
 
-import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.data.mongo.MongoDataAutoConfiguration;
-import org.springframework.boot.autoconfigure.mongo.MongoAutoConfiguration;
+import de.flapdoodle.embed.mongo.distribution.IFeatureAwareVersion;
+import de.flapdoodle.embed.mongo.distribution.Version;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Profile;
 
 /**
  * Test configuration that excludes MongoDB auto-configuration.
@@ -12,10 +11,9 @@ import org.springframework.context.annotation.Profile;
  * when MongoDB is not available.
  */
 @Configuration
-@Profile("test")
-@EnableAutoConfiguration(exclude = {
-    MongoAutoConfiguration.class,
-    MongoDataAutoConfiguration.class
-})
 public class TestConfig {
+    @Bean
+    public IFeatureAwareVersion embeddedMongoVersion() {
+        return Version.Main.V7_0; // Or any other desired version
+    }
 }

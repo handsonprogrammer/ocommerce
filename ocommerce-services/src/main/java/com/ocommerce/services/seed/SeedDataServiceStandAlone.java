@@ -250,7 +250,6 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
         Category category = new Category();
         category.setName(name);
         category.setDescription(description);
-        category.setParentId(parentId);
         category.setLevel(level);
         category.setPath(path);
         category.setSortOrder(sortOrder);
@@ -403,17 +402,12 @@ public class SeedDataServiceStandAlone implements CommandLineRunner {
         product.setLongDescription(longDescription);
         product.setBasePrice(basePrice);
         product.setUnitOfMeasure(unitOfMeasure);
-        product.setCategoryIds(categoryIds);
         product.setThumbnailUrl(thumbnailUrl);
         product.setImageUrls(imageUrls);
         product.setStatus(ProductStatus.ACTIVE);
         product.setInventoryTracking(true);
 
-        // Generate category paths automatically
-        if (categoryIds != null && !categoryIds.isEmpty()) {
-            List<String> categoryPaths = categoryPathService.generateCategoryPaths(categoryIds);
-            product.setCategoryPaths(categoryPaths);
-        }
+
 
         // Create SEO metadata
         Product.SeoMetadata seoMetadata = new Product.SeoMetadata();

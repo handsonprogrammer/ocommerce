@@ -5,8 +5,11 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
-
-import java.util.Objects;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 /**
  * Address entity with soft delete support.
@@ -14,6 +17,11 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "addresses")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = "user") // Exclude user to avoid circular references
+@EqualsAndHashCode(callSuper = true, exclude = "user") // Exclude user to avoid circular references
 public class Address extends BaseEntity {
 
     @NotBlank(message = "Address type is required")
@@ -60,14 +68,10 @@ public class Address extends BaseEntity {
     @NotNull(message = "User is required")
     private User user;
 
-    // Constructors
-    public Address() {
-        super();
-    }
-
+    // Custom constructor
     public Address(String type, String streetAddress, String city,
             String postalCode, String country, User user) {
-        this();
+        super();
         this.type = type;
         this.streetAddress = streetAddress;
         this.city = city;
@@ -98,116 +102,5 @@ public class Address extends BaseEntity {
         sb.append(" ").append(postalCode);
         sb.append(", ").append(country);
         return sb.toString();
-    }
-
-    // Getters and Setters
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setDefault(boolean isDefault) {
-        this.isDefault = isDefault;
-    }
-
-    public boolean isDeleted() {
-        return isDeleted;
-    }
-
-    public void setDeleted(boolean deleted) {
-        this.isDeleted = deleted;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        Address address = (Address) o;
-        return Objects.equals(getId(), address.getId());
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId());
-    }
-
-    @Override
-    public String toString() {
-        return "Address{" +
-                "id=" + getId() +
-                ", type='" + type + '\'' +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", country='" + country + '\'' +
-                ", isDefault=" + isDefault +
-                ", isDeleted=" + isDeleted +
-                '}';
     }
 }

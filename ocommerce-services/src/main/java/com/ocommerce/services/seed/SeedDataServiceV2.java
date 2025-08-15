@@ -455,7 +455,10 @@ public class SeedDataServiceV2 implements CommandLineRunner {
                 Category category = new Category();
                 category.setName(categoryData.name);
                 category.setDescription(categoryData.description);
-                category.setParentId(categoryData.parentId);
+                if (categoryData.parentId != null) {
+                    Optional<Category> parentCategory = categoryRepository.findById(categoryData.parentId);
+                    parentCategory.ifPresent(category::setParent);
+                }
                 category.setLevel(categoryData.level);
                 category.setPath(categoryData.path);
                 category.setSortOrder(categoryData.sortOrder);
@@ -647,6 +650,8 @@ public class SeedDataServiceV2 implements CommandLineRunner {
 
             if (productData.get("status") != null) {
                 product.setStatus(ProductStatus.valueOf(productData.get("status").toString()));
+            }else{
+                product.setStatus(ProductStatus.ACTIVE);
             }
 
             return product;

@@ -2,8 +2,10 @@ package com.ocommerce.services.catalog.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
 import java.util.List;
 import java.util.UUID;
 
@@ -11,6 +13,9 @@ import java.util.UUID;
  * Product summary response DTO for list views
  */
 @Schema(description = "Product summary information for list views")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class ProductSummaryResponse {
 
     @Schema(description = "Product unique identifier")
@@ -49,123 +54,23 @@ public class ProductSummaryResponse {
     @JsonProperty("status")
     private String status;
 
-    @Schema(description = "Number of variants", example = "3")
-    @JsonProperty("variantCount")
-    private int variantCount;
-
     @Schema(description = "Whether product is in stock", example = "true")
     @JsonProperty("inStock")
     private boolean inStock;
 
-    @Schema(description = "SEO slug", example = "macbook-pro-16-inch")
-    @JsonProperty("slug")
-    private String slug;
-
-    // Constructors
-    public ProductSummaryResponse() {}
-
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getShortDescription() {
-        return shortDescription;
-    }
-
-    public void setShortDescription(String shortDescription) {
-        this.shortDescription = shortDescription;
-    }
-
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
-    }
-
-    public Double getBasePrice() {
-        return basePrice;
-    }
-
-    public void setBasePrice(Double basePrice) {
-        this.basePrice = basePrice;
-    }
-
-    public PriceRangeResponse getPriceRange() {
-        return priceRange;
-    }
-
-    public void setPriceRange(PriceRangeResponse priceRange) {
-        this.priceRange = priceRange;
-    }
-
-    public List<UUID> getCategoryIds() {
-        return categoryIds;
-    }
-
-    public void setCategoryIds(List<UUID> categoryIds) {
-        this.categoryIds = categoryIds;
-    }
-
-    public List<String> getCategoryPaths() {
-        return categoryPaths;
-    }
-
-    public void setCategoryPaths(List<String> categoryPaths) {
-        this.categoryPaths = categoryPaths;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status;
-    }
-
-    public int getVariantCount() {
-        return variantCount;
-    }
-
-    public void setVariantCount(int variantCount) {
-        this.variantCount = variantCount;
-    }
-
-    public boolean isInStock() {
-        return inStock;
-    }
-
-    public void setInStock(boolean inStock) {
-        this.inStock = inStock;
-    }
-
-    public String getSlug() {
-        return slug;
-    }
-
-    public void setSlug(String slug) {
-        this.slug = slug;
-    }
+    @Schema(description = "Number of variants available", example = "3")
+    @JsonProperty("variantCount")
+    private int variantCount;
 
     /**
-     * Price range response for products with variants
+     * Price range response DTO
      */
+    @Schema(description = "Price range information")
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class PriceRangeResponse {
-        @Schema(description = "Minimum price", example = "2299.99")
+        @Schema(description = "Minimum price", example = "1999.99")
         @JsonProperty("minPrice")
         private Double minPrice;
 
@@ -173,28 +78,14 @@ public class ProductSummaryResponse {
         @JsonProperty("maxPrice")
         private Double maxPrice;
 
-        // Constructors, getters, and setters
-        public PriceRangeResponse() {}
+        @Schema(description = "Whether all variants have same price", example = "false")
+        @JsonProperty("hasSinglePrice")
+        private boolean hasSinglePrice;
 
         public PriceRangeResponse(Double minPrice, Double maxPrice) {
             this.minPrice = minPrice;
             this.maxPrice = maxPrice;
-        }
-
-        public Double getMinPrice() {
-            return minPrice;
-        }
-
-        public void setMinPrice(Double minPrice) {
-            this.minPrice = minPrice;
-        }
-
-        public Double getMaxPrice() {
-            return maxPrice;
-        }
-
-        public void setMaxPrice(Double maxPrice) {
-            this.maxPrice = maxPrice;
+            this.hasSinglePrice = (minPrice != null && maxPrice != null && minPrice.equals(maxPrice));
         }
     }
 }

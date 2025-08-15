@@ -2,6 +2,9 @@ package com.ocommerce.services.catalog.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -11,6 +14,9 @@ import java.util.UUID;
  * Category response DTO for API responses
  */
 @Schema(description = "Category information")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class CategoryResponse {
 
     @Schema(description = "Category unique identifier", example = "123e4567-e89b-12d3-a456-426614174000")
@@ -49,7 +55,7 @@ public class CategoryResponse {
     @JsonProperty("level")
     private Integer level;
 
-    @Schema(description = "Category path", example = "/electronics/computers")
+    @Schema(description = "Category path in hierarchy", example = "/electronics/computers")
     @JsonProperty("path")
     private String path;
 
@@ -57,7 +63,7 @@ public class CategoryResponse {
     @JsonProperty("isActive")
     private boolean isActive;
 
-    @Schema(description = "Number of products in this category", example = "25")
+    @Schema(description = "Number of products in category", example = "42")
     @JsonProperty("productCount")
     private Long productCount;
 
@@ -69,125 +75,13 @@ public class CategoryResponse {
     @JsonProperty("updatedAt")
     private LocalDateTime updatedAt;
 
-    // Constructors
-    public CategoryResponse() {}
-
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
-    }
-
-    public UUID getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(UUID parentId) {
-        this.parentId = parentId;
-    }
-
-    public List<UUID> getChildIds() {
-        return childIds;
-    }
-
-    public void setChildIds(List<UUID> childIds) {
-        this.childIds = childIds;
-    }
-
-    public SeoMetadataResponse getSeoMetadata() {
-        return seoMetadata;
-    }
-
-    public void setSeoMetadata(SeoMetadataResponse seoMetadata) {
-        this.seoMetadata = seoMetadata;
-    }
-
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public Long getProductCount() {
-        return productCount;
-    }
-
-    public void setProductCount(Long productCount) {
-        this.productCount = productCount;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
     /**
      * SEO metadata response DTO
      */
+    @Schema(description = "SEO metadata information")
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class SeoMetadataResponse {
         @Schema(description = "SEO meta title", example = "Electronics - Best Deals Online")
         @JsonProperty("metaTitle")
@@ -208,48 +102,5 @@ public class CategoryResponse {
         @Schema(description = "Canonical URL", example = "https://example.com/categories/electronics")
         @JsonProperty("canonicalUrl")
         private String canonicalUrl;
-
-        // Constructors, getters, and setters
-        public SeoMetadataResponse() {}
-
-        public String getMetaTitle() {
-            return metaTitle;
-        }
-
-        public void setMetaTitle(String metaTitle) {
-            this.metaTitle = metaTitle;
-        }
-
-        public String getMetaDescription() {
-            return metaDescription;
-        }
-
-        public void setMetaDescription(String metaDescription) {
-            this.metaDescription = metaDescription;
-        }
-
-        public List<String> getMetaKeywords() {
-            return metaKeywords;
-        }
-
-        public void setMetaKeywords(List<String> metaKeywords) {
-            this.metaKeywords = metaKeywords;
-        }
-
-        public String getSlug() {
-            return slug;
-        }
-
-        public void setSlug(String slug) {
-            this.slug = slug;
-        }
-
-        public String getCanonicalUrl() {
-            return canonicalUrl;
-        }
-
-        public void setCanonicalUrl(String canonicalUrl) {
-            this.canonicalUrl = canonicalUrl;
-        }
     }
 }

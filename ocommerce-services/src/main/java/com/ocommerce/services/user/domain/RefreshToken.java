@@ -4,9 +4,13 @@ import com.ocommerce.services.common.BaseEntity;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import lombok.ToString;
 
 import java.time.LocalDateTime;
-import java.util.Objects;
 
 /**
  * Refresh token entity for JWT authentication.
@@ -15,6 +19,11 @@ import java.util.Objects;
  */
 @Entity
 @Table(name = "refresh_tokens")
+@Getter
+@Setter
+@NoArgsConstructor
+@ToString(exclude = {"token", "user"}) // Exclude sensitive token and user to avoid circular references
+@EqualsAndHashCode(callSuper = true, exclude = "user") // Exclude user to avoid circular references
 public class RefreshToken extends BaseEntity {
 
     @NotBlank(message = "Token is required")
@@ -33,13 +42,9 @@ public class RefreshToken extends BaseEntity {
     @NotNull(message = "User is required")
     private User user;
 
-    // Constructors
-    public RefreshToken() {
-        super();
-    }
-
+    // Custom constructor
     public RefreshToken(String token, LocalDateTime expiryDate, User user) {
-        this();
+        super();
         this.token = token;
         this.expiryDate = expiryDate;
         this.user = user;
@@ -56,64 +61,5 @@ public class RefreshToken extends BaseEntity {
 
     public void revoke() {
         this.revoked = true;
-    }
-
-    // Getters and Setters
-    public String getToken() {
-        return token;
-    }
-
-    public void setToken(String token) {
-        this.token = token;
-    }
-
-    public LocalDateTime getExpiryDate() {
-        return expiryDate;
-    }
-
-    public void setExpiryDate(LocalDateTime expiryDate) {
-        this.expiryDate = expiryDate;
-    }
-
-    public boolean isRevoked() {
-        return revoked;
-    }
-
-    public void setRevoked(boolean revoked) {
-        this.revoked = revoked;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o)
-            return true;
-        if (o == null || getClass() != o.getClass())
-            return false;
-        RefreshToken that = (RefreshToken) o;
-        return Objects.equals(getId(), that.getId()) &&
-                Objects.equals(token, that.token);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(getId(), token);
-    }
-
-    @Override
-    public String toString() {
-        return "RefreshToken{" +
-                "id=" + getId() +
-                ", token='" + token.substring(0, Math.min(token.length(), 10)) + "...' " +
-                ", expiryDate=" + expiryDate +
-                ", revoked=" + revoked +
-                '}';
     }
 }

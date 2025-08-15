@@ -152,7 +152,10 @@ public class SeedDataServiceV1 implements CommandLineRunner {
         category.setName(data.name);
         category.setDescription(data.description);
         category.setThumbnailUrl(data.thumbnailUrl);
-        category.setParentId(parentId);
+        if (parentId != null) {
+            Optional<Category> parentCategory = categoryRepository.findById(parentId);
+            parentCategory.ifPresent(category::setParent);
+        }
         category.setLevel(data.level);
         category.setPath(data.path);
         category.setSortOrder(data.sortOrder);
@@ -175,13 +178,6 @@ public class SeedDataServiceV1 implements CommandLineRunner {
         try {
             List<ProductSeedData> productsData = readJsonFile("seed-data/products.json", new TypeReference<List<ProductSeedData>>() {});
 
-            // Get category mapping
-            List<Category> categories = categoryRepository.findAll();
-            Map<String, UUID> categoryMap = new HashMap<>();
-            for (Category category : categories) {
-                categoryMap.put(category.getName(), category.getId());
-            }
-
             for (ProductSeedData productData : productsData) {
                 Product product = new Product();
                 product.setName(productData.name);
@@ -197,14 +193,14 @@ public class SeedDataServiceV1 implements CommandLineRunner {
 
                 // Set categories
                 if (productData.categoryNames != null) {
-                    List<UUID> categoryIds = new ArrayList<>();
+                    List<Category> categories = new ArrayList<>();
                     for (String categoryName : productData.categoryNames) {
-                        UUID categoryId = categoryMap.get(categoryName);
-                        if (categoryId != null) {
-                            categoryIds.add(categoryId);
+                        List<Category> categoriesTemp = categoryRepository.findByNameContainingIgnoreCaseAndActive(categoryName);
+                        if (categoriesTemp != null && !categoriesTemp.isEmpty()) {
+                            categories.addAll(categoriesTemp);
                         }
                     }
-                    product.setCategoryIds(categoryIds);
+                    product.setCategories(categories);
                 }
 
                 // Set dimensions

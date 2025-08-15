@@ -23,24 +23,19 @@ public class CategoryPathService {
 
     /**
      * Generate hierarchy paths for a list of category IDs
-     * @param categoryIds List of category IDs
+     * @param categories List of categories
      * @return List of hierarchy paths in format "cat1>cat2>cat3"
      */
-    public List<String> generateCategoryPaths(List<UUID> categoryIds) {
-        if (categoryIds == null || categoryIds.isEmpty()) {
-            return new ArrayList<>();
-        }
+    public List<String> generateCategoryPaths(List<Category> categories) {
+
 
         List<String> paths = new ArrayList<>();
 
-        // Get all categories by IDs
-        List<Category> categories = categoryRepository.findAllById(categoryIds);
         Map<UUID, Category> categoryMap = categories.stream()
                 .collect(Collectors.toMap(Category::getId, category -> category));
 
         // Generate path for each category
-        for (UUID categoryId : categoryIds) {
-            Category category = categoryMap.get(categoryId);
+        for (Category category : categories) {
             if (category != null) {
                 String path = buildCategoryPath(category, categoryMap);
                 if (path != null && !path.isEmpty()) {
@@ -105,11 +100,11 @@ public class CategoryPathService {
             visited.add(current.getId());
             pathSegments.add(0, current.getName()); // Add to beginning
 
-            if (current.getParentId() != null) {
-                current = categoryMap.get(current.getParentId());
+            if (current.getParent() != null) {
+                current = categoryMap.get(current.getParent().getId());
                 // If not in map, fetch from repository
                 if (current == null) {
-                    Optional<Category> parentOpt = categoryRepository.findById(current.getParentId());
+                    Optional<Category> parentOpt = categoryRepository.findById(current.getParent().getId());
                     current = parentOpt.orElse(null);
                 }
             } else {
@@ -134,9 +129,8 @@ public class CategoryPathService {
             visited.add(current.getId());
             pathSegments.add(0, current.getName()); // Add to beginning
 
-            if (current.getParentId() != null) {
-                Optional<Category> parentOpt = categoryRepository.findById(current.getParentId());
-                current = parentOpt.orElse(null);
+            if (current.getParent() != null) {
+                current = current.getParent();
             } else {
                 current = null; // Reached root
             }
@@ -166,24 +160,4 @@ public class CategoryPathService {
         return currentPath != null ? List.of(currentPath) : new ArrayList<>();
     }
 
-    /**
-     * Validate that category paths are consistent with category IDs
-     * @param categoryIds List of category IDs
-     * @param categoryPaths List of category paths
-     * @return true if consistent, false otherwise
-     */
-    public boolean validateCategoryPaths(List<UUID> categoryIds, List<String> categoryPaths) {
-        if (categoryIds == null && categoryPaths == null) {
-            return true;
-        }
-        if (categoryIds == null || categoryPaths == null) {
-            return false;
-        }
-
-        List<String> generatedPaths = generateCategoryPaths(categoryIds);
-        Set<String> generatedPathsSet = new HashSet<>(generatedPaths);
-        Set<String> providedPathsSet = new HashSet<>(categoryPaths);
-
-        return generatedPathsSet.equals(providedPathsSet);
-    }
 }

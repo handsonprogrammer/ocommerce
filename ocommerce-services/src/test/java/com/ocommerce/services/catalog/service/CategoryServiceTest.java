@@ -16,12 +16,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Unit tests for CategoryService
  */
+
 @ExtendWith(MockitoExtension.class)
 class CategoryServiceTest {
 
@@ -38,7 +39,7 @@ class CategoryServiceTest {
     @BeforeEach
     void setUp() {
         testRootCategory = createTestRootCategory();
-        testChildCategory = createTestChildCategory();
+        testChildCategory = createTestChildCategory(testRootCategory);
         testCategory = testRootCategory;
     }
 
@@ -254,17 +255,17 @@ class CategoryServiceTest {
         category.setSeoMetadata(seoMetadata);
 
         // Add child IDs
-        category.setChildIds(List.of(UUID.randomUUID()));
+        category.setChildren(List.of(createTestChildCategory(null)));
 
         return category;
     }
 
-    private Category createTestChildCategory() {
+    private Category createTestChildCategory(Category parent) {
         Category category = new Category();
         category.setId(UUID.randomUUID());
         category.setName("Computers");
         category.setDescription("Desktop and laptop computers");
-        category.setParentId(testRootCategory != null ? testRootCategory.getId() : UUID.randomUUID());
+        category.setParent(parent);
         category.setLevel(1);
         category.setPath("/electronics/computers");
         category.setActive(true);

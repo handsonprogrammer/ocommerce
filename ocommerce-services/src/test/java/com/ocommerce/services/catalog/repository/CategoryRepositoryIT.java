@@ -3,8 +3,11 @@ package com.ocommerce.services.catalog.repository;
 import com.ocommerce.services.catalog.domain.Category;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.data.mongo.DataMongoTest;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.test.context.junit.jupiter.SpringExtension;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,8 +15,10 @@ import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@DataMongoTest
-class CategoryRepositoryTest {
+@DataMongoTest()
+@ExtendWith(SpringExtension.class)
+@ActiveProfiles("integration-test")
+class CategoryRepositoryIT {
 
     @Autowired
     private CategoryRepository categoryRepository;

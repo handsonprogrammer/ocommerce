@@ -1,6 +1,7 @@
 package com.ocommerce.services.catalog.service;
 
 import com.ocommerce.services.catalog.constants.ProductStatus;
+import com.ocommerce.services.catalog.domain.Category;
 import com.ocommerce.services.catalog.domain.Product;
 import com.ocommerce.services.catalog.domain.ProductVariant;
 import com.ocommerce.services.catalog.dto.CategoryResponse;
@@ -214,8 +215,8 @@ public class ProductService {
         logger.info("Creating new product: {}", product.getName());
 
         // Generate category paths automatically
-        if (product.getCategoryIds() != null && !product.getCategoryIds().isEmpty()) {
-            List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategoryIds());
+        if (product.getCategories() != null && !product.getCategories().isEmpty()) {
+            List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategories());
             product.setCategoryPaths(categoryPaths);
             logger.debug("Generated category paths for product {}: {}", product.getName(), categoryPaths);
         }
@@ -230,8 +231,8 @@ public class ProductService {
         logger.info("Updating product: {}", product.getId());
 
         // Regenerate category paths when updating
-        if (product.getCategoryIds() != null && !product.getCategoryIds().isEmpty()) {
-            List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategoryIds());
+        if (product.getCategories() != null && !product.getCategories().isEmpty()) {
+            List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategories());
             product.setCategoryPaths(categoryPaths);
             logger.debug("Regenerated category paths for product {}: {}", product.getId(), categoryPaths);
         } else {
@@ -267,8 +268,8 @@ public class ProductService {
         List<Product> products = productRepository.findByCategoryId(categoryId);
 
         for (Product product : products) {
-            if (product.getCategoryIds() != null && !product.getCategoryIds().isEmpty()) {
-                List<String> updatedPaths = categoryPathService.generateCategoryPaths(product.getCategoryIds());
+            if (product.getCategories() != null && !product.getCategories().isEmpty()) {
+                List<String> updatedPaths = categoryPathService.generateCategoryPaths(product.getCategories());
                 product.setCategoryPaths(updatedPaths);
                 productRepository.save(product);
                 logger.debug("Updated category paths for product {}: {}", product.getId(), updatedPaths);
@@ -288,8 +289,8 @@ public class ProductService {
         int updatedCount = 0;
 
         for (Product product : allProducts) {
-            if (product.getCategoryIds() != null && !product.getCategoryIds().isEmpty()) {
-                List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategoryIds());
+            if (product.getCategories() != null && !product.getCategories().isEmpty()) {
+                List<String> categoryPaths = categoryPathService.generateCategoryPaths(product.getCategories());
                 product.setCategoryPaths(categoryPaths);
                 productRepository.save(product);
                 updatedCount++;
@@ -318,7 +319,11 @@ public class ProductService {
         response.setImageUrls(product.getImageUrls());
         response.setBasePrice(product.getBasePrice());
         response.setUnitOfMeasure(product.getUnitOfMeasure());
-        response.setCategoryIds(product.getCategoryIds());
+        response.setCategoryIds(
+                product.getCategories() != null && !product.getCategories().isEmpty()
+                        ? product.getCategories().stream().map(Category::getId).collect(Collectors.toList())
+                        : List.of()
+        );
         response.setCategoryPaths(product.getCategoryPaths());
         response.setAttributes(product.getAttributes());
         response.setStatus(product.getStatus().name());
@@ -370,15 +375,15 @@ public class ProductService {
         response.setShortDescription(product.getShortDescription());
         response.setThumbnailUrl(product.getThumbnailUrl());
         response.setBasePrice(product.getBasePrice());
-        response.setCategoryIds(product.getCategoryIds());
+        response.setCategoryIds(
+                product.getCategories() != null && !product.getCategories().isEmpty()
+                        ? product.getCategories().stream().map(Category::getId).collect(Collectors.toList())
+                        : null
+        );
         response.setStatus(product.getStatus().name());
         response.setVariantCount(product.getVariants() != null ? product.getVariants().size() : 0);
         response.setCategoryPaths(product.getCategoryPaths());
 
-        // Set SEO slug if available
-        if (product.getSeoMetadata() != null) {
-            response.setSlug(product.getSeoMetadata().getSlug());
-        }
 
         // Calculate price range from variants
         if (product.getVariants() != null && !product.getVariants().isEmpty()) {

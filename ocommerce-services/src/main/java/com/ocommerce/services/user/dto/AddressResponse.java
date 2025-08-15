@@ -2,14 +2,20 @@ package com.ocommerce.services.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
- * DTO for address response
+ * Address response DTO
  */
-@Schema(description = "Address information response")
+@Schema(description = "Address information")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AddressResponse {
 
     @Schema(description = "Address ID", example = "550e8400-e29b-41d4-a716-446655440000")
@@ -20,7 +26,7 @@ public class AddressResponse {
     @JsonProperty("type")
     private String type;
 
-    @Schema(description = "Street address", example = "123 Main St")
+    @Schema(description = "Street address", example = "123 Main Street")
     @JsonProperty("streetAddress")
     private String streetAddress;
 
@@ -32,7 +38,7 @@ public class AddressResponse {
     @JsonProperty("city")
     private String city;
 
-    @Schema(description = "State", example = "NY")
+    @Schema(description = "State/Province", example = "NY")
     @JsonProperty("state")
     private String state;
 
@@ -59,129 +65,4 @@ public class AddressResponse {
     @Schema(description = "Address last update timestamp")
     @JsonProperty("updatedAt")
     private LocalDateTime updatedAt;
-
-    // Constructors
-    public AddressResponse() {
-    }
-
-    public AddressResponse(UUID id, String type, String streetAddress, String city,
-            String postalCode, String country) {
-        this.id = id;
-        this.type = type;
-        this.streetAddress = streetAddress;
-        this.city = city;
-        this.postalCode = postalCode;
-        this.country = country;
-    }
-
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getType() {
-        return type;
-    }
-
-    public void setType(String type) {
-        this.type = type;
-    }
-
-    public String getStreetAddress() {
-        return streetAddress;
-    }
-
-    public void setStreetAddress(String streetAddress) {
-        this.streetAddress = streetAddress;
-    }
-
-    public String getAddressLine2() {
-        return addressLine2;
-    }
-
-    public void setAddressLine2(String addressLine2) {
-        this.addressLine2 = addressLine2;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getState() {
-        return state;
-    }
-
-    public void setState(String state) {
-        this.state = state;
-    }
-
-    public String getPostalCode() {
-        return postalCode;
-    }
-
-    public void setPostalCode(String postalCode) {
-        this.postalCode = postalCode;
-    }
-
-    public String getCountry() {
-        return country;
-    }
-
-    public void setCountry(String country) {
-        this.country = country;
-    }
-
-    public boolean isDefault() {
-        return isDefault;
-    }
-
-    public void setDefault(boolean isDefault) {
-        this.isDefault = isDefault;
-    }
-
-    public String getFullAddress() {
-        return fullAddress;
-    }
-
-    public void setFullAddress(String fullAddress) {
-        this.fullAddress = fullAddress;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    @Override
-    public String toString() {
-        return "AddressResponse{" +
-                "id=" + id +
-                ", type='" + type + '\'' +
-                ", streetAddress='" + streetAddress + '\'' +
-                ", city='" + city + '\'' +
-                ", state='" + state + '\'' +
-                ", postalCode='" + postalCode + '\'' +
-                ", country='" + country + '\'' +
-                ", isDefault=" + isDefault +
-                '}';
-    }
 }

@@ -3,6 +3,7 @@ package com.ocommerce.services.catalog.service;
 import com.ocommerce.services.catalog.domain.Category;
 import com.ocommerce.services.catalog.dto.CategoryResponse;
 import com.ocommerce.services.catalog.repository.CategoryRepository;
+import lombok.Data;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -166,8 +167,18 @@ public class CategoryService {
         response.setName(category.getName());
         response.setDescription(category.getDescription());
         response.setThumbnailUrl(category.getThumbnailUrl());
-        response.setParentId(category.getParentId());
-        response.setChildIds(category.getChildIds());
+        if (category.getParent() != null) {
+            response.setParentId(category.getParent().getId());
+        } else {
+            response.setParentId(null);
+        }
+        if (category.getChildren() != null) {
+            response.setChildIds(category.getChildren().stream()
+                    .map(Category::getId)
+                    .collect(Collectors.toList()));
+        } else {
+            response.setChildIds(null);
+        }
         response.setSortOrder(category.getSortOrder());
         response.setLevel(category.getLevel());
         response.setPath(category.getPath());

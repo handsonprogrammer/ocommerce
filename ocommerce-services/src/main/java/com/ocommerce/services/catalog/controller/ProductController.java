@@ -217,7 +217,7 @@ public class ProductController {
 
         // Set default price range if not provided
         if (minPrice == null) minPrice = Double.valueOf("0.00");
-        if (maxPrice == null) maxPrice = new Double("999999.99");
+        if (maxPrice == null) maxPrice = 999999.99;
 
         Page<ProductSummaryResponse> products = productService.complexSearch(
                 q != null ? q : "",

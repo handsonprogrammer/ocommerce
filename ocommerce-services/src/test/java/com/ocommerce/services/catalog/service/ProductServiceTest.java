@@ -24,8 +24,8 @@ import java.util.Optional;
 import java.util.UUID;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.ArgumentMatchers.any;
-import static org.mockito.Mockito.*;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 /**
  * Unit tests for ProductService
@@ -169,8 +169,8 @@ class ProductServiceTest {
     @Test
     void getProductsByPriceRange_ShouldReturnProductsInRange() {
         // Given
-        Double minPrice = new Double("1000.00");
-        Double maxPrice = new Double("3000.00");
+        Double minPrice = 1000.00;
+        Double maxPrice = 3000.00;
         List<Product> products = List.of(testProduct);
         Page<Product> productPage = new PageImpl<>(products, testPageable, 1);
         when(productRepository.findByBasePriceBetweenAndStatus(minPrice, maxPrice, ProductStatus.ACTIVE, testPageable)).thenReturn(productPage);
@@ -180,7 +180,7 @@ class ProductServiceTest {
 
         // Then
         assertThat(result.getContent()).hasSize(1);
-        assertThat(result.getContent().get(0).getBasePrice()).isEqualTo(new Double("2499.99"));
+        assertThat(result.getContent().get(0).getBasePrice()).isEqualTo(2499.99);
         verify(productRepository).findByBasePriceBetweenAndStatus(minPrice, maxPrice, ProductStatus.ACTIVE, testPageable);
     }
 
@@ -189,8 +189,8 @@ class ProductServiceTest {
         // Given
         String searchText = "laptop";
         List<UUID> categoryIds = List.of(UUID.randomUUID());
-        Double minPrice = new Double("1000.00");
-        Double maxPrice = new Double("3000.00");
+        Double minPrice = 1000.00;
+        Double maxPrice = 3000.00;
         List<Product> products = List.of(testProduct);
         Page<Product> productPage = new PageImpl<>(products, testPageable, 1);
 
@@ -265,8 +265,8 @@ class ProductServiceTest {
         // Then
         ProductSummaryResponse summary = result.getContent().get(0);
         assertThat(summary.getPriceRange()).isNotNull();
-        assertThat(summary.getPriceRange().getMinPrice()).isEqualTo(new Double("2499.99"));
-        assertThat(summary.getPriceRange().getMaxPrice()).isEqualTo(new Double("2499.99"));
+        assertThat(summary.getPriceRange().getMinPrice()).isEqualTo(2499.99);
+        assertThat(summary.getPriceRange().getMaxPrice()).isEqualTo(2499.99);
         assertThat(summary.getVariantCount()).isEqualTo(1);
         assertThat(summary.isInStock()).isTrue();
     }
@@ -280,9 +280,8 @@ class ProductServiceTest {
         product.setLongDescription("The MacBook Pro 16-inch is designed for professionals who need power and performance.");
         product.setThumbnailUrl("https://example.com/macbook-thumb.jpg");
         product.setImageUrls(List.of("https://example.com/macbook1.jpg", "https://example.com/macbook2.jpg"));
-        product.setBasePrice(new Double("2499.99"));
+        product.setBasePrice(2499.99);
         product.setUnitOfMeasure("piece");
-        product.setCategoryIds(List.of(UUID.randomUUID()));
         product.setStatus(ProductStatus.ACTIVE);
         product.setInventoryTracking(true);
         product.setWeight(2.1);
@@ -309,7 +308,7 @@ class ProductServiceTest {
         variant.setSku("MBP16-SG-512");
         variant.setBarcode("1234567890123");
         variant.setVariantName("Space Gray 512GB");
-        variant.setPrice(new Double("2499.99"));
+        variant.setPrice(2499.99);
         variant.setCompareAtPrice(new BigDecimal("2799.99"));
         variant.setStatus(ProductVariant.VariantStatus.ACTIVE);
         variant.setPosition(1);
@@ -329,6 +328,7 @@ class ProductServiceTest {
         inventory.setLowStockThreshold(10);
         inventory.setTrackInventory(true);
         inventory.setAllowBackorder(false);
+        inventory.setInventoryPolicy(ProductVariant.VariantInventory.InventoryPolicy.CONTINUE);
         variant.setInventory(inventory);
 
         return variant;

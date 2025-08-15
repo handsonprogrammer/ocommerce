@@ -1,5 +1,8 @@
 package com.ocommerce.services.catalog.domain;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
@@ -7,6 +10,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.data.mongodb.core.mapping.Field;
 import org.springframework.data.mongodb.core.index.Indexed;
 import org.springframework.data.mongodb.core.index.TextIndexed;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -16,6 +20,8 @@ import java.util.UUID;
  * Category document for MongoDB catalog domain
  * Supports hierarchical category structure
  */
+@Data
+@NoArgsConstructor
 @Document(collection = "categories")
 public class Category {
 
@@ -33,12 +39,15 @@ public class Category {
     @Field("thumbnail_url")
     private String thumbnailUrl;
 
-    @Field("parent_id")
-    @Indexed
-    private UUID parentId;
+    // Use MongoDB reference for parent category
+    @DBRef
+    @Field("parent")
+    private Category parent;
 
-    @Field("child_ids")
-    private List<UUID> childIds;
+    // Use MongoDB reference for child categories
+    @DBRef
+    @Field("children")
+    private List<Category> children;
 
     @Field("seo_metadata")
     private SeoMetadata seoMetadata;
@@ -75,161 +84,45 @@ public class Category {
     @Field("updated_by")
     private UUID updatedBy;
 
-    // Constructors
-    public Category() {
+    // Custom constructors
+    public Category(String name, String description) {
         this.id = UUID.randomUUID();
+        this.name = name;
+        this.description = description;
         this.isActive = true;
         this.productCount = 0L;
         this.level = 0;
     }
 
-    public Category(String name, String description) {
-        this();
-        this.name = name;
-        this.description = description;
-    }
-
-    // Getters and Setters
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public String getThumbnailUrl() {
-        return thumbnailUrl;
-    }
-
-    public void setThumbnailUrl(String thumbnailUrl) {
-        this.thumbnailUrl = thumbnailUrl;
-    }
-
-    public UUID getParentId() {
-        return parentId;
-    }
-
-    public void setParentId(UUID parentId) {
-        this.parentId = parentId;
-    }
-
-    public List<UUID> getChildIds() {
-        return childIds;
-    }
-
-    public void setChildIds(List<UUID> childIds) {
-        this.childIds = childIds;
-    }
-
-    public SeoMetadata getSeoMetadata() {
-        return seoMetadata;
-    }
-
-    public void setSeoMetadata(SeoMetadata seoMetadata) {
-        this.seoMetadata = seoMetadata;
-    }
-
-    public Integer getSortOrder() {
-        return sortOrder;
-    }
-
-    public void setSortOrder(Integer sortOrder) {
-        this.sortOrder = sortOrder;
-    }
-
-    public Integer getLevel() {
-        return level;
-    }
-
-    public void setLevel(Integer level) {
-        this.level = level;
-    }
-
-    public String getPath() {
-        return path;
-    }
-
-    public void setPath(String path) {
-        this.path = path;
-    }
-
-    public boolean isActive() {
-        return isActive;
-    }
-
-    public void setActive(boolean active) {
-        isActive = active;
-    }
-
-    public Long getProductCount() {
-        return productCount;
-    }
-
-    public void setProductCount(Long productCount) {
-        this.productCount = productCount;
-    }
-
-    public LocalDateTime getCreatedAt() {
-        return createdAt;
-    }
-
-    public void setCreatedAt(LocalDateTime createdAt) {
-        this.createdAt = createdAt;
-    }
-
-    public LocalDateTime getUpdatedAt() {
-        return updatedAt;
-    }
-
-    public void setUpdatedAt(LocalDateTime updatedAt) {
-        this.updatedAt = updatedAt;
-    }
-
-    public UUID getCreatedBy() {
-        return createdBy;
-    }
-
-    public void setCreatedBy(UUID createdBy) {
-        this.createdBy = createdBy;
-    }
-
-    public UUID getUpdatedBy() {
-        return updatedBy;
-    }
-
-    public void setUpdatedBy(UUID updatedBy) {
-        this.updatedBy = updatedBy;
+    // Custom initialization for default constructor
+    public void initializeDefaults() {
+        if (this.id == null) {
+            this.id = UUID.randomUUID();
+        }
+        if (this.productCount == null) {
+            this.productCount = 0L;
+        }
+        if (this.level == null) {
+            this.level = 0;
+        }
+        this.isActive = true;
     }
 
     // Helper methods
     public boolean isRootCategory() {
-        return parentId == null;
+        return parent == null;
     }
 
     public boolean hasChildren() {
-        return childIds != null && !childIds.isEmpty();
+        return children != null && !children.isEmpty();
     }
 
     /**
      * Embedded SEO metadata for categories
      */
+    @Data
+    @NoArgsConstructor
+    @AllArgsConstructor
     public static class SeoMetadata {
         @Field("meta_title")
         private String metaTitle;
@@ -241,53 +134,10 @@ public class Category {
         private List<String> metaKeywords;
 
         @Field("slug")
-        @Indexed(unique = true)
+        @Indexed
         private String slug;
 
         @Field("canonical_url")
         private String canonicalUrl;
-
-        // Constructors, getters, and setters
-        public SeoMetadata() {}
-
-        public String getMetaTitle() {
-            return metaTitle;
-        }
-
-        public void setMetaTitle(String metaTitle) {
-            this.metaTitle = metaTitle;
-        }
-
-        public String getMetaDescription() {
-            return metaDescription;
-        }
-
-        public void setMetaDescription(String metaDescription) {
-            this.metaDescription = metaDescription;
-        }
-
-        public List<String> getMetaKeywords() {
-            return metaKeywords;
-        }
-
-        public void setMetaKeywords(List<String> metaKeywords) {
-            this.metaKeywords = metaKeywords;
-        }
-
-        public String getSlug() {
-            return slug;
-        }
-
-        public void setSlug(String slug) {
-            this.slug = slug;
-        }
-
-        public String getCanonicalUrl() {
-            return canonicalUrl;
-        }
-
-        public void setCanonicalUrl(String canonicalUrl) {
-            this.canonicalUrl = canonicalUrl;
-        }
     }
 }
