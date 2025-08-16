@@ -23,6 +23,7 @@ import java.util.Arrays;
 @Profile("!test")
 @EnableMongoAuditing*/
 @Configuration
+@EnableMongoRepositories(basePackages = "com.ocommerce.services.catalog")
 public class MongoConfig {
     @Bean
     public MongoCustomConversions mongoCustomConversions() {
