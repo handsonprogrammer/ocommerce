@@ -30,7 +30,7 @@ import java.util.UUID;
 @RestController
 @RequestMapping("/api/v1/address")
 @Tag(name = "Address Management", description = "APIs for managing user addresses")
-@SecurityRequirement(name = "bearerAuth")
+@SecurityRequirement(name = "Bearer Authentication")
 public class AddressController {
 
     private final AddressService addressService;
