@@ -1,0 +1,26 @@
+[
+  {
+    "name": "iPhone 3GS",
+    "shortDescription": "Faster iPhone with video recording",
+    "longDescription": "iPhone 3GS with improved performance, 3MP camera with video recording, and iPhone OS 3.0. The 'S' stands for Speed.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-3gs.jpg",
+    "imageUrls": ["https://images.example.com/iphone-3gs-1.jpg", "https://images.example.com/iphone-3gs-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.135,
+    "dimensions": {
+      "length": 11.55,
+      "width": 6.2,
+      "height": 1.23,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPhone OS 3.0",
+      "screen_size": "3.5 inch",
+      "camera": "3MP with video recording",
+      "connectivity": "3G, Wi-Fi, Bluetooth, GPS"
+    }
+  }
+]

@@ -1,0 +1,56 @@
+[
+  {
+    "productName": "iPhone (1st generation)",
+    "sku": "IPH07-4GB-BLK",
+    "variantName": "4GB Black",
+    "price": 499.99,
+    "compareAtPrice": 599.99,
+    "costPrice": 300.00,
+    "position": 1,
+    "attributes": {
+      "storage": "4GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-2007-4gb.jpg"],
+    "weight": 0.135,
+    "dimensions": {
+      "length": 11.5,
+      "width": 6.1,
+      "height": 1.15,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone (1st generation)",
+    "sku": "IPH07-8GB-BLK",
+    "variantName": "8GB Black",
+    "price": 599.99,
+    "compareAtPrice": 699.99,
+    "costPrice": 350.00,
+    "position": 2,
+    "attributes": {
+      "storage": "8GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-2007-8gb.jpg"],
+    "weight": 0.135,
+    "dimensions": {
+      "length": 11.5,
+      "width": 6.1,
+      "height": 1.15,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "name": "iPhone 6",
+    "shortDescription": "Bigger iPhone with 4.7-inch display",
+    "longDescription": "iPhone 6 features a larger 4.7-inch Retina HD display, A8 chip, and improved camera with Focus Pixels.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6-1.jpg", "https://images.example.com/iphone-6-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.129,
+    "dimensions": {
+      "length": 13.81,
+      "width": 6.71,
+      "height": 0.69,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 8",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "8MP with Focus Pixels",
+      "processor": "A8",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, NFC"
+    }
+  },
+  {
+    "name": "iPhone 6 Plus",
+    "shortDescription": "Largest iPhone with 5.5-inch display",
+    "longDescription": "iPhone 6 Plus features a 5.5-inch Retina HD display, optical image stabilization, and longer battery life.",
+    "basePrice": 299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-6-plus.jpg",
+    "imageUrls": ["https://images.example.com/iphone-6-plus-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 15.86,
+      "width": 7.79,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 8",
+      "screen_size": "5.5 inch Retina HD",
+      "camera": "8MP with OIS",
+      "processor": "A8",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, NFC"
+    }
+  }
+]

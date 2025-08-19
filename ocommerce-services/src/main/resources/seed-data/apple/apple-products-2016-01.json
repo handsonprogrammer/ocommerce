@@ -1,0 +1,52 @@
+[
+  {
+    "name": "iPhone 7",
+    "shortDescription": "iPhone with dual cameras and no headphone jack",
+    "longDescription": "iPhone 7 features water resistance, dual cameras on Plus model, no headphone jack, and A10 Fusion chip.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-7.jpg",
+    "imageUrls": ["https://images.example.com/iphone-7-1.jpg", "https://images.example.com/iphone-7-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.138,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 10",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "12MP with OIS",
+      "processor": "A10 Fusion",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, Lightning"
+    }
+  },
+  {
+    "name": "MacBook Pro with Touch Bar",
+    "shortDescription": "MacBook Pro with revolutionary Touch Bar",
+    "longDescription": "MacBook Pro with Touch Bar, Thunderbolt 3 ports, thinner design, and powerful performance for professionals.",
+    "basePrice": 1799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-touchbar.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-touchbar-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.37,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.49,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Sierra",
+      "screen_size": "13.3 inch Retina",
+      "processor": "Intel Core i5",
+      "memory": "8GB",
+      "storage": "256GB SSD"
+    }
+  }
+]

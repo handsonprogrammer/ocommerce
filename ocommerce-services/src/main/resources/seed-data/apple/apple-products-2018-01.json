@@ -1,0 +1,77 @@
+[
+  {
+    "name": "iPhone XS",
+    "shortDescription": "Advanced iPhone with A12 Bionic chip",
+    "longDescription": "iPhone XS features A12 Bionic chip, advanced Face ID, dual-camera system with Smart HDR, and water resistance.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-xs.jpg",
+    "imageUrls": ["https://images.example.com/iphone-xs-1.jpg", "https://images.example.com/iphone-xs-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.177,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12",
+      "screen_size": "5.8 inch Super Retina OLED",
+      "camera": "12MP dual camera with Smart HDR",
+      "processor": "A12 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, Face ID, Wireless charging"
+    }
+  },
+  {
+    "name": "iPhone XR",
+    "shortDescription": "Colorful iPhone with Liquid Retina display",
+    "longDescription": "iPhone XR features Liquid Retina display, A12 Bionic chip, advanced single-camera system, and comes in multiple colors.",
+    "basePrice": 749.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-xr.jpg",
+    "imageUrls": ["https://images.example.com/iphone-xr-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12",
+      "screen_size": "6.1 inch Liquid Retina LCD",
+      "camera": "12MP single camera with Portrait mode",
+      "processor": "A12 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, Face ID, Wireless charging"
+    }
+  },
+  {
+    "name": "MacBook Air",
+    "shortDescription": "Redesigned MacBook Air with Retina display",
+    "longDescription": "All-new MacBook Air with Retina display, Touch ID, force trackpad, and thinner design with recycled aluminum.",
+    "basePrice": 1199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-2018.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-2018-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.25,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.56,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Mojave",
+      "screen_size": "13.3 inch Retina",
+      "processor": "Intel Core i5",
+      "memory": "8GB",
+      "storage": "128GB SSD"
+    }
+  }
+]

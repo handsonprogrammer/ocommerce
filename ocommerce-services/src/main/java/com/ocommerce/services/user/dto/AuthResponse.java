@@ -2,18 +2,27 @@ package com.ocommerce.services.user.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.NotBlank;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.AllArgsConstructor;
+
+import java.time.LocalDateTime;
 
 /**
- * DTO for authentication response containing access and refresh tokens
+ * Authentication response DTO containing JWT tokens and user info
  */
-@Schema(description = "Authentication response with access and refresh tokens")
+@Schema(description = "Authentication response with tokens and user information")
+@Data
+@NoArgsConstructor
+@AllArgsConstructor
 public class AuthResponse {
 
     @Schema(description = "JWT access token", example = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
     @JsonProperty("accessToken")
     private String accessToken;
 
-    @Schema(description = "Refresh token", example = "550e8400-e29b-41d4-a716-446655440000")
+    @Schema(description = "JWT refresh token", example = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...")
     @JsonProperty("refreshToken")
     private String refreshToken;
 
@@ -25,54 +34,18 @@ public class AuthResponse {
     @JsonProperty("expiresIn")
     private long expiresIn;
 
-    // Constructors
-    public AuthResponse() {
-    }
+    @Schema(description = "Token expiration timestamp")
+    @JsonProperty("expiresAt")
+    private LocalDateTime expiresAt;
 
-    public AuthResponse(String accessToken, String refreshToken, long expiresIn) {
+    @Schema(description = "User information")
+    @JsonProperty("user")
+    private UserResponse user;
+
+    public AuthResponse(String accessToken, @NotBlank(message = "Token is required") String token, long accessTokenExpirationSeconds) {
         this.accessToken = accessToken;
-        this.refreshToken = refreshToken;
-        this.expiresIn = expiresIn;
-    }
-
-    // Getters and Setters
-    public String getAccessToken() {
-        return accessToken;
-    }
-
-    public void setAccessToken(String accessToken) {
-        this.accessToken = accessToken;
-    }
-
-    public String getRefreshToken() {
-        return refreshToken;
-    }
-
-    public void setRefreshToken(String refreshToken) {
-        this.refreshToken = refreshToken;
-    }
-
-    public String getTokenType() {
-        return tokenType;
-    }
-
-    public void setTokenType(String tokenType) {
-        this.tokenType = tokenType;
-    }
-
-    public long getExpiresIn() {
-        return expiresIn;
-    }
-
-    public void setExpiresIn(long expiresIn) {
-        this.expiresIn = expiresIn;
-    }
-
-    @Override
-    public String toString() {
-        return "AuthResponse{" +
-                "tokenType='" + tokenType + '\'' +
-                ", expiresIn=" + expiresIn +
-                '}';
+        this.refreshToken = token;
+        this.expiresIn = accessTokenExpirationSeconds;
+        this.expiresAt = LocalDateTime.now().plusSeconds(accessTokenExpirationSeconds);
     }
 }

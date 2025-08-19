@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone XR",
+    "sku": "IPHXR-64GB-RED",
+    "variantName": "64GB Red",
+    "price": 749.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 275.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Red"
+    },
+    "imageUrls": ["https://images.example.com/iphone-xr-64gb-red.jpg"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 40,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone XR",
+    "sku": "IPHXR-128GB-BLU",
+    "variantName": "128GB Blue",
+    "price": 799.99,
+    "compareAtPrice": 799.99,
+    "costPrice": 295.00,
+    "position": 2,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-xr-128gb-blue.jpg"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone XS",
+    "sku": "IPHXS-64GB-GLD",
+    "variantName": "64GB Gold",
+    "price": 999.99,
+    "compareAtPrice": 999.99,
+    "costPrice": 380.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-xs-64gb-gold.jpg"],
+    "weight": 0.177,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone XS",
+    "sku": "IPHXS-256GB-SLV",
+    "variantName": "256GB Silver",
+    "price": 1149.99,
+    "compareAtPrice": 1149.99,
+    "costPrice": 400.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-xs-256gb-silver.jpg"],
+    "weight": 0.177,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 75,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone XS Max",
+    "sku": "IPHXSM-64GB-GRY",
+    "variantName": "64GB Space Gray",
+    "price": 1099.99,
+    "compareAtPrice": 1099.99,
+    "costPrice": 420.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/iphone-xs-max-64gb-gray.jpg"],
+    "weight": 0.208,
+    "dimensions": {
+      "length": 15.75,
+      "width": 7.78,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 16,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

@@ -1,0 +1,285 @@
+[
+  {
+    "name": "iPhone 15 Pro",
+    "shortDescription": "Apple iPhone 15 Pro with Titanium Design",
+    "longDescription": "The iPhone 15 Pro features a titanium design, A17 Pro chip, and advanced camera system with 3x telephoto lens. Available in multiple colors with premium materials and cutting-edge technology.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-15-pro.jpg",
+    "imageUrls": [
+      "https://images.example.com/iphone-15-pro-1.jpg",
+      "https://images.example.com/iphone-15-pro-2.jpg",
+      "https://images.example.com/iphone-15-pro-3.jpg"
+    ],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.187,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.08,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 17",
+      "screen_size": "6.1 inch",
+      "camera": "48MP Main + 12MP Ultra Wide + 12MP Telephoto",
+      "processor": "A17 Pro",
+      "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "Samsung Galaxy S24 Ultra",
+    "shortDescription": "Samsung Galaxy S24 Ultra Smartphone",
+    "longDescription": "Premium Android smartphone with S Pen, 200MP camera system, and 6.8-inch Dynamic AMOLED display. Features advanced AI capabilities and all-day battery life.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/galaxy-s24-ultra.jpg",
+    "imageUrls": [
+      "https://images.example.com/galaxy-s24-ultra-1.jpg",
+      "https://images.example.com/galaxy-s24-ultra-2.jpg"
+    ],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.232,
+    "dimensions": {
+      "length": 16.26,
+      "width": 7.9,
+      "height": 0.86,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Samsung",
+      "operating_system": "Android 14",
+      "screen_size": "6.8 inch",
+      "camera": "200MP Main + 50MP Periscope + 12MP Ultra Wide + 10MP Telephoto",
+      "processor": "Snapdragon 8 Gen 3",
+      "s_pen": "Included",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "MacBook Pro 16-inch",
+    "shortDescription": "Apple MacBook Pro 16-inch with M3 Pro chip",
+    "longDescription": "Professional laptop with M3 Pro chip, 18GB unified memory, and 512GB SSD storage. Features Liquid Retina XDR display and up to 22 hours of battery life.",
+    "basePrice": 2499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-16.jpg",
+    "imageUrls": [
+      "https://images.example.com/macbook-pro-16-1.jpg",
+      "https://images.example.com/macbook-pro-16-2.jpg"
+    ],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 2.15,
+    "dimensions": {
+      "length": 35.57,
+      "width": 24.81,
+      "height": 1.68,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "processor": "M3 Pro",
+      "ram": "18GB",
+      "storage": "512GB SSD",
+      "screen_size": "16.2 inch",
+      "display": "Liquid Retina XDR",
+      "operating_system": "macOS Sonoma"
+    }
+  },
+  {
+    "name": "Dell XPS 13",
+    "shortDescription": "Dell XPS 13 Ultra-portable Laptop",
+    "longDescription": "Ultra-portable laptop with Intel Core i7-1355U processor, 16GB LPDDR5 RAM, and 1TB PCIe NVMe SSD. Features 13.4-inch InfinityEdge display.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/dell-xps-13.jpg",
+    "imageUrls": [
+      "https://images.example.com/dell-xps-13-1.jpg",
+      "https://images.example.com/dell-xps-13-2.jpg"
+    ],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.19,
+    "dimensions": {
+      "length": 29.57,
+      "width": 19.9,
+      "height": 1.55,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Dell",
+      "processor": "Intel Core i7-1355U",
+      "ram": "16GB LPDDR5",
+      "storage": "1TB PCIe NVMe SSD",
+      "screen_size": "13.4 inch",
+      "display": "FHD+ InfinityEdge",
+      "operating_system": "Windows 11"
+    }
+  },
+  {
+    "name": "Sony WH-1000XM5 Headphones",
+    "shortDescription": "Premium Noise Cancelling Headphones",
+    "longDescription": "Industry-leading noise cancellation with exceptional sound quality. 30-hour battery life, multipoint connection, and adaptive sound control.",
+    "basePrice": 399.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/sony-wh1000xm5.jpg",
+    "imageUrls": [
+      "https://images.example.com/sony-wh1000xm5-1.jpg",
+      "https://images.example.com/sony-wh1000xm5-2.jpg"
+    ],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.25,
+    "dimensions": {
+      "length": 26.4,
+      "width": 19.5,
+      "height": 7.3,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Sony",
+      "type": "Over-ear",
+      "noise_cancellation": "Active",
+      "battery_life": "30 hours",
+      "connectivity": "Bluetooth 5.2, 3.5mm",
+      "features": ["Touch controls", "Voice assistant", "Quick charge"]
+    }
+  },
+  {
+    "name": "Classic Cotton T-Shirt",
+    "shortDescription": "Premium Men's Cotton T-Shirt",
+    "longDescription": "100% organic cotton t-shirt with comfortable fit. Pre-shrunk fabric ensures lasting shape and size. Perfect for casual wear and layering.",
+    "basePrice": 29.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/mens-tshirt.jpg",
+    "imageUrls": [
+      "https://images.example.com/mens-tshirt-1.jpg",
+      "https://images.example.com/mens-tshirt-2.jpg",
+      "https://images.example.com/mens-tshirt-3.jpg"
+    ],
+    "categoryNames": ["Clothing", "Men's Clothing", "Shirts"],
+    "weight": 0.15,
+    "dimensions": {
+      "length": 70.0,
+      "width": 50.0,
+      "height": 1.0,
+      "unit": "cm"
+    },
+    "attributes": {
+      "material": "100% Organic Cotton",
+      "fit": "Regular",
+      "care_instructions": "Machine wash cold, tumble dry low",
+      "features": ["Pre-shrunk", "Breathable", "Soft feel"],
+      "origin": "Made in USA"
+    }
+  },
+  {
+    "name": "Slim Fit Jeans",
+    "shortDescription": "Men's Slim Fit Denim Jeans",
+    "longDescription": "Classic blue denim jeans with slim fit design. Made from premium denim with comfortable stretch. Five-pocket styling with durable construction.",
+    "basePrice": 79.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/mens-jeans.jpg",
+    "imageUrls": [
+      "https://images.example.com/mens-jeans-1.jpg",
+      "https://images.example.com/mens-jeans-2.jpg"
+    ],
+    "categoryNames": ["Clothing", "Men's Clothing"],
+    "weight": 0.6,
+    "dimensions": {
+      "length": 108.0,
+      "width": 40.0,
+      "height": 2.0,
+      "unit": "cm"
+    },
+    "attributes": {
+      "material": "98% Cotton, 2% Elastane",
+      "fit": "Slim",
+      "wash": "Medium Blue",
+      "care_instructions": "Machine wash cold, hang dry",
+      "features": ["Stretch comfort", "Five pockets", "Button fly"]
+    }
+  },
+  {
+    "name": "Summer Floral Dress",
+    "shortDescription": "Women's Elegant Summer Dress",
+    "longDescription": "Beautiful floral print dress perfect for summer occasions. Lightweight fabric with comfortable A-line fit. Features adjustable straps and side pockets.",
+    "basePrice": 89.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/womens-dress.jpg",
+    "imageUrls": [
+      "https://images.example.com/womens-dress-1.jpg",
+      "https://images.example.com/womens-dress-2.jpg",
+      "https://images.example.com/womens-dress-3.jpg"
+    ],
+    "categoryNames": ["Clothing", "Women's Clothing", "Dresses"],
+    "weight": 0.25,
+    "dimensions": {
+      "length": 95.0,
+      "width": 45.0,
+      "height": 1.5,
+      "unit": "cm"
+    },
+    "attributes": {
+      "material": "100% Viscose",
+      "pattern": "Floral",
+      "fit": "A-line",
+      "care_instructions": "Hand wash cold, hang dry",
+      "features": ["Adjustable straps", "Side pockets", "Lined"]
+    }
+  },
+  {
+    "name": "Robot Vacuum Cleaner",
+    "shortDescription": "Smart Robot Vacuum with Mapping",
+    "longDescription": "Intelligent robot vacuum with advanced room mapping, app control, and automatic charging. Features powerful suction and works on multiple floor types.",
+    "basePrice": 299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/robot-vacuum.jpg",
+    "imageUrls": [
+      "https://images.example.com/robot-vacuum-1.jpg",
+      "https://images.example.com/robot-vacuum-2.jpg"
+    ],
+    "categoryNames": ["Home & Garden"],
+    "weight": 3.6,
+    "dimensions": {
+      "length": 35.0,
+      "width": 35.0,
+      "height": 9.2,
+      "unit": "cm"
+    },
+    "attributes": {
+      "suction_power": "2700Pa",
+      "battery_life": "150 minutes",
+      "connectivity": "Wi-Fi, App control",
+      "features": ["Room mapping", "Voice control", "Auto-charge", "HEPA filter"],
+      "compatible_floors": ["Hardwood", "Carpet", "Tile"]
+    }
+  },
+  {
+    "name": "Professional Tennis Racket",
+    "shortDescription": "Carbon Fiber Tennis Racket",
+    "longDescription": "Professional-grade tennis racket with carbon fiber construction. Designed for intermediate to advanced players seeking perfect balance of power and control.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/tennis-racket.jpg",
+    "imageUrls": [
+      "https://images.example.com/tennis-racket-1.jpg",
+      "https://images.example.com/tennis-racket-2.jpg"
+    ],
+    "categoryNames": ["Sports & Outdoors"],
+    "weight": 0.3,
+    "dimensions": {
+      "length": 68.5,
+      "width": 26.0,
+      "height": 2.5,
+      "unit": "cm"
+    },
+    "attributes": {
+      "material": "Carbon Fiber",
+      "weight": "300g",
+      "head_size": "100 sq in",
+      "string_pattern": "16x19",
+      "grip_size": "4 1/4 inch",
+      "skill_level": "Intermediate to Advanced"
+    }
+  }
+]

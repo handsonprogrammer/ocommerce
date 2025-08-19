@@ -1,7 +1,6 @@
 package com.ocommerce.services.user.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ocommerce.services.common.AbstractIntegrationTest;
 import com.ocommerce.services.user.dto.SignupRequest;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.hamcrest.Matchers.notNullValue;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
@@ -24,10 +22,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Testcontainers
 @ActiveProfiles("integration-test")
 @Transactional
-class UserControllerE2ETest extends AbstractIntegrationTest {
+class UserControllerE2ETest{
 
 
         @Autowired

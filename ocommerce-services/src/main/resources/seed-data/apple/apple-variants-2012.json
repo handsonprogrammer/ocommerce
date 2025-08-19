@@ -1,0 +1,110 @@
+[
+  {
+    "productName": "iPhone 5",
+    "sku": "IPH5-16GB-BLK",
+    "variantName": "16GB Black",
+    "price": 199.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 207.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Black & Slate"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5-16gb-black.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5",
+    "sku": "IPH5-32GB-BLK",
+    "variantName": "32GB Black",
+    "price": 299.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 227.00,
+    "position": 2,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Black & Slate"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5-32gb-black.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 75,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5",
+    "sku": "IPH5-64GB-BLK",
+    "variantName": "64GB Black",
+    "price": 399.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 247.00,
+    "position": 3,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Black & Slate"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5-64gb-black.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 40,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 5",
+    "sku": "IPH5-16GB-WHT",
+    "variantName": "16GB White",
+    "price": 199.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 207.00,
+    "position": 4,
+    "attributes": {
+      "storage": "16GB",
+      "color": "White & Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-5-16gb-white.jpg"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 90,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

@@ -1,14 +1,13 @@
 package com.ocommerce.services.user.repository;
 
-import com.ocommerce.services.common.AbstractIntegrationTest;
 import com.ocommerce.services.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ActiveProfiles;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.util.Optional;
 
@@ -18,10 +17,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Integration tests for UserRepository using TestContainers
  */
 @DataJpaTest
-@Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
+@EnableJpaAuditing
 @ActiveProfiles("integration-test")
-class UserRepositoryIntegrationTest  extends AbstractIntegrationTest {
+class UserRepositoryIntegrationTest {
 
     @Autowired
     private UserRepository userRepository;

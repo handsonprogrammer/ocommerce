@@ -1,6 +1,7 @@
 package com.ocommerce.services;
 
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.autoconfigure.data.mongo.AutoConfigureDataMongo;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
@@ -9,8 +10,9 @@ import org.springframework.test.context.ActiveProfiles;
  * Uses the test profile which has no MongoDB URI configured,
  * so MongoDB configuration is disabled via @ConditionalOnProperty.
  */
-@SpringBootTest
 @ActiveProfiles("test")
+@AutoConfigureDataMongo
+@SpringBootTest
 class OCommerceServicesApplicationTests {
 
     @Test

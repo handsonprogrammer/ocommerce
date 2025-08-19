@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone 11",
+    "sku": "IPH11-64GB-PUR",
+    "variantName": "64GB Purple",
+    "price": 699.99,
+    "compareAtPrice": 699.99,
+    "costPrice": 315.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Purple"
+    },
+    "imageUrls": ["https://images.example.com/iphone-11-64gb-purple.jpg"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 250,
+      "lowStockThreshold": 50,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 11",
+    "sku": "IPH11-128GB-GRN",
+    "variantName": "128GB Green",
+    "price": 749.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 335.00,
+    "position": 2,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Green"
+    },
+    "imageUrls": ["https://images.example.com/iphone-11-128gb-green.jpg"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 180,
+      "lowStockThreshold": 35,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 11 Pro",
+    "sku": "IPH11P-64GB-MDN",
+    "variantName": "64GB Midnight Green",
+    "price": 999.99,
+    "compareAtPrice": 999.99,
+    "costPrice": 450.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Midnight Green"
+    },
+    "imageUrls": ["https://images.example.com/iphone-11-pro-64gb-midnight-green.jpg"],
+    "weight": 0.188,
+    "dimensions": {
+      "length": 14.4,
+      "width": 7.14,
+      "height": 0.81,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 11 Pro",
+    "sku": "IPH11P-256GB-SLV",
+    "variantName": "256GB Silver",
+    "price": 1149.99,
+    "compareAtPrice": 1149.99,
+    "costPrice": 470.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-11-pro-256gb-silver.jpg"],
+    "weight": 0.188,
+    "dimensions": {
+      "length": 14.4,
+      "width": 7.14,
+      "height": 0.81,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 85,
+      "lowStockThreshold": 18,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 11 Pro Max",
+    "sku": "IPH11PM-64GB-GLD",
+    "variantName": "64GB Gold",
+    "price": 1099.99,
+    "compareAtPrice": 1099.99,
+    "costPrice": 490.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-11-pro-max-64gb-gold.jpg"],
+    "weight": 0.226,
+    "dimensions": {
+      "length": 15.85,
+      "width": 7.78,
+      "height": 0.81,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 90,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

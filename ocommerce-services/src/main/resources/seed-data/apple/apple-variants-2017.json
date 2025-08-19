@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone 8",
+    "sku": "IPH8-64GB-SLV",
+    "variantName": "64GB Silver",
+    "price": 699.99,
+    "compareAtPrice": 699.99,
+    "costPrice": 250.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-8-64gb-silver.jpg"],
+    "weight": 0.148,
+    "dimensions": {
+      "length": 13.84,
+      "width": 6.73,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 8",
+    "sku": "IPH8-256GB-GLD",
+    "variantName": "256GB Gold",
+    "price": 849.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 270.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-8-256gb-gold.jpg"],
+    "weight": 0.148,
+    "dimensions": {
+      "length": 13.84,
+      "width": 6.73,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 85,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 8 Plus",
+    "sku": "IPH8P-64GB-GRY",
+    "variantName": "64GB Space Gray",
+    "price": 799.99,
+    "compareAtPrice": 799.99,
+    "costPrice": 290.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/iphone-8-plus-64gb-gray.jpg"],
+    "weight": 0.202,
+    "dimensions": {
+      "length": 15.82,
+      "width": 7.81,
+      "height": 0.75,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 70,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone X",
+    "sku": "IPHX-64GB-SLV",
+    "variantName": "64GB Silver",
+    "price": 999.99,
+    "compareAtPrice": 999.99,
+    "costPrice": 370.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-x-64gb-silver.jpg"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone X",
+    "sku": "IPHX-256GB-GRY",
+    "variantName": "256GB Space Gray",
+    "price": 1149.99,
+    "compareAtPrice": 1149.99,
+    "costPrice": 390.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/iphone-x-256gb-gray.jpg"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 95,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

@@ -4,8 +4,7 @@ import com.ocommerce.services.security.JwtUtil;
 import com.ocommerce.services.user.domain.RefreshToken;
 import com.ocommerce.services.user.domain.User;
 import com.ocommerce.services.user.repository.RefreshTokenRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -17,11 +16,10 @@ import java.util.UUID;
 /**
  * Service for managing refresh tokens
  */
+@Slf4j
 @Service
 @Transactional
 public class RefreshTokenService {
-
-    private static final Logger logger = LoggerFactory.getLogger(RefreshTokenService.class);
 
     private final RefreshTokenRepository refreshTokenRepository;
     private final JwtUtil jwtUtil;
@@ -49,7 +47,7 @@ public class RefreshTokenService {
         refreshToken.setExpiryDate(jwtUtil.getRefreshTokenExpiration());
 
         RefreshToken savedToken = refreshTokenRepository.save(refreshToken);
-        logger.info("Created refresh token for user: {}", user.getEmail());
+        log.info("Created refresh token for user: {}", user.getEmail());
 
         return savedToken;
     }
@@ -94,7 +92,7 @@ public class RefreshTokenService {
                 .orElseThrow(() -> new InvalidRefreshTokenException("Refresh token not found"));
 
         if (!refreshToken.isValid()) {
-            logger.warn("Invalid refresh token used: expired or revoked");
+            log.warn("Invalid refresh token used: expired or revoked");
             throw new InvalidRefreshTokenException("Refresh token is invalid");
         }
 
@@ -110,7 +108,7 @@ public class RefreshTokenService {
      */
     public void revokeTokenForUser(String token, User user) {
         refreshTokenRepository.revokeByTokenAndUser(token, user);
-        logger.info("Refresh token revoked for user: {}", user.getId());
+        log.info("Refresh token revoked for user: {}", user.getId());
     }
 
     /**
@@ -122,7 +120,7 @@ public class RefreshTokenService {
      */
     public void revokeAllTokensForUser(User user) {
         refreshTokenRepository.revokeAllByUser(user);
-        logger.info("All refresh tokens revoked for user: {}", user.getEmail());
+        log.info("All refresh tokens revoked for user: {}", user.getEmail());
     }
 
     /**
@@ -134,7 +132,7 @@ public class RefreshTokenService {
      */
     public void deleteToken(RefreshToken refreshToken) {
         refreshTokenRepository.delete(refreshToken);
-        logger.info("Refresh token deleted for user: {}", refreshToken.getUser().getEmail());
+        log.info("Refresh token deleted for user: {}", refreshToken.getUser().getEmail());
     }
 
     /**
@@ -144,7 +142,7 @@ public class RefreshTokenService {
      */
     public void cleanupExpiredTokens() {
         refreshTokenRepository.deleteExpiredTokens(LocalDateTime.now());
-        logger.info("Cleaned up expired refresh tokens");
+        log.info("Cleaned up expired refresh tokens");
     }
 
     /**
@@ -154,7 +152,7 @@ public class RefreshTokenService {
      */
     public void cleanupRevokedTokens() {
         refreshTokenRepository.deleteRevokedTokens();
-        logger.info("Cleaned up revoked refresh tokens");
+        log.info("Cleaned up revoked refresh tokens");
     }
 
     /**

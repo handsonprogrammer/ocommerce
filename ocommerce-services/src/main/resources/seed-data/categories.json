@@ -1,0 +1,119 @@
+[
+  {
+    "name": "Electronics",
+    "description": "Electronic devices and gadgets",
+    "thumbnailUrl": "https://images.example.com/categories/electronics.jpg",
+    "parentName": null,
+    "level": 0,
+    "path": "/electronics",
+    "sortOrder": 1
+  },
+  {
+    "name": "Clothing",
+    "description": "Fashion and apparel",
+    "thumbnailUrl": "https://images.example.com/categories/clothing.jpg",
+    "parentName": null,
+    "level": 0,
+    "path": "/clothing",
+    "sortOrder": 2
+  },
+  {
+    "name": "Home & Garden",
+    "description": "Home improvement and garden supplies",
+    "thumbnailUrl": "https://images.example.com/categories/home-garden.jpg",
+    "parentName": null,
+    "level": 0,
+    "path": "/home-garden",
+    "sortOrder": 3
+  },
+  {
+    "name": "Sports & Outdoors",
+    "description": "Sports equipment and outdoor gear",
+    "thumbnailUrl": "https://images.example.com/categories/sports.jpg",
+    "parentName": null,
+    "level": 0,
+    "path": "/sports-outdoors",
+    "sortOrder": 4
+  },
+  {
+    "name": "Computers",
+    "description": "Laptops, desktops, and accessories",
+    "thumbnailUrl": "https://images.example.com/categories/computers.jpg",
+    "parentName": "Electronics",
+    "level": 1,
+    "path": "/electronics/computers",
+    "sortOrder": 1
+  },
+  {
+    "name": "Mobile & Tablets",
+    "description": "Smartphones and tablets",
+    "thumbnailUrl": "https://images.example.com/categories/mobile.jpg",
+    "parentName": "Electronics",
+    "level": 1,
+    "path": "/electronics/mobile-tablets",
+    "sortOrder": 2
+  },
+  {
+    "name": "Audio & Video",
+    "description": "Headphones, speakers, and entertainment",
+    "thumbnailUrl": "https://images.example.com/categories/audio.jpg",
+    "parentName": "Electronics",
+    "level": 1,
+    "path": "/electronics/audio-video",
+    "sortOrder": 3
+  },
+  {
+    "name": "Laptops",
+    "description": "Portable computers",
+    "thumbnailUrl": "https://images.example.com/categories/laptops.jpg",
+    "parentName": "Computers",
+    "level": 2,
+    "path": "/electronics/computers/laptops",
+    "sortOrder": 1
+  },
+  {
+    "name": "Desktops",
+    "description": "Desktop computers",
+    "thumbnailUrl": "https://images.example.com/categories/desktops.jpg",
+    "parentName": "Computers",
+    "level": 2,
+    "path": "/electronics/computers/desktops",
+    "sortOrder": 2
+  },
+  {
+    "name": "Men's Clothing",
+    "description": "Men's fashion and apparel",
+    "thumbnailUrl": "https://images.example.com/categories/mens-clothing.jpg",
+    "parentName": "Clothing",
+    "level": 1,
+    "path": "/clothing/mens",
+    "sortOrder": 1
+  },
+  {
+    "name": "Women's Clothing",
+    "description": "Women's fashion and apparel",
+    "thumbnailUrl": "https://images.example.com/categories/womens-clothing.jpg",
+    "parentName": "Clothing",
+    "level": 1,
+    "path": "/clothing/womens",
+    "sortOrder": 2
+  },
+  {
+    "name": "Shirts",
+    "description": "Men's shirts and tops",
+    "thumbnailUrl": "https://images.example.com/categories/mens-shirts.jpg",
+    "parentName": "Men's Clothing",
+    "level": 2,
+    "path": "/clothing/mens/shirts",
+    "sortOrder": 1
+  },
+  {
+    "name": "Dresses",
+    "description": "Women's dresses",
+    "thumbnailUrl": "https://images.example.com/categories/womens-dresses.jpg",
+    "parentName": "Women's Clothing",
+    "level": 2,
+    "path": "/clothing/womens/dresses",
+    "sortOrder": 1
+  }
+]

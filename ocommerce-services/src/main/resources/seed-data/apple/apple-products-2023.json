@@ -1,0 +1,147 @@
+[
+  {
+    "name": "iPhone 15 Pro",
+    "shortDescription": "Pro iPhone with Titanium design and A17 Pro chip",
+    "longDescription": "iPhone 15 Pro features titanium design, A17 Pro chip, and Pro camera system with 3x Telephoto lens. Action Button replaces Ring/Silent switch.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-15-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-15-pro-1.jpg", "https://images.example.com/iphone-15-pro-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.187,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.08,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 17",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "48MP Main + 12MP Ultra Wide + 12MP Telephoto (3x)",
+      "processor": "A17 Pro",
+      "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3, USB-C"
+    }
+  },
+  {
+    "name": "iPhone 15 Pro Max",
+    "shortDescription": "Largest Pro iPhone with 5x Telephoto",
+    "longDescription": "iPhone 15 Pro Max with 6.7-inch display, A17 Pro chip, and Pro camera system with 5x Telephoto lens. Features titanium design and Action Button.",
+    "basePrice": 1199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-15-pro-max.jpg",
+    "imageUrls": ["https://images.example.com/iphone-15-pro-max-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.221,
+    "dimensions": {
+      "length": 15.99,
+      "width": 7.68,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 17",
+      "screen_size": "6.7 inch Super Retina XDR",
+      "camera": "48MP Main + 12MP Ultra Wide + 12MP Telephoto (5x)",
+      "processor": "A17 Pro",
+      "connectivity": "5G, Wi-Fi 6E, Bluetooth 5.3, USB-C"
+    }
+  },
+  {
+    "name": "MacBook Pro 14-inch M3",
+    "shortDescription": "Pro laptop with M3 chip",
+    "longDescription": "14-inch MacBook Pro with M3 chip, Liquid Retina XDR display, and up to 22 hours of battery life. Features three Thunderbolt 4 ports.",
+    "basePrice": 1599.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-14-m3.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-14-m3-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.55,
+    "dimensions": {
+      "length": 31.26,
+      "width": 22.12,
+      "height": 1.55,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Sonoma",
+      "screen_size": "14.2 inch Liquid Retina XDR",
+      "processor": "Apple M3",
+      "connectivity": "Wi-Fi 6E, Bluetooth 5.3, Thunderbolt 4"
+    }
+  },
+  {
+    "name": "MacBook Pro 16-inch M3",
+    "shortDescription": "Largest Pro laptop with M3 chip",
+    "longDescription": "16-inch MacBook Pro with M3 Pro or M3 Max chip, Liquid Retina XDR display, and up to 22 hours of battery life.",
+    "basePrice": 2499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-16-m3.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-16-m3-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 2.15,
+    "dimensions": {
+      "length": 35.57,
+      "width": 24.81,
+      "height": 1.68,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Sonoma",
+      "screen_size": "16.2 inch Liquid Retina XDR",
+      "processor": "Apple M3 Pro",
+      "connectivity": "Wi-Fi 6E, Bluetooth 5.3, Thunderbolt 4"
+    }
+  },
+  {
+    "name": "iMac 24-inch M3",
+    "shortDescription": "All-in-one desktop with M3 chip",
+    "longDescription": "24-inch iMac with M3 chip, 4.5K Retina display, and available in seven vibrant colors. Features a 1080p FaceTime HD camera.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/imac-24-m3.jpg",
+    "imageUrls": ["https://images.example.com/imac-24-m3-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 4.46,
+    "dimensions": {
+      "length": 54.7,
+      "width": 46.1,
+      "height": 14.7,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Sonoma",
+      "screen_size": "24 inch 4.5K Retina",
+      "processor": "Apple M3",
+      "connectivity": "Wi-Fi 6E, Bluetooth 5.3, Thunderbolt 4"
+    }
+  },
+  {
+    "name": "AirPods Pro (3rd generation)",
+    "shortDescription": "Pro wireless earbuds with adaptive audio",
+    "longDescription": "AirPods Pro with H2 chip, Adaptive Audio, and improved Active Noise Cancellation. Features USB-C charging case.",
+    "basePrice": 249.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/airpods-pro-3rd.jpg",
+    "imageUrls": ["https://images.example.com/airpods-pro-3rd-1.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.061,
+    "dimensions": {
+      "length": 6.06,
+      "width": 4.52,
+      "height": 2.14,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "chip": "H2",
+      "connectivity": "Bluetooth 5.3",
+      "features": "Active Noise Cancellation, Adaptive Audio"
+    }
+  }
+]

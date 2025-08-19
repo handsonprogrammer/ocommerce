@@ -1,0 +1,52 @@
+[
+  {
+    "name": "iPhone X",
+    "shortDescription": "iPhone with Face ID and edge-to-edge display",
+    "longDescription": "iPhone X features Face ID facial recognition, edge-to-edge Super Retina display, wireless charging, and A11 Bionic chip.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-x.jpg",
+    "imageUrls": ["https://images.example.com/iphone-x-1.jpg", "https://images.example.com/iphone-x-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.36,
+      "width": 7.09,
+      "height": 0.77,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 11",
+      "screen_size": "5.8 inch Super Retina OLED",
+      "camera": "12MP dual camera with Portrait mode",
+      "processor": "A11 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, Face ID, Wireless charging"
+    }
+  },
+  {
+    "name": "iPhone 8",
+    "shortDescription": "iPhone with wireless charging and A11 Bionic",
+    "longDescription": "iPhone 8 features wireless charging, A11 Bionic chip, True Tone display, and improved cameras.",
+    "basePrice": 699.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-8.jpg",
+    "imageUrls": ["https://images.example.com/iphone-8-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.148,
+    "dimensions": {
+      "length": 13.84,
+      "width": 6.73,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 11",
+      "screen_size": "4.7 inch Retina HD",
+      "camera": "12MP with OIS",
+      "processor": "A11 Bionic",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, Wireless charging"
+    }
+  }
+]

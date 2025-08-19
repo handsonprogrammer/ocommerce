@@ -1,0 +1,130 @@
+[
+  {
+    "productName": "iPhone 3G",
+    "sku": "IPH3G-8GB-BLK",
+    "variantName": "8GB Black",
+    "price": 199.99,
+    "compareAtPrice": 299.99,
+    "costPrice": 120.00,
+    "position": 1,
+    "attributes": {
+      "storage": "8GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3g-8gb-black.jpg"],
+    "weight": 0.133,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 3G",
+    "sku": "IPH3G-8GB-WHT",
+    "variantName": "8GB White",
+    "price": 199.99,
+    "compareAtPrice": 299.99,
+    "costPrice": 120.00,
+    "position": 2,
+    "attributes": {
+      "storage": "8GB",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3g-8gb-white.jpg"],
+    "weight": 0.133,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 3G",
+    "sku": "IPH3G-16GB-BLK",
+    "variantName": "16GB Black",
+    "price": 299.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 180.00,
+    "position": 3,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3g-16gb-black.jpg"],
+    "weight": 0.133,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 3G",
+    "sku": "IPH3G-16GB-WHT",
+    "variantName": "16GB White",
+    "price": 299.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 180.00,
+    "position": 4,
+    "attributes": {
+      "storage": "16GB",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/iphone-3g-16gb-white.jpg"],
+    "weight": 0.133,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 5,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Air",
+    "sku": "MBA08-80GB-SIL",
+    "variantName": "1.6GHz 80GB Silver",
+    "price": 1799.99,
+    "compareAtPrice": 1999.99,
+    "costPrice": 1200.00,
+    "position": 1,
+    "attributes": {
+      "processor": "1.6GHz Intel Core 2 Duo",
+      "storage": "80GB HDD",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/macbook-air-2008-80gb.jpg"],
+    "weight": 1.36,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 3,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Air",
+    "sku": "MBA08-64GB-SIL",
+    "variantName": "1.8GHz 64GB SSD Silver",
+    "price": 3098.99,
+    "compareAtPrice": 3298.99,
+    "costPrice": 2100.00,
+    "position": 2,
+    "attributes": {
+      "processor": "1.8GHz Intel Core 2 Duo",
+      "storage": "64GB SSD",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/macbook-air-2008-64gb.jpg"],
+    "weight": 1.36,
+    "inventory": {
+      "quantity": 0,
+      "lowStockThreshold": 3,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

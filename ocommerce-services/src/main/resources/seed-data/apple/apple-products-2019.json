@@ -1,0 +1,128 @@
+[
+  {
+    "name": "iPhone 11",
+    "shortDescription": "iPhone with dual camera system and A13 Bionic",
+    "longDescription": "iPhone 11 with dual camera system, A13 Bionic chip, and all-day battery life. Just the right amount of everything.",
+    "basePrice": 699.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-11.jpg",
+    "imageUrls": ["https://images.example.com/iphone-11-1.jpg", "https://images.example.com/iphone-11-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.194,
+    "dimensions": {
+      "length": 15.09,
+      "width": 7.57,
+      "height": 0.83,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 13.0",
+      "screen_size": "6.1 inch Liquid Retina",
+      "camera": "Dual 12MP Ultra Wide and Wide",
+      "processor": "A13 Bionic",
+      "connectivity": "4G LTE, Wi-Fi 6, Bluetooth, GPS",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "iPhone 11 Pro",
+    "shortDescription": "Pro iPhone with triple camera system",
+    "longDescription": "iPhone 11 Pro with triple camera system, A13 Bionic chip, and Super Retina XDR display. Pro cameras. Pro display. Pro performance.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-11-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-11-pro-1.jpg", "https://images.example.com/iphone-11-pro-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.188,
+    "dimensions": {
+      "length": 14.4,
+      "width": 7.14,
+      "height": 0.81,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 13.0",
+      "screen_size": "5.8 inch Super Retina XDR",
+      "camera": "Triple 12MP Ultra Wide, Wide, Telephoto",
+      "processor": "A13 Bionic",
+      "connectivity": "4G LTE, Wi-Fi 6, Bluetooth, GPS",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "iPhone 11 Pro Max",
+    "shortDescription": "Largest Pro iPhone with triple cameras",
+    "longDescription": "iPhone 11 Pro Max with 6.5-inch Super Retina XDR display, triple camera system, and A13 Bionic chip. The biggest Pro display ever.",
+    "basePrice": 1099.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-11-pro-max.jpg",
+    "imageUrls": ["https://images.example.com/iphone-11-pro-max-1.jpg", "https://images.example.com/iphone-11-pro-max-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.226,
+    "dimensions": {
+      "length": 15.8,
+      "width": 7.81,
+      "height": 0.81,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 13.0",
+      "screen_size": "6.5 inch Super Retina XDR",
+      "camera": "Triple 12MP Ultra Wide, Wide, Telephoto",
+      "processor": "A13 Bionic",
+      "connectivity": "4G LTE, Wi-Fi 6, Bluetooth, GPS",
+      "water_resistance": "IP68"
+    }
+  },
+  {
+    "name": "iPad Air 10.5-inch",
+    "shortDescription": "iPad Air with A12 Bionic chip",
+    "longDescription": "10.5-inch iPad Air with A12 Bionic chip, support for Apple Pencil, and Smart Keyboard. Serious performance in a thin and light design.",
+    "basePrice": 499.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-air-10-2019.jpg",
+    "imageUrls": ["https://images.example.com/ipad-air-10-2019-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.456,
+    "dimensions": {
+      "length": 25.06,
+      "width": 17.41,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 12.2",
+      "screen_size": "10.5 inch Retina",
+      "camera": "8MP rear, 7MP front",
+      "processor": "A12 Bionic",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "Mac Pro",
+    "shortDescription": "Modular workstation with Intel Xeon processors",
+    "longDescription": "Mac Pro with Intel Xeon W processors, powerful graphics, and modular design. Pro to the core.",
+    "basePrice": 5999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/mac-pro-2019.jpg",
+    "imageUrls": ["https://images.example.com/mac-pro-2019-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 17.8,
+    "dimensions": {
+      "length": 21.8,
+      "width": 45.0,
+      "height": 52.9,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS 10.15",
+      "processor": "Intel Xeon W",
+      "connectivity": "Wi-Fi, Bluetooth, Ethernet"
+    }
+  }
+]

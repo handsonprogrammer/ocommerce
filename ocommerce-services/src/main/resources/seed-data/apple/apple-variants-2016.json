@@ -1,0 +1,164 @@
+[
+  {
+    "productName": "iPhone SE",
+    "sku": "IPHSE-16GB-SLV",
+    "variantName": "16GB Silver",
+    "price": 399.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 160.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-se-16gb-silver.jpg"],
+    "weight": 0.113,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 40,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone SE",
+    "sku": "IPHSE-64GB-GLD",
+    "variantName": "64GB Gold",
+    "price": 449.99,
+    "compareAtPrice": 449.99,
+    "costPrice": 180.00,
+    "position": 2,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-se-64gb-gold.jpg"],
+    "weight": 0.113,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 7",
+    "sku": "IPH7-32GB-BLK",
+    "variantName": "32GB Jet Black",
+    "price": 649.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 220.00,
+    "position": 1,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Jet Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-7-32gb-jet-black.jpg"],
+    "weight": 0.138,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 7",
+    "sku": "IPH7-128GB-RSG",
+    "variantName": "128GB Rose Gold",
+    "price": 749.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 240.00,
+    "position": 2,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Rose Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-7-128gb-rose-gold.jpg"],
+    "weight": 0.138,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 95,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 7",
+    "sku": "IPH7-256GB-BLK",
+    "variantName": "256GB Matte Black",
+    "price": 849.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 260.00,
+    "position": 3,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Matte Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-7-256gb-matte-black.jpg"],
+    "weight": 0.138,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 60,
+      "lowStockThreshold": 12,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 7 Plus",
+    "sku": "IPH7P-32GB-BLK",
+    "variantName": "32GB Jet Black",
+    "price": 769.99,
+    "compareAtPrice": 769.99,
+    "costPrice": 270.00,
+    "position": 1,
+    "attributes": {
+      "storage": "32GB",
+      "color": "Jet Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-7-plus-32gb-jet-black.jpg"],
+    "weight": 0.188,
+    "dimensions": {
+      "length": 15.88,
+      "width": 7.79,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 80,
+      "lowStockThreshold": 18,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

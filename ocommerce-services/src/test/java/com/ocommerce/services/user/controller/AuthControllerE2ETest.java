@@ -1,7 +1,6 @@
 package com.ocommerce.services.user.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.ocommerce.services.common.AbstractIntegrationTest;
 import com.ocommerce.services.user.dto.LoginRequest;
 import com.ocommerce.services.user.dto.SignupRequest;
 import org.junit.jupiter.api.Test;
@@ -12,7 +11,6 @@ import org.springframework.http.MediaType;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.transaction.annotation.Transactional;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
@@ -23,10 +21,9 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-@Testcontainers
 @ActiveProfiles("integration-test")
 @Transactional
-class AuthControllerE2ETest extends AbstractIntegrationTest {
+class AuthControllerE2ETest{
 
 
     @Autowired

@@ -1,0 +1,136 @@
+[
+  {
+    "name": "iPhone 12",
+    "shortDescription": "5G iPhone with A14 Bionic chip",
+    "longDescription": "iPhone 12 features 5G connectivity, A14 Bionic chip, 6.1-inch Super Retina XDR display with Ceramic Shield, and dual-camera system with Night mode.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-12.jpg",
+    "imageUrls": ["https://images.example.com/iphone-12-1.jpg", "https://images.example.com/iphone-12-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.164,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 14",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP Ultra Wide + 12MP Wide",
+      "processor": "A14 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0, MagSafe, Wireless charging",
+      "colors": ["Black", "White", "Red", "Green", "Blue", "Purple"],
+      "storage_options": ["64GB", "128GB", "256GB"]
+    }
+  },
+  {
+    "name": "iPhone 12 Pro",
+    "shortDescription": "Pro iPhone with LiDAR Scanner",
+    "longDescription": "iPhone 12 Pro features 6.1-inch Super Retina XDR display, A14 Bionic chip, triple-camera system with LiDAR Scanner, and premium build quality.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-12-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-12-pro-1.jpg", "https://images.example.com/iphone-12-pro-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.189,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 14",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP Ultra Wide + 12MP Wide + 12MP Telephoto + LiDAR",
+      "processor": "A14 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0, MagSafe",
+      "colors": ["Graphite", "Silver", "Gold", "Pacific Blue"],
+      "storage_options": ["128GB", "256GB", "512GB"]
+    }
+  },
+  {
+    "name": "MacBook Air (M1)",
+    "shortDescription": "MacBook Air with Apple M1 chip",
+    "longDescription": "MacBook Air with Apple M1 chip delivers incredible performance and battery life. Features 13.3-inch Retina display and fanless design for silent operation.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-m1.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-m1-1.jpg", "https://images.example.com/macbook-air-m1-2.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.29,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Big Sur",
+      "processor": "Apple M1",
+      "screen_size": "13.3 inch Retina",
+      "memory": "8GB unified memory (configurable to 16GB)",
+      "storage": "256GB SSD (configurable to 2TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt/USB 4",
+      "colors": ["Space Gray", "Silver", "Gold"]
+    }
+  },
+  {
+    "name": "MacBook Pro 13-inch (M1)",
+    "shortDescription": "Pro laptop with Apple M1 chip",
+    "longDescription": "13-inch MacBook Pro with Apple M1 chip delivers professional performance with active cooling system, Touch Bar, and studio-quality mics.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-13-m1.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-13-m1-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.4,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.56,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Big Sur",
+      "processor": "Apple M1",
+      "screen_size": "13.3 inch Retina",
+      "memory": "8GB unified memory (configurable to 16GB)",
+      "storage": "256GB SSD (configurable to 2TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt/USB 4",
+      "colors": ["Space Gray", "Silver"]
+    }
+  },
+  {
+    "name": "iPad Air (4th generation)",
+    "shortDescription": "iPad Air with A14 Bionic chip",
+    "longDescription": "iPad Air with A14 Bionic chip, 10.9-inch Liquid Retina display, and support for Apple Pencil (2nd generation) and Magic Keyboard.",
+    "basePrice": 599.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-air-4th.jpg",
+    "imageUrls": ["https://images.example.com/ipad-air-4th-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.458,
+    "dimensions": {
+      "length": 24.76,
+      "width": 17.85,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 14",
+      "processor": "A14 Bionic",
+      "screen_size": "10.9 inch Liquid Retina",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, USB-C",
+      "colors": ["Space Gray", "Silver", "Rose Gold", "Green", "Sky Blue"],
+      "storage_options": ["64GB", "256GB"]
+    }
+  }
+]

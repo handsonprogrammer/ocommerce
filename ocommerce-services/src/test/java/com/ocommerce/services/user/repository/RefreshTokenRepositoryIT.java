@@ -1,6 +1,5 @@
 package com.ocommerce.services.user.repository;
 
-import com.ocommerce.services.common.AbstractIntegrationTest;
 import com.ocommerce.services.user.domain.RefreshToken;
 import com.ocommerce.services.user.domain.User;
 import org.junit.jupiter.api.BeforeEach;
@@ -8,8 +7,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.test.context.ActiveProfiles;
-import org.testcontainers.junit.jupiter.Testcontainers;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -22,10 +21,10 @@ import static org.assertj.core.api.Assertions.assertThat;
  * Integration tests for RefreshTokenRepository using TestContainers
  */
 @DataJpaTest
-@Testcontainers
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles("integration-test")
-class RefreshTokenRepositoryIT extends AbstractIntegrationTest {
+@ActiveProfiles("test")
+@EnableJpaAuditing
+class RefreshTokenRepositoryIT {
 
     @Autowired
     private RefreshTokenRepository refreshTokenRepository;

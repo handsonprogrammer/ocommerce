@@ -1,0 +1,169 @@
+[
+  {
+    "firstName": "John",
+    "lastName": "Admin",
+    "email": "admin@ocommerce.com",
+    "password": "Admin123!",
+    "phoneNumber": "+1-555-0001",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": []
+  },
+  {
+    "firstName": "Alice",
+    "lastName": "Johnson",
+    "email": "alice.johnson@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0002",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": [
+      {
+        "type": "Home",
+        "streetAddress": "123 Main St",
+        "addressLine2": "",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10001",
+        "country": "USA",
+        "isDefault": true
+      },
+      {
+        "type": "Work",
+        "streetAddress": "456 Business Ave",
+        "addressLine2": "Suite 200",
+        "city": "New York",
+        "state": "NY",
+        "postalCode": "10002",
+        "country": "USA",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "firstName": "Bob",
+    "lastName": "Smith",
+    "email": "bob.smith@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0003",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": [
+      {
+        "type": "Home",
+        "streetAddress": "789 Oak Street",
+        "addressLine2": "",
+        "city": "Los Angeles",
+        "state": "CA",
+        "postalCode": "90210",
+        "country": "USA",
+        "isDefault": true
+      }
+    ]
+  },
+  {
+    "firstName": "Carol",
+    "lastName": "Brown",
+    "email": "carol.brown@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0004",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": [
+      {
+        "type": "Home",
+        "streetAddress": "321 Pine Road",
+        "addressLine2": "Apt 5B",
+        "city": "Chicago",
+        "state": "IL",
+        "postalCode": "60601",
+        "country": "USA",
+        "isDefault": true
+      },
+      {
+        "type": "Office",
+        "streetAddress": "654 Corporate Blvd",
+        "addressLine2": "Floor 15",
+        "city": "Chicago",
+        "state": "IL",
+        "postalCode": "60602",
+        "country": "USA",
+        "isDefault": false
+      }
+    ]
+  },
+  {
+    "firstName": "David",
+    "lastName": "Wilson",
+    "email": "david.wilson@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0005",
+    "emailVerified": false,
+    "accountLocked": false,
+    "addresses": []
+  },
+  {
+    "firstName": "Emma",
+    "lastName": "Davis",
+    "email": "emma.davis@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0006",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": [
+      {
+        "type": "Home",
+        "streetAddress": "987 Elm Street",
+        "addressLine2": "",
+        "city": "Seattle",
+        "state": "WA",
+        "postalCode": "98101",
+        "country": "USA",
+        "isDefault": true
+      }
+    ]
+  },
+  {
+    "firstName": "Frank",
+    "lastName": "Miller",
+    "email": "frank.miller@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0007",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": [
+      {
+        "type": "Home",
+        "streetAddress": "555 Maple Ave",
+        "addressLine2": "Unit 12",
+        "city": "Miami",
+        "state": "FL",
+        "postalCode": "33101",
+        "country": "USA",
+        "isDefault": true
+      }
+    ]
+  },
+  {
+    "firstName": "Grace",
+    "lastName": "Taylor",
+    "email": "grace.taylor@email.com",
+    "password": "Password123!",
+    "phoneNumber": "+1-555-0008",
+    "emailVerified": true,
+    "accountLocked": false,
+    "addresses": [
+      {
+        "type": "Home",
+        "streetAddress": "777 Cedar Lane",
+        "addressLine2": "",
+        "city": "Denver",
+        "state": "CO",
+        "postalCode": "80201",
+        "country": "USA",
+        "isDefault": true
+      }
+    ]
+  }
+
+]

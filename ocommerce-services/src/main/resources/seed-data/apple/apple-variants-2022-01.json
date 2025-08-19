@@ -1,0 +1,190 @@
+[
+  {
+    "productName": "iPhone 14",
+    "sku": "IPH14-128GB-BLU",
+    "variantName": "128GB Blue",
+    "price": 799.99,
+    "compareAtPrice": 799.99,
+    "costPrice": 350.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-14-128gb-blue.jpg"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 250,
+      "lowStockThreshold": 50,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 14",
+    "sku": "IPH14-256GB-PUR",
+    "variantName": "256GB Purple",
+    "price": 899.99,
+    "compareAtPrice": 899.99,
+    "costPrice": 370.00,
+    "position": 2,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Purple"
+    },
+    "imageUrls": ["https://images.example.com/iphone-14-256gb-purple.jpg"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 180,
+      "lowStockThreshold": 35,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 14 Pro",
+    "sku": "IPH14P-128GB-DPU",
+    "variantName": "128GB Deep Purple",
+    "price": 999.99,
+    "compareAtPrice": 999.99,
+    "costPrice": 480.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Deep Purple"
+    },
+    "imageUrls": ["https://images.example.com/iphone-14-pro-128gb-deep-purple.jpg"],
+    "weight": 0.206,
+    "dimensions": {
+      "length": 14.75,
+      "width": 7.15,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 14 Pro",
+    "sku": "IPH14P-512GB-SLV",
+    "variantName": "512GB Silver",
+    "price": 1199.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 520.00,
+    "position": 2,
+    "attributes": {
+      "storage": "512GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-14-pro-512gb-silver.jpg"],
+    "weight": 0.206,
+    "dimensions": {
+      "length": 14.75,
+      "width": 7.15,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 75,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 14 Pro Max",
+    "sku": "IPH14PM-256GB-GLD",
+    "variantName": "256GB Gold",
+    "price": 1199.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 550.00,
+    "position": 1,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-14-pro-max-256gb-gold.jpg"],
+    "weight": 0.240,
+    "dimensions": {
+      "length": 16.08,
+      "width": 7.81,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 90,
+      "lowStockThreshold": 18,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "MacBook Air M2",
+    "sku": "MBA22-256GB-SLV",
+    "variantName": "256GB Silver",
+    "price": 1199.99,
+    "compareAtPrice": 1199.99,
+    "costPrice": 650.00,
+    "position": 1,
+    "attributes": {
+      "storage": "256GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/macbook-air-m2-256gb-silver.jpg"],
+    "weight": 1.24,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.5,
+      "height": 1.13,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 50,
+      "lowStockThreshold": 10,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "AirPods Pro (2nd generation)",
+    "sku": "APP22-WHT",
+    "variantName": "White",
+    "price": 249.99,
+    "compareAtPrice": 249.99,
+    "costPrice": 120.00,
+    "position": 1,
+    "attributes": {
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/airpods-pro-2nd-gen-white.jpg"],
+    "weight": 0.0561,
+    "dimensions": {
+      "length": 4.5,
+      "width": 6.0,
+      "height": 2.1,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 40,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

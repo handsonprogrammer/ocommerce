@@ -20,6 +20,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.header.writers.XXssProtectionHeaderWriter;
 import org.springframework.web.cors.CorsConfiguration;
 import org.springframework.web.cors.CorsConfigurationSource;
 import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
@@ -66,6 +67,8 @@ public class SecurityConfig {
                         .requestMatchers(HttpMethod.POST, "/api/v*/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v*/auth/refresh").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/v*/auth/health").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v*/categories/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "/api/v*/products/**").permitAll()
 
                         // Documentation and monitoring endpoints - context path is /api/v1
                         .requestMatchers("/swagger-ui/**", "/swagger-ui.html").permitAll()
@@ -93,6 +96,13 @@ public class SecurityConfig {
 
                 // Disable logout functionality; we handle token invalidation manually
                 .logout(AbstractHttpConfigurer::disable)
+
+                // Security headers
+                .headers(headers -> headers
+                        //XSS Protection
+                        .xssProtection(xss -> xss.headerValue(XXssProtectionHeaderWriter.HeaderValue.ENABLED_MODE_BLOCK))
+                        .contentSecurityPolicy(csp -> csp.policyDirectives("script-src 'self'"))
+                )
 
                 // Disable basic authentication; we use JWT instead
                 .httpBasic(AbstractHttpConfigurer::disable);

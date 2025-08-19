@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone SE (2nd generation)",
+    "sku": "IPHSE2-64GB-BLK",
+    "variantName": "64GB Black",
+    "price": 399.99,
+    "compareAtPrice": 399.99,
+    "costPrice": 200.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Black"
+    },
+    "imageUrls": ["https://images.example.com/iphone-se-2020-64gb-black.jpg"],
+    "weight": 0.148,
+    "dimensions": {
+      "length": 13.84,
+      "width": 6.73,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 300,
+      "lowStockThreshold": 60,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone SE (2nd generation)",
+    "sku": "IPHSE2-128GB-WHT",
+    "variantName": "128GB White",
+    "price": 449.99,
+    "compareAtPrice": 449.99,
+    "costPrice": 220.00,
+    "position": 2,
+    "attributes": {
+      "storage": "128GB",
+      "color": "White"
+    },
+    "imageUrls": ["https://images.example.com/iphone-se-2020-128gb-white.jpg"],
+    "weight": 0.148,
+    "dimensions": {
+      "length": 13.84,
+      "width": 6.73,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 220,
+      "lowStockThreshold": 45,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 12",
+    "sku": "IPH12-64GB-BLU",
+    "variantName": "64GB Blue",
+    "price": 699.99,
+    "compareAtPrice": 699.99,
+    "costPrice": 340.00,
+    "position": 1,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-12-64gb-blue.jpg"],
+    "weight": 0.164,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 200,
+      "lowStockThreshold": 40,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 12",
+    "sku": "IPH12-128GB-GRN",
+    "variantName": "128GB Green",
+    "price": 749.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 360.00,
+    "position": 2,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Green"
+    },
+    "imageUrls": ["https://images.example.com/iphone-12-128gb-green.jpg"],
+    "weight": 0.164,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 150,
+      "lowStockThreshold": 30,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 12 Pro",
+    "sku": "IPH12P-128GB-PBU",
+    "variantName": "128GB Pacific Blue",
+    "price": 999.99,
+    "compareAtPrice": 999.99,
+    "costPrice": 480.00,
+    "position": 1,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Pacific Blue"
+    },
+    "imageUrls": ["https://images.example.com/iphone-12-pro-128gb-pacific-blue.jpg"],
+    "weight": 0.189,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.74,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 100,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

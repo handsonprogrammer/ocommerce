@@ -7,9 +7,8 @@ import com.ocommerce.services.user.dto.UserUpdateRequest;
 import com.ocommerce.services.user.exception.UserAlreadyExistsException;
 import com.ocommerce.services.user.exception.UserNotFoundException;
 import com.ocommerce.services.user.repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,11 +20,10 @@ import java.util.UUID;
 /**
  * Service class for User domain operations
  */
+@Slf4j
 @Service
 @Transactional
 public class UserService {
-
-    private static final Logger logger = LoggerFactory.getLogger(UserService.class);
 
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
@@ -44,11 +42,11 @@ public class UserService {
      * @throws UserAlreadyExistsException if user with email already exists
      */
     public UserResponse registerUser(SignupRequest signupRequest) {
-        logger.info("Attempting to register user with email: {}", signupRequest.getEmail());
+        log.info("Attempting to register user with email: {}", signupRequest.getEmail());
 
         // Check if user already exists
         if (userRepository.existsByEmailIgnoreCase(signupRequest.getEmail())) {
-            logger.warn("User registration failed - email already exists: {}", signupRequest.getEmail());
+            log.warn("User registration failed - email already exists: {}", signupRequest.getEmail());
             throw new UserAlreadyExistsException("User with email " + signupRequest.getEmail() + " already exists");
         }
 
@@ -64,7 +62,7 @@ public class UserService {
 
         // Save user
         User savedUser = userRepository.save(user);
-        logger.info("User registered successfully with ID: {}", savedUser.getId());
+        log.info("User registered successfully with ID: {}", savedUser.getId());
 
         return convertToUserResponse(savedUser);
     }
@@ -139,7 +137,7 @@ public class UserService {
         }
 
         User savedUser = userRepository.save(user);
-        logger.info("User profile updated for ID: {}", savedUser.getId());
+        log.info("User profile updated for ID: {}", savedUser.getId());
 
         return convertToUserResponse(savedUser);
     }
@@ -155,7 +153,7 @@ public class UserService {
 
         user.setAccountLocked(true);
         userRepository.save(user);
-        logger.info("User account locked for email: {}", email);
+        log.info("User account locked for email: {}", email);
     }
 
     /**
@@ -169,7 +167,7 @@ public class UserService {
 
         user.setAccountLocked(false);
         userRepository.save(user);
-        logger.info("User account unlocked for email: {}", email);
+        log.info("User account unlocked for email: {}", email);
     }
 
     /**

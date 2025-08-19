@@ -1,0 +1,99 @@
+[
+  {
+    "name": "iPhone 13",
+    "shortDescription": "iPhone with A15 Bionic and improved battery life",
+    "longDescription": "iPhone 13 features A15 Bionic chip, improved dual-camera system with Cinematic mode, and longer battery life than iPhone 12.",
+    "basePrice": 699.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-13.jpg",
+    "imageUrls": ["https://images.example.com/iphone-13-1.jpg", "https://images.example.com/iphone-13-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.174,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 15",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP dual camera with Cinematic mode",
+      "processor": "A15 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "iPhone 13 Pro",
+    "shortDescription": "Pro iPhone with ProMotion display",
+    "longDescription": "iPhone 13 Pro with ProMotion 120Hz display, Pro camera system with macro photography, and A15 Bionic with 5-core GPU.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-13-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-13-pro-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.204,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 15",
+      "screen_size": "6.1 inch Super Retina XDR ProMotion",
+      "camera": "12MP Pro triple camera with macro",
+      "processor": "A15 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "MacBook Pro 14-inch",
+    "shortDescription": "MacBook Pro with M1 Pro chip",
+    "longDescription": "14-inch MacBook Pro with M1 Pro chip, Liquid Retina XDR display, and revolutionary performance for professional workflows.",
+    "basePrice": 1999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-14.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-14-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.6,
+    "dimensions": {
+      "length": 31.26,
+      "width": 22.12,
+      "height": 1.55,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "M1 Pro",
+      "screen_size": "14.2 inch",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0"
+    }
+  },
+  {
+    "name": "AirPods (3rd generation)",
+    "shortDescription": "Spatial Audio wireless earbuds",
+    "longDescription": "AirPods (3rd generation) feature spatial audio, adaptive EQ, and up to 6 hours of listening time with improved design.",
+    "basePrice": 179.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/airpods-3rd.jpg",
+    "imageUrls": ["https://images.example.com/airpods-3rd-1.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.043,
+    "dimensions": {
+      "length": 5.44,
+      "width": 4.61,
+      "height": 2.14,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "connectivity": "Bluetooth 5.0",
+      "battery_life": "6 hours",
+      "features": "Spatial Audio, Adaptive EQ"
+    }
+  }
+]

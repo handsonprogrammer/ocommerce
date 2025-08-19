@@ -1,0 +1,52 @@
+[
+  {
+    "name": "iPhone 5S",
+    "shortDescription": "iPhone with Touch ID fingerprint sensor",
+    "longDescription": "iPhone 5S introduces Touch ID fingerprint sensor, A7 chip with 64-bit architecture, and improved camera with True Tone flash.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-5s.jpg",
+    "imageUrls": ["https://images.example.com/iphone-5s-1.jpg", "https://images.example.com/iphone-5s-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 7",
+      "screen_size": "4 inch Retina",
+      "camera": "8MP with True Tone flash",
+      "processor": "A7 64-bit",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, Touch ID"
+    }
+  },
+  {
+    "name": "iPhone 5C",
+    "shortDescription": "Colorful iPhone with polycarbonate design",
+    "longDescription": "iPhone 5C features a colorful polycarbonate design, A6 chip, and all the features of iPhone 5 in vibrant colors.",
+    "basePrice": 99.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-5c.jpg",
+    "imageUrls": ["https://images.example.com/iphone-5c-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.45,
+      "width": 5.95,
+      "height": 0.89,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 7",
+      "screen_size": "4 inch Retina",
+      "camera": "8MP iSight camera",
+      "processor": "A6",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth"
+    }
+  }
+]

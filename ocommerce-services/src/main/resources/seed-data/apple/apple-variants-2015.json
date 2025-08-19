@@ -1,0 +1,137 @@
+[
+  {
+    "productName": "iPhone 6S",
+    "sku": "IPH6S-16GB-RSG",
+    "variantName": "16GB Rose Gold",
+    "price": 199.99,
+    "compareAtPrice": 649.99,
+    "costPrice": 230.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Rose Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6s-16gb-rose-gold.jpg"],
+    "weight": 0.143,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 120,
+      "lowStockThreshold": 25,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6S",
+    "sku": "IPH6S-64GB-GLD",
+    "variantName": "64GB Gold",
+    "price": 299.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 250.00,
+    "position": 2,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6s-64gb-gold.jpg"],
+    "weight": 0.143,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 95,
+      "lowStockThreshold": 20,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6S",
+    "sku": "IPH6S-128GB-SLV",
+    "variantName": "128GB Silver",
+    "price": 399.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 270.00,
+    "position": 3,
+    "attributes": {
+      "storage": "128GB",
+      "color": "Silver"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6s-128gb-silver.jpg"],
+    "weight": 0.143,
+    "dimensions": {
+      "length": 13.83,
+      "width": 6.71,
+      "height": 0.71,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 70,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6S Plus",
+    "sku": "IPH6SP-16GB-RSG",
+    "variantName": "16GB Rose Gold",
+    "price": 299.99,
+    "compareAtPrice": 749.99,
+    "costPrice": 246.00,
+    "position": 1,
+    "attributes": {
+      "storage": "16GB",
+      "color": "Rose Gold"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6s-plus-16gb-rose-gold.jpg"],
+    "weight": 0.192,
+    "dimensions": {
+      "length": 15.88,
+      "width": 7.79,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 85,
+      "lowStockThreshold": 18,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  },
+  {
+    "productName": "iPhone 6S Plus",
+    "sku": "IPH6SP-64GB-GRY",
+    "variantName": "64GB Space Gray",
+    "price": 399.99,
+    "compareAtPrice": 849.99,
+    "costPrice": 266.00,
+    "position": 2,
+    "attributes": {
+      "storage": "64GB",
+      "color": "Space Gray"
+    },
+    "imageUrls": ["https://images.example.com/iphone-6s-plus-64gb-gray.jpg"],
+    "weight": 0.192,
+    "dimensions": {
+      "length": 15.88,
+      "width": 7.79,
+      "height": 0.73,
+      "unit": "cm"
+    },
+    "inventory": {
+      "quantity": 65,
+      "lowStockThreshold": 15,
+      "trackInventory": true,
+      "allowBackorder": false
+    }
+  }
+]

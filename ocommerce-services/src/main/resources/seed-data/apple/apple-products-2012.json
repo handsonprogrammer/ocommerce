@@ -1,0 +1,76 @@
+[
+  {
+    "name": "iPhone 5",
+    "shortDescription": "Taller iPhone with Lightning connector",
+    "longDescription": "iPhone 5 with 4-inch Retina display, A6 chip, Lightning connector, and iOS 6. Thinner, lighter, and faster than ever.",
+    "basePrice": 199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-5.jpg",
+    "imageUrls": ["https://images.example.com/iphone-5-1.jpg", "https://images.example.com/iphone-5-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.132,
+    "dimensions": {
+      "length": 12.38,
+      "width": 5.86,
+      "height": 0.76,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 6.0",
+      "screen_size": "4 inch Retina",
+      "camera": "8MP with panorama",
+      "processor": "A6",
+      "connectivity": "4G LTE, Wi-Fi, Bluetooth, GPS"
+    }
+  },
+  {
+    "name": "iPad mini",
+    "shortDescription": "Smaller iPad with 7.9-inch display",
+    "longDescription": "iPad mini with 7.9-inch display, A5 chip, and incredibly thin design. All the power of iPad in a more portable size.",
+    "basePrice": 329.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-mini-2012.jpg",
+    "imageUrls": ["https://images.example.com/ipad-mini-2012-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.308,
+    "dimensions": {
+      "length": 20.0,
+      "width": 13.47,
+      "height": 0.72,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 6.0",
+      "screen_size": "7.9 inch",
+      "camera": "5MP rear, 1.2MP front",
+      "processor": "A5",
+      "connectivity": "Wi-Fi, Optional LTE"
+    }
+  },
+  {
+    "name": "MacBook Pro 15-inch Retina",
+    "shortDescription": "MacBook Pro with Retina display",
+    "longDescription": "15-inch MacBook Pro with stunning Retina display, Intel Core i7 processor, and revolutionary design. The most advanced Mac notebook ever.",
+    "basePrice": 2199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-15-retina-2012.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-15-retina-2012-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 2.02,
+    "dimensions": {
+      "length": 35.89,
+      "width": 24.71,
+      "height": 1.8,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "Mac OS X 10.7",
+      "processor": "Intel Core i7",
+      "screen_size": "15.4 inch Retina",
+      "connectivity": "Wi-Fi, Bluetooth"
+    }
+  }
+]

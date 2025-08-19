@@ -1,0 +1,352 @@
+[
+  {
+    "name": "iPhone 14",
+    "shortDescription": "iPhone with A15 Bionic chip and improved cameras",
+    "longDescription": "iPhone 14 features A15 Bionic chip, improved dual-camera system with Photonic Engine, Crash Detection, and 6.1-inch Super Retina XDR display.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-14.jpg",
+    "imageUrls": ["https://images.example.com/iphone-14-1.jpg", "https://images.example.com/iphone-14-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.172,
+    "dimensions": {
+      "length": 14.67,
+      "width": 7.15,
+      "height": 0.78,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 16",
+      "screen_size": "6.1 inch Super Retina XDR",
+      "camera": "12MP Main + 12MP Ultra Wide with Photonic Engine",
+      "processor": "A15 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, MagSafe",
+      "colors": ["Blue", "Purple", "Midnight", "Starlight", "Red"],
+      "storage_options": ["128GB", "256GB", "512GB"]
+    }
+  },
+  {
+    "name": "iPhone 14 Pro",
+    "shortDescription": "Pro iPhone with Dynamic Island and A16 Bionic",
+    "longDescription": "iPhone 14 Pro features 6.1-inch Super Retina XDR display with Dynamic Island, A16 Bionic chip, 48MP Main camera, and Always-On display.",
+    "basePrice": 999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/iphone-14-pro.jpg",
+    "imageUrls": ["https://images.example.com/iphone-14-pro-1.jpg", "https://images.example.com/iphone-14-pro-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.206,
+    "dimensions": {
+      "length": 14.75,
+      "width": 7.15,
+      "height": 0.79,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iOS 16",
+      "screen_size": "6.1 inch Super Retina XDR with Dynamic Island",
+      "camera": "48MP Main + 12MP Ultra Wide + 12MP Telephoto",
+      "processor": "A16 Bionic",
+      "connectivity": "5G, Wi-Fi 6, Bluetooth 5.3, MagSafe",
+      "colors": ["Deep Purple", "Gold", "Silver", "Space Black"],
+      "storage_options": ["128GB", "256GB", "512GB", "1TB"]
+    }
+  },
+  {
+    "name": "MacBook Air (M2)",
+    "shortDescription": "MacBook Air with Apple M2 chip",
+    "longDescription": "MacBook Air with Apple M2 chip features redesigned chassis, 13.6-inch Liquid Retina display, MagSafe charging, and all-day battery life.",
+    "basePrice": 1199.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-air-m2.jpg",
+    "imageUrls": ["https://images.example.com/macbook-air-m2-1.jpg", "https://images.example.com/macbook-air-m2-2.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.24,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.5,
+      "height": 1.13,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "Apple M2",
+      "screen_size": "13.6 inch Liquid Retina",
+      "memory": "8GB unified memory (configurable to 24GB)",
+      "storage": "256GB SSD (configurable to 2TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, MagSafe 3, Thunderbolt",
+      "colors": ["Midnight", "Starlight", "Space Gray", "Silver"]
+    }
+  },
+  {
+    "name": "MacBook Pro 13-inch (M2)",
+    "shortDescription": "Pro laptop with Apple M2 chip",
+    "longDescription": "13-inch MacBook Pro with Apple M2 chip delivers professional performance with active cooling, Touch Bar, and up to 20 hours of battery life.",
+    "basePrice": 1299.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/macbook-pro-13-m2.jpg",
+    "imageUrls": ["https://images.example.com/macbook-pro-13-m2-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Laptops"],
+    "weight": 1.4,
+    "dimensions": {
+      "length": 30.41,
+      "width": 21.24,
+      "height": 1.56,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "Apple M2",
+      "screen_size": "13.3 inch Retina",
+      "memory": "8GB unified memory (configurable to 24GB)",
+      "storage": "256GB SSD (configurable to 2TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt/USB 4",
+      "colors": ["Space Gray", "Silver"]
+    }
+  },
+  {
+    "name": "iPad Air (5th generation)",
+    "shortDescription": "iPad Air with Apple M1 chip",
+    "longDescription": "iPad Air with Apple M1 chip, 10.9-inch Liquid Retina display, Center Stage front camera, and support for Apple Pencil (2nd generation).",
+    "basePrice": 599.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-air-5th.jpg",
+    "imageUrls": ["https://images.example.com/ipad-air-5th-1.jpg", "https://images.example.com/ipad-air-5th-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.461,
+    "dimensions": {
+      "length": 24.76,
+      "width": 17.85,
+      "height": 0.61,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 15",
+      "processor": "Apple M1",
+      "screen_size": "10.9 inch Liquid Retina",
+      "camera": "12MP Wide + 12MP Ultra Wide front camera",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, USB-C",
+      "colors": ["Space Gray", "Pink", "Purple", "Blue", "Starlight"],
+      "storage_options": ["64GB", "256GB"]
+    }
+  },
+  {
+    "name": "iPad (10th generation)",
+    "shortDescription": "iPad with A14 Bionic chip and redesigned look",
+    "longDescription": "iPad with A14 Bionic chip features 10.9-inch Liquid Retina display, landscape front camera, and USB-C connectivity in a completely redesigned form.",
+    "basePrice": 449.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-10th.jpg",
+    "imageUrls": ["https://images.example.com/ipad-10th-1.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.477,
+    "dimensions": {
+      "length": 24.86,
+      "width": 17.93,
+      "height": 0.7,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 16",
+      "processor": "A14 Bionic",
+      "screen_size": "10.9 inch Liquid Retina",
+      "camera": "12MP Wide + 12MP Ultra Wide front camera",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.2, USB-C",
+      "colors": ["Blue", "Pink", "Yellow", "Silver"],
+      "storage_options": ["64GB", "256GB"]
+    }
+  },
+  {
+    "name": "iPad Pro (6th generation)",
+    "shortDescription": "iPad Pro with M2 chip and Apple Pencil hover",
+    "longDescription": "iPad Pro with M2 chip delivers next-level performance. Features Apple Pencil hover, ProRes video capture, and Wi-Fi 6E connectivity.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/ipad-pro-6th.jpg",
+    "imageUrls": ["https://images.example.com/ipad-pro-6th-1.jpg", "https://images.example.com/ipad-pro-6th-2.jpg"],
+    "categoryNames": ["Electronics", "Mobile & Tablets"],
+    "weight": 0.466,
+    "dimensions": {
+      "length": 24.76,
+      "width": 17.85,
+      "height": 0.59,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "iPadOS 16",
+      "processor": "Apple M2",
+      "screen_size": "11 inch or 12.9 inch Liquid Retina XDR",
+      "memory": "8GB or 16GB",
+      "connectivity": "Wi-Fi 6E, Bluetooth 5.3, Thunderbolt/USB 4",
+      "colors": ["Space Gray", "Silver"],
+      "storage_options": ["128GB", "256GB", "512GB", "1TB", "2TB"]
+    }
+  },
+  {
+    "name": "Mac Studio",
+    "shortDescription": "Compact pro desktop with M1 Max or M1 Ultra",
+    "longDescription": "Mac Studio with M1 Max or M1 Ultra chip delivers unprecedented performance in a compact design. Features extensive connectivity and quiet operation.",
+    "basePrice": 1999.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/mac-studio.jpg",
+    "imageUrls": ["https://images.example.com/mac-studio-1.jpg", "https://images.example.com/mac-studio-2.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Desktops"],
+    "weight": 2.7,
+    "dimensions": {
+      "length": 19.7,
+      "width": 19.7,
+      "height": 9.5,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "macOS Monterey",
+      "processor": "Apple M1 Max (configurable to M1 Ultra)",
+      "memory": "32GB unified memory (configurable to 128GB)",
+      "storage": "512GB SSD (configurable to 8TB)",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, Thunderbolt 4, 10Gb Ethernet",
+      "colors": ["Silver"]
+    }
+  },
+  {
+    "name": "Studio Display",
+    "shortDescription": "27-inch 5K Retina display",
+    "longDescription": "Studio Display features a 27-inch 5K Retina screen, 12MP Ultra Wide camera with Center Stage, and studio-quality three-mic array.",
+    "basePrice": 1599.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/studio-display.jpg",
+    "imageUrls": ["https://images.example.com/studio-display-1.jpg"],
+    "categoryNames": ["Electronics", "Computers", "Accessories"],
+    "weight": 6.3,
+    "dimensions": {
+      "length": 62.3,
+      "width": 47.4,
+      "height": 18.8,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "screen_size": "27 inch 5K Retina",
+      "resolution": "5120 x 2880",
+      "brightness": "600 nits",
+      "connectivity": "Thunderbolt 3, USB-C",
+      "camera": "12MP Ultra Wide with Center Stage",
+      "audio": "Six-speaker system with force-cancelling woofers"
+    }
+  },
+  {
+    "name": "AirPods Pro (2nd generation)",
+    "shortDescription": "Wireless earbuds with enhanced Active Noise Cancellation",
+    "longDescription": "AirPods Pro (2nd generation) feature the H2 chip, enhanced Active Noise Cancellation, Adaptive Transparency, and MagSafe charging case with speaker.",
+    "basePrice": 249.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/airpods-pro-2nd.jpg",
+    "imageUrls": ["https://images.example.com/airpods-pro-2nd-1.jpg", "https://images.example.com/airpods-pro-2nd-2.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.056,
+    "dimensions": {
+      "length": 3.05,
+      "width": 2.17,
+      "height": 2.17,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "chip": "Apple H2",
+      "connectivity": "Bluetooth 5.3",
+      "battery_life": "6 hours with ANC, 30 hours with case",
+      "features": ["Active Noise Cancellation", "Adaptive Transparency", "Spatial Audio", "Touch Control"],
+      "water_resistance": "IPX4",
+      "compatibility": "iPhone, iPad, Mac, Apple Watch, Apple TV"
+    }
+  },
+  {
+    "name": "Apple Watch Series 8",
+    "shortDescription": "Advanced smartwatch with temperature sensing",
+    "longDescription": "Apple Watch Series 8 features advanced health sensors including temperature sensing, Crash Detection, and up to 18 hours of battery life.",
+    "basePrice": 399.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/apple-watch-series-8.jpg",
+    "imageUrls": ["https://images.example.com/apple-watch-series-8-1.jpg", "https://images.example.com/apple-watch-series-8-2.jpg"],
+    "categoryNames": ["Electronics", "Wearable Technology"],
+    "weight": 0.038,
+    "dimensions": {
+      "length": 4.5,
+      "width": 3.8,
+      "height": 1.07,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "watchOS 9",
+      "processor": "S8 SiP",
+      "display": "Always-On Retina LTPO OLED",
+      "sizes": ["41mm", "45mm"],
+      "connectivity": "Wi-Fi, Bluetooth 5.3, GPS, Optional Cellular",
+      "health_features": ["Temperature sensing", "Blood Oxygen", "ECG", "Heart Rate"],
+      "colors": ["Midnight", "Starlight", "Silver", "Red"],
+      "water_resistance": "50 meters"
+    }
+  },
+  {
+    "name": "Apple Watch Ultra",
+    "shortDescription": "Rugged smartwatch for extreme sports and adventures",
+    "longDescription": "Apple Watch Ultra features titanium case, 49mm size, Action Button, dual-frequency GPS, and up to 36 hours of battery life for extreme conditions.",
+    "basePrice": 799.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/apple-watch-ultra.jpg",
+    "imageUrls": ["https://images.example.com/apple-watch-ultra-1.jpg", "https://images.example.com/apple-watch-ultra-2.jpg"],
+    "categoryNames": ["Electronics", "Wearable Technology"],
+    "weight": 0.061,
+    "dimensions": {
+      "length": 4.9,
+      "width": 4.4,
+      "height": 1.47,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "operating_system": "watchOS 9",
+      "processor": "S8 SiP",
+      "display": "Always-On Retina LTPO OLED",
+      "case_material": "Titanium",
+      "size": "49mm",
+      "connectivity": "Wi-Fi, Bluetooth 5.3, Dual-frequency GPS, Cellular",
+      "special_features": ["Action Button", "Siren", "Dive Computer", "Dual-frequency GPS"],
+      "water_resistance": "100 meters",
+      "colors": ["Natural Titanium"]
+    }
+  },
+  {
+    "name": "Apple TV 4K (3rd generation)",
+    "shortDescription": "4K HDR streaming device with A15 Bionic",
+    "longDescription": "Apple TV 4K with A15 Bionic chip delivers crisp 4K HDR video, Dolby Vision and Atmos support, and seamless integration with Apple ecosystem.",
+    "basePrice": 129.99,
+    "unitOfMeasure": "piece",
+    "thumbnailUrl": "https://images.example.com/apple-tv-4k-3rd.jpg",
+    "imageUrls": ["https://images.example.com/apple-tv-4k-3rd-1.jpg"],
+    "categoryNames": ["Electronics", "Audio & Video"],
+    "weight": 0.425,
+    "dimensions": {
+      "length": 9.3,
+      "width": 9.3,
+      "height": 3.1,
+      "unit": "cm"
+    },
+    "attributes": {
+      "brand": "Apple",
+      "processor": "A15 Bionic",
+      "video_support": "4K HDR, Dolby Vision, HDR10+",
+      "audio_support": "Dolby Atmos",
+      "connectivity": "Wi-Fi 6, Bluetooth 5.0, HDMI 2.1, Ethernet",
+      "storage_options": ["64GB", "128GB"],
+      "remote": "Siri Remote with touch-enabled clickpad"
+    }
+  }
+]
