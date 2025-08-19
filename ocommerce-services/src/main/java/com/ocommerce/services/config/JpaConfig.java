@@ -7,6 +7,11 @@ import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 
 @Configuration
 @EnableJpaAuditing
-@EnableJpaRepositories(basePackages = "com.ocommerce.services.user")
+@EnableJpaRepositories(basePackages = {
+        "com.ocommerce.services.user",
+        "com.ocommerce.services.cart",
+        "com.ocommerce.services.order",
+        "com.ocommerce.services.payment"
+})
 public class JpaConfig {
 }
