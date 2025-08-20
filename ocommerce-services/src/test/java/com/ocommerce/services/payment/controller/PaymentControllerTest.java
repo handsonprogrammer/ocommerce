@@ -5,8 +5,8 @@ import com.ocommerce.services.config.WithCustomUser;
 import com.ocommerce.services.payment.domain.Payment;
 import com.ocommerce.services.payment.domain.PaymentMethod;
 import com.ocommerce.services.payment.domain.PaymentStatus;
-import com.ocommerce.services.payment.dto.InitiatePaymentRequestDTO;
-import com.ocommerce.services.payment.dto.PaymentResponseDTO;
+import com.ocommerce.services.payment.dto.InitiatePaymentRequest;
+import com.ocommerce.services.payment.dto.PaymentResponse;
 import com.ocommerce.services.payment.mapper.PaymentMapper;
 import com.ocommerce.services.payment.service.PaymentService;
 import com.ocommerce.services.security.JwtUtil;
@@ -64,8 +64,8 @@ class PaymentControllerTest {
     private JwtUtil jwtUtil;
 
     private Payment payment;
-    private PaymentResponseDTO paymentResponseDTO;
-    private InitiatePaymentRequestDTO initiatePaymentRequestDTO;
+    private PaymentResponse PaymentResponse;
+    private InitiatePaymentRequest InitiatePaymentRequest;
 
     @BeforeEach
     void setUp() {
@@ -79,41 +79,41 @@ class PaymentControllerTest {
         payment.setCreatedAt(Instant.now());
         payment.setUpdatedAt(Instant.now());
 
-        paymentResponseDTO = new PaymentResponseDTO();
-        paymentResponseDTO.setId(payment.getId());
-        paymentResponseDTO.setOrderId(payment.getOrderId());
-        paymentResponseDTO.setPaymentMethod(PaymentMethod.CREDIT_CARD);
-        paymentResponseDTO.setPaymentStatus(PaymentStatus.COMPLETED);
-        paymentResponseDTO.setAmount(BigDecimal.valueOf(200.00));
-        paymentResponseDTO.setTransactionId("TXN-123456");
+        PaymentResponse = new PaymentResponse();
+        PaymentResponse.setId(payment.getId());
+        PaymentResponse.setOrderId(payment.getOrderId());
+        PaymentResponse.setPaymentMethod(PaymentMethod.CREDIT_CARD);
+        PaymentResponse.setPaymentStatus(PaymentStatus.COMPLETED);
+        PaymentResponse.setAmount(BigDecimal.valueOf(200.00));
+        PaymentResponse.setTransactionId("TXN-123456");
 
-        initiatePaymentRequestDTO = new InitiatePaymentRequestDTO();
-        initiatePaymentRequestDTO.setOrderId(UUID.randomUUID());
-        initiatePaymentRequestDTO.setPaymentMethod(PaymentMethod.CREDIT_CARD);
-        initiatePaymentRequestDTO.setAmount(BigDecimal.valueOf(200.00));
-        initiatePaymentRequestDTO.setIdempotencyKey("test-key-123");
+        InitiatePaymentRequest = new InitiatePaymentRequest();
+        InitiatePaymentRequest.setOrderId(UUID.randomUUID());
+        InitiatePaymentRequest.setPaymentMethod(PaymentMethod.CREDIT_CARD);
+        InitiatePaymentRequest.setAmount(BigDecimal.valueOf(200.00));
+        InitiatePaymentRequest.setIdempotencyKey("test-key-123");
     }
 
     @Test
     void initiatePayment_shouldCreatePaymentSuccessfully() throws Exception {
         // Given
         when(paymentService.initiatePayment(
-            eq(initiatePaymentRequestDTO.getOrderId()),
-            eq(initiatePaymentRequestDTO.getPaymentMethod()),
-            eq(initiatePaymentRequestDTO.getAmount()),
-            eq(initiatePaymentRequestDTO.getIdempotencyKey())
+            eq(InitiatePaymentRequest.getOrderId()),
+            eq(InitiatePaymentRequest.getPaymentMethod()),
+            eq(InitiatePaymentRequest.getAmount()),
+            eq(InitiatePaymentRequest.getIdempotencyKey())
         )).thenReturn(payment);
-        when(paymentMapper.toPaymentResponseDTO(payment)).thenReturn(paymentResponseDTO);
+        when(paymentMapper.toPaymentResponse(payment)).thenReturn(PaymentResponse);
 
         // When & Then
         mockMvc.perform(post("/api/v1/payments")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(initiatePaymentRequestDTO)))
+                        .content(objectMapper.writeValueAsString(InitiatePaymentRequest)))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(paymentResponseDTO.getId().toString()))
-                .andExpect(jsonPath("$.orderId").value(paymentResponseDTO.getOrderId().toString()))
+                .andExpect(jsonPath("$.id").value(PaymentResponse.getId().toString()))
+                .andExpect(jsonPath("$.orderId").value(PaymentResponse.getOrderId().toString()))
                 .andExpect(jsonPath("$.paymentMethod").value("CREDIT_CARD"))
                 .andExpect(jsonPath("$.paymentStatus").value("COMPLETED"))
                 .andExpect(jsonPath("$.amount").value(200.00));
@@ -122,7 +122,7 @@ class PaymentControllerTest {
     @Test
     void initiatePayment_shouldReturn400ForInvalidRequest() throws Exception {
         // Given
-        InitiatePaymentRequestDTO invalidRequest = new InitiatePaymentRequestDTO();
+        InitiatePaymentRequest invalidRequest = new InitiatePaymentRequest();
         // Missing required fields
 
         // When & Then
@@ -136,13 +136,13 @@ class PaymentControllerTest {
     @Test
     void initiatePayment_shouldReturn400ForNegativeAmount() throws Exception {
         // Given
-        initiatePaymentRequestDTO.setAmount(BigDecimal.valueOf(-100.00));
+        InitiatePaymentRequest.setAmount(BigDecimal.valueOf(-100.00));
 
         // When & Then
         mockMvc.perform(post("/api/v1/payments")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(initiatePaymentRequestDTO)))
+                        .content(objectMapper.writeValueAsString(InitiatePaymentRequest)))
                 .andExpect(status().isBadRequest());
     }
 
@@ -151,7 +151,7 @@ class PaymentControllerTest {
         // Given
         UUID paymentId = payment.getId();
         when(paymentService.getPaymentById(paymentId)).thenReturn(Optional.of(payment));
-        when(paymentMapper.toPaymentResponseDTO(payment)).thenReturn(paymentResponseDTO);
+        when(paymentMapper.toPaymentResponse(payment)).thenReturn(PaymentResponse);
 
         // When & Then
         mockMvc.perform(get("/api/v1/payments/{id}", paymentId))
@@ -177,10 +177,10 @@ class PaymentControllerTest {
         // Given
         UUID paymentId = payment.getId();
         payment.setPaymentStatus(PaymentStatus.REFUNDED);
-        paymentResponseDTO.setPaymentStatus(PaymentStatus.REFUNDED);
+        PaymentResponse.setPaymentStatus(PaymentStatus.REFUNDED);
 
         when(paymentService.refundPayment(paymentId)).thenReturn(payment);
-        when(paymentMapper.toPaymentResponseDTO(payment)).thenReturn(paymentResponseDTO);
+        when(paymentMapper.toPaymentResponse(payment)).thenReturn(PaymentResponse);
 
         // When & Then
         mockMvc.perform(post("/api/v1/payments/{id}/refund", paymentId)

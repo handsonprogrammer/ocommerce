@@ -2,9 +2,9 @@ package com.ocommerce.services.cart.mapper;
 
 import com.ocommerce.services.cart.domain.Cart;
 import com.ocommerce.services.cart.domain.CartItem;
-import com.ocommerce.services.cart.dto.CartResponseDTO;
-import com.ocommerce.services.cart.dto.CartItemResponseDTO;
-import com.ocommerce.services.cart.dto.CartItemRequestDTO;
+import com.ocommerce.services.cart.dto.CartResponse;
+import com.ocommerce.services.cart.dto.CartItemResponse;
+import com.ocommerce.services.cart.dto.CartItemRequest;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 import org.mapstruct.factory.Mappers;
@@ -15,11 +15,11 @@ public interface CartMapper {
     CartMapper INSTANCE = Mappers.getMapper(CartMapper.class);
 
     @Mapping(target = "totalAmount", expression = "java(cart.getTotalAmount())")
-    CartResponseDTO toCartResponseDTO(Cart cart);
+    CartResponse toCartResponse(Cart cart);
 
-    List<CartItemResponseDTO> toCartItemResponseDTOList(List<CartItem> items);
+    List<CartItemResponse> toCartItemResponseList(List<CartItem> items);
 
-    CartItemResponseDTO toCartItemResponseDTO(CartItem item);
+    CartItemResponse toCartItemResponse(CartItem item);
 
     @Mapping(target = "id", ignore = true)
     @Mapping(target = "cart", ignore = true)
@@ -30,5 +30,5 @@ public interface CartMapper {
     @Mapping(target = "variantName", ignore = true)
     @Mapping(target = "sku", ignore = true)
     @Mapping(target = "totalPrice", ignore = true)
-    CartItem toCartItem(CartItemRequestDTO dto);
+    CartItem toCartItem(CartItemRequest dto);
 }

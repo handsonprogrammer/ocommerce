@@ -1,7 +1,7 @@
 package com.ocommerce.services.payment.controller;
 
-import com.ocommerce.services.payment.dto.InitiatePaymentRequestDTO;
-import com.ocommerce.services.payment.dto.PaymentResponseDTO;
+import com.ocommerce.services.payment.dto.InitiatePaymentRequest;
+import com.ocommerce.services.payment.dto.PaymentResponse;
 import com.ocommerce.services.payment.mapper.PaymentMapper;
 import com.ocommerce.services.payment.service.PaymentService;
 import com.ocommerce.services.user.domain.User;
@@ -43,54 +43,11 @@ public class PaymentController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "201",
-            description = "Payment successfully initiated",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = PaymentResponseDTO.class),
-                examples = @ExampleObject(
-                    name = "Successful payment initiation",
-                    value = """
-                    {
-                        "id": "550e8400-e29b-41d4-a716-446655440000",
-                        "orderId": "550e8400-e29b-41d4-a716-446655440001",
-                        "amount": 99.99,
-                        "currency": "USD",
-                        "paymentMethod": "CREDIT_CARD",
-                        "status": "PENDING",
-                        "createdAt": "2024-01-15T10:30:00Z",
-                        "updatedAt": "2024-01-15T10:30:00Z"
-                    }
-                    """
-                )
-            )
+            description = "Payment successfully initiated"
         ),
         @ApiResponse(
             responseCode = "400",
-            description = "Invalid payment request - validation errors or business rule violations",
-            content = @Content(
-                mediaType = "application/json",
-                examples = {
-                    @ExampleObject(
-                        name = "Validation error",
-                        value = """
-                        {
-                            "error": "VALIDATION_ERROR",
-                            "message": "Invalid payment request",
-                            "details": ["Amount must be greater than 0", "Payment method is required"]
-                        }
-                        """
-                    ),
-                    @ExampleObject(
-                        name = "Duplicate payment",
-                        value = """
-                        {
-                            "error": "DUPLICATE_PAYMENT",
-                            "message": "Payment with this idempotency key already exists"
-                        }
-                        """
-                    )
-                }
-            )
+            description = "Invalid payment request - validation errors or business rule violations"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -114,18 +71,7 @@ public class PaymentController {
         ),
         @ApiResponse(
             responseCode = "409",
-            description = "Payment conflict - order already has a completed payment",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    value = """
-                    {
-                        "error": "PAYMENT_CONFLICT",
-                        "message": "Order already has a completed payment"
-                    }
-                    """
-                )
-            )
+            description = "Payment conflict - order already has a completed payment"
         ),
         @ApiResponse(
             responseCode = "422",
@@ -138,14 +84,14 @@ public class PaymentController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<PaymentResponseDTO> initiatePayment(
+    public ResponseEntity<PaymentResponse> initiatePayment(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Payment initiation request containing order details and payment method",
                 required = true,
-                schema = @Schema(implementation = InitiatePaymentRequestDTO.class)
+                schema = @Schema(implementation = InitiatePaymentRequest.class)
             )
-            @Valid @RequestBody InitiatePaymentRequestDTO requestDTO) {
+            @Valid @RequestBody InitiatePaymentRequest requestDTO) {
         var payment = paymentService.initiatePayment(
             requestDTO.getOrderId(),
             requestDTO.getPaymentMethod(),
@@ -153,7 +99,7 @@ public class PaymentController {
             requestDTO.getIdempotencyKey()
         );
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(paymentMapper.toPaymentResponseDTO(payment));
+            .body(paymentMapper.toPaymentResponse(payment));
     }
 
     @GetMapping("/{id}")
@@ -165,28 +111,7 @@ public class PaymentController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200",
-            description = "Payment details retrieved successfully",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = PaymentResponseDTO.class),
-                examples = @ExampleObject(
-                    name = "Payment details",
-                    value = """
-                    {
-                        "id": "550e8400-e29b-41d4-a716-446655440000",
-                        "orderId": "550e8400-e29b-41d4-a716-446655440001",
-                        "amount": 99.99,
-                        "currency": "USD",
-                        "paymentMethod": "CREDIT_CARD",
-                        "status": "COMPLETED",
-                        "transactionId": "txn_1234567890",
-                        "createdAt": "2024-01-15T10:30:00Z",
-                        "updatedAt": "2024-01-15T10:35:00Z",
-                        "completedAt": "2024-01-15T10:35:00Z"
-                    }
-                    """
-                )
-            )
+            description = "Payment details retrieved successfully"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -214,7 +139,7 @@ public class PaymentController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<PaymentResponseDTO> getPayment(
+    public ResponseEntity<PaymentResponse> getPayment(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Unique identifier of the payment transaction",
@@ -224,7 +149,7 @@ public class PaymentController {
             )
             @PathVariable UUID id) {
         return paymentService.getPaymentById(id)
-            .map(paymentMapper::toPaymentResponseDTO)
+            .map(paymentMapper::toPaymentResponse)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
@@ -238,57 +163,11 @@ public class PaymentController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200",
-            description = "Payment refunded successfully",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = PaymentResponseDTO.class),
-                examples = @ExampleObject(
-                    name = "Successful refund",
-                    value = """
-                    {
-                        "id": "550e8400-e29b-41d4-a716-446655440000",
-                        "orderId": "550e8400-e29b-41d4-a716-446655440001",
-                        "amount": 99.99,
-                        "currency": "USD",
-                        "paymentMethod": "CREDIT_CARD",
-                        "status": "REFUNDED",
-                        "transactionId": "txn_1234567890",
-                        "refundTransactionId": "rfnd_0987654321",
-                        "createdAt": "2024-01-15T10:30:00Z",
-                        "updatedAt": "2024-01-15T14:20:00Z",
-                        "completedAt": "2024-01-15T10:35:00Z",
-                        "refundedAt": "2024-01-15T14:20:00Z"
-                    }
-                    """
-                )
-            )
+            description = "Payment refunded successfully"
         ),
         @ApiResponse(
             responseCode = "400",
-            description = "Invalid refund request - payment cannot be refunded",
-            content = @Content(
-                mediaType = "application/json",
-                examples = {
-                    @ExampleObject(
-                        name = "Already refunded",
-                        value = """
-                        {
-                            "error": "ALREADY_REFUNDED",
-                            "message": "Payment has already been refunded"
-                        }
-                        """
-                    ),
-                    @ExampleObject(
-                        name = "Invalid status",
-                        value = """
-                        {
-                            "error": "INVALID_PAYMENT_STATUS",
-                            "message": "Payment must be in COMPLETED status to be refunded"
-                        }
-                        """
-                    )
-                }
-            )
+            description = "Invalid refund request - payment cannot be refunded"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -312,18 +191,7 @@ public class PaymentController {
         ),
         @ApiResponse(
             responseCode = "422",
-            description = "Unprocessable entity - refund processor error",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    value = """
-                    {
-                        "error": "REFUND_PROCESSOR_ERROR",
-                        "message": "Unable to process refund with payment processor"
-                    }
-                    """
-                )
-            )
+            description = "Unprocessable entity - refund processor error"
         ),
         @ApiResponse(
             responseCode = "500",
@@ -331,7 +199,7 @@ public class PaymentController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<PaymentResponseDTO> refundPayment(
+    public ResponseEntity<PaymentResponse> refundPayment(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Unique identifier of the payment transaction to refund",
@@ -341,6 +209,6 @@ public class PaymentController {
             )
             @PathVariable UUID id) {
         var refundedPayment = paymentService.refundPayment(id);
-        return ResponseEntity.ok(paymentMapper.toPaymentResponseDTO(refundedPayment));
+        return ResponseEntity.ok(paymentMapper.toPaymentResponse(refundedPayment));
     }
 }

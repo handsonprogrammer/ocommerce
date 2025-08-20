@@ -1,7 +1,7 @@
 package com.ocommerce.services.order.controller;
 
-import com.ocommerce.services.order.dto.CreateOrderRequestDTO;
-import com.ocommerce.services.order.dto.OrderResponseDTO;
+import com.ocommerce.services.order.dto.CreateOrderRequest;
+import com.ocommerce.services.order.dto.OrderResponse;
 import com.ocommerce.services.order.mapper.OrderMapper;
 import com.ocommerce.services.order.service.OrderService;
 import com.ocommerce.services.user.domain.User;
@@ -46,88 +46,11 @@ public class OrderController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "201",
-            description = "Order created successfully",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OrderResponseDTO.class),
-                examples = @ExampleObject(
-                    name = "Successful order creation",
-                    value = """
-                    {
-                        "id": "550e8400-e29b-41d4-a716-446655440000",
-                        "orderNumber": "ORD-2024-001234",
-                        "status": "PENDING",
-                        "totalAmount": 249.98,
-                        "currency": "USD",
-                        "items": [
-                            {
-                                "id": "550e8400-e29b-41d4-a716-446655440001",
-                                "productId": "550e8400-e29b-41d4-a716-446655440002",
-                                "productName": "Wireless Headphones",
-                                "quantity": 2,
-                                "unitPrice": 99.99,
-                                "totalPrice": 199.98
-                            }
-                        ],
-                        "shippingAddress": {
-                            "id": "550e8400-e29b-41d4-a716-446655440003",
-                            "street": "123 Main St",
-                            "city": "New York",
-                            "state": "NY",
-                            "zipCode": "10001",
-                            "country": "USA"
-                        },
-                        "billingAddress": {
-                            "id": "550e8400-e29b-41d4-a716-446655440004",
-                            "street": "123 Main St",
-                            "city": "New York",
-                            "state": "NY",
-                            "zipCode": "10001",
-                            "country": "USA"
-                        },
-                        "createdAt": "2024-01-15T10:30:00Z",
-                        "updatedAt": "2024-01-15T10:30:00Z"
-                    }
-                    """
-                )
-            )
+            description = "Order created successfully"
         ),
         @ApiResponse(
             responseCode = "400",
-            description = "Invalid order request - validation errors or business rule violations",
-            content = @Content(
-                mediaType = "application/json",
-                examples = {
-                    @ExampleObject(
-                        name = "Empty cart",
-                        value = """
-                        {
-                            "error": "EMPTY_CART",
-                            "message": "Cannot create order from empty cart"
-                        }
-                        """
-                    ),
-                    @ExampleObject(
-                        name = "Invalid address",
-                        value = """
-                        {
-                            "error": "INVALID_ADDRESS",
-                            "message": "Shipping or billing address not found or not accessible"
-                        }
-                        """
-                    ),
-                    @ExampleObject(
-                        name = "Product unavailable",
-                        value = """
-                        {
-                            "error": "PRODUCT_UNAVAILABLE",
-                            "message": "One or more products in cart are no longer available",
-                            "details": ["Product 'Wireless Headphones' is out of stock"]
-                        }
-                        """
-                    )
-                }
-            )
+            description = "Invalid order request - validation errors or business rule violations"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -136,18 +59,7 @@ public class OrderController {
         ),
         @ApiResponse(
             responseCode = "404",
-            description = "Cart not found for the authenticated user",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    value = """
-                    {
-                        "error": "CART_NOT_FOUND",
-                        "message": "No active cart found for user"
-                    }
-                    """
-                )
-            )
+            description = "Cart not found for the authenticated user"
         ),
         @ApiResponse(
             responseCode = "500",
@@ -155,21 +67,21 @@ public class OrderController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<OrderResponseDTO> createOrder(
+    public ResponseEntity<OrderResponse> createOrder(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Order creation request containing shipping and billing address IDs",
                 required = true,
-                schema = @Schema(implementation = CreateOrderRequestDTO.class)
+                schema = @Schema(implementation = CreateOrderRequest.class)
             )
-            @Valid @RequestBody CreateOrderRequestDTO requestDTO) {
+            @Valid @RequestBody CreateOrderRequest requestDTO) {
         var order = orderService.createOrderFromCart(
             user.getId(),
             requestDTO.getShippingAddressId(),
             requestDTO.getBillingAddressId()
         );
         return ResponseEntity.status(HttpStatus.CREATED)
-            .body(orderMapper.toOrderResponseDTO(order));
+            .body(orderMapper.toOrderResponse(order));
     }
 
     @GetMapping("/{id}")
@@ -181,51 +93,7 @@ public class OrderController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200",
-            description = "Order details retrieved successfully",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OrderResponseDTO.class),
-                examples = @ExampleObject(
-                    name = "Order details",
-                    value = """
-                    {
-                        "id": "550e8400-e29b-41d4-a716-446655440000",
-                        "orderNumber": "ORD-2024-001234",
-                        "status": "CONFIRMED",
-                        "totalAmount": 249.98,
-                        "currency": "USD",
-                        "items": [
-                            {
-                                "id": "550e8400-e29b-41d4-a716-446655440001",
-                                "productId": "550e8400-e29b-41d4-a716-446655440002",
-                                "productName": "Wireless Headphones",
-                                "quantity": 2,
-                                "unitPrice": 99.99,
-                                "totalPrice": 199.98
-                            }
-                        ],
-                        "shippingAddress": {
-                            "id": "550e8400-e29b-41d4-a716-446655440003",
-                            "street": "123 Main St",
-                            "city": "New York",
-                            "state": "NY",
-                            "zipCode": "10001",
-                            "country": "USA"
-                        },
-                        "billingAddress": {
-                            "id": "550e8400-e29b-41d4-a716-446655440004",
-                            "street": "123 Main St",
-                            "city": "New York",
-                            "state": "NY",
-                            "zipCode": "10001",
-                            "country": "USA"
-                        },
-                        "createdAt": "2024-01-15T10:30:00Z",
-                        "updatedAt": "2024-01-15T10:35:00Z"
-                    }
-                    """
-                )
-            )
+            description = "Order details retrieved successfully"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -234,18 +102,7 @@ public class OrderController {
         ),
         @ApiResponse(
             responseCode = "404",
-            description = "Order not found or not accessible by the authenticated user",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    value = """
-                    {
-                        "error": "ORDER_NOT_FOUND",
-                        "message": "Order with specified ID not found or not accessible"
-                    }
-                    """
-                )
-            )
+            description = "Order not found or not accessible by the authenticated user"
         ),
         @ApiResponse(
             responseCode = "500",
@@ -253,7 +110,7 @@ public class OrderController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<OrderResponseDTO> getOrder(
+    public ResponseEntity<OrderResponse> getOrder(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Unique identifier of the order",
@@ -263,7 +120,7 @@ public class OrderController {
             )
             @PathVariable UUID id) {
         return orderService.getOrderById(id, user.getId())
-            .map(orderMapper::toOrderResponseDTO)
+            .map(orderMapper::toOrderResponse)
             .map(ResponseEntity::ok)
             .orElse(ResponseEntity.notFound().build());
     }
@@ -277,53 +134,7 @@ public class OrderController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200",
-            description = "Orders retrieved successfully",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = Page.class),
-                examples = @ExampleObject(
-                    name = "Paginated orders",
-                    value = """
-                    {
-                        "content": [
-                            {
-                                "id": "550e8400-e29b-41d4-a716-446655440000",
-                                "orderNumber": "ORD-2024-001234",
-                                "status": "DELIVERED",
-                                "totalAmount": 249.98,
-                                "currency": "USD",
-                                "itemCount": 2,
-                                "createdAt": "2024-01-15T10:30:00Z",
-                                "updatedAt": "2024-01-18T14:20:00Z"
-                            },
-                            {
-                                "id": "550e8400-e29b-41d4-a716-446655440001",
-                                "orderNumber": "ORD-2024-001233",
-                                "status": "SHIPPED",
-                                "totalAmount": 89.99,
-                                "currency": "USD",
-                                "itemCount": 1,
-                                "createdAt": "2024-01-10T15:45:00Z",
-                                "updatedAt": "2024-01-12T09:15:00Z"
-                            }
-                        ],
-                        "pageable": {
-                            "pageNumber": 0,
-                            "pageSize": 10,
-                            "sort": {
-                                "sorted": true,
-                                "unsorted": false
-                            }
-                        },
-                        "totalElements": 25,
-                        "totalPages": 3,
-                        "last": false,
-                        "first": true,
-                        "numberOfElements": 10
-                    }
-                    """
-                )
-            )
+            description = "Orders retrieved successfully"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -336,7 +147,7 @@ public class OrderController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<Page<OrderResponseDTO>> getUserOrders(
+    public ResponseEntity<Page<OrderResponse>> getUserOrders(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Page number (0-based)",
@@ -351,8 +162,8 @@ public class OrderController {
             )
             @RequestParam(defaultValue = "10") int size) {
         Pageable pageable = PageRequest.of(page, size);
-        Page<OrderResponseDTO> orders = orderService.getUserOrders(user.getId(), pageable)
-            .map(orderMapper::toOrderResponseDTO);
+        Page<OrderResponse> orders = orderService.getUserOrders(user.getId(), pageable)
+            .map(orderMapper::toOrderResponse);
         return ResponseEntity.ok(orders);
     }
 
@@ -365,79 +176,11 @@ public class OrderController {
     @ApiResponses(value = {
         @ApiResponse(
             responseCode = "200",
-            description = "Order cancelled successfully",
-            content = @Content(
-                mediaType = "application/json",
-                schema = @Schema(implementation = OrderResponseDTO.class),
-                examples = @ExampleObject(
-                    name = "Cancelled order",
-                    value = """
-                    {
-                        "id": "550e8400-e29b-41d4-a716-446655440000",
-                        "orderNumber": "ORD-2024-001234",
-                        "status": "CANCELLED",
-                        "totalAmount": 249.98,
-                        "currency": "USD",
-                        "items": [
-                            {
-                                "id": "550e8400-e29b-41d4-a716-446655440001",
-                                "productId": "550e8400-e29b-41d4-a716-446655440002",
-                                "productName": "Wireless Headphones",
-                                "quantity": 2,
-                                "unitPrice": 99.99,
-                                "totalPrice": 199.98
-                            }
-                        ],
-                        "shippingAddress": {
-                            "id": "550e8400-e29b-41d4-a716-446655440003",
-                            "street": "123 Main St",
-                            "city": "New York",
-                            "state": "NY",
-                            "zipCode": "10001",
-                            "country": "USA"
-                        },
-                        "billingAddress": {
-                            "id": "550e8400-e29b-41d4-a716-446655440004",
-                            "street": "123 Main St",
-                            "city": "New York",
-                            "state": "NY",
-                            "zipCode": "10001",
-                            "country": "USA"
-                        },
-                        "createdAt": "2024-01-15T10:30:00Z",
-                        "updatedAt": "2024-01-15T11:45:00Z",
-                        "cancelledAt": "2024-01-15T11:45:00Z"
-                    }
-                    """
-                )
-            )
+            description = "Order cancelled successfully"
         ),
         @ApiResponse(
             responseCode = "400",
-            description = "Order cannot be cancelled - invalid status",
-            content = @Content(
-                mediaType = "application/json",
-                examples = {
-                    @ExampleObject(
-                        name = "Already cancelled",
-                        value = """
-                        {
-                            "error": "ORDER_ALREADY_CANCELLED",
-                            "message": "Order is already cancelled"
-                        }
-                        """
-                    ),
-                    @ExampleObject(
-                        name = "Cannot cancel shipped order",
-                        value = """
-                        {
-                            "error": "ORDER_NOT_CANCELLABLE",
-                            "message": "Order cannot be cancelled as it has already been shipped"
-                        }
-                        """
-                    )
-                }
-            )
+            description = "Order cannot be cancelled - invalid status"
         ),
         @ApiResponse(
             responseCode = "401",
@@ -446,18 +189,7 @@ public class OrderController {
         ),
         @ApiResponse(
             responseCode = "404",
-            description = "Order not found or not accessible by the authenticated user",
-            content = @Content(
-                mediaType = "application/json",
-                examples = @ExampleObject(
-                    value = """
-                    {
-                        "error": "ORDER_NOT_FOUND",
-                        "message": "Order with specified ID not found or not accessible"
-                    }
-                    """
-                )
-            )
+            description = "Order not found or not accessible by the authenticated user"
         ),
         @ApiResponse(
             responseCode = "500",
@@ -465,7 +197,7 @@ public class OrderController {
             content = @Content(mediaType = "application/json")
         )
     })
-    public ResponseEntity<OrderResponseDTO> cancelOrder(
+    public ResponseEntity<OrderResponse> cancelOrder(
             @Parameter(hidden = true) @AuthenticationPrincipal User user,
             @Parameter(
                 description = "Unique identifier of the order to cancel",
@@ -475,6 +207,6 @@ public class OrderController {
             )
             @PathVariable UUID id) {
         var cancelledOrder = orderService.cancelOrder(id, user.getId());
-        return ResponseEntity.ok(orderMapper.toOrderResponseDTO(cancelledOrder));
+        return ResponseEntity.ok(orderMapper.toOrderResponse(cancelledOrder));
     }
 }

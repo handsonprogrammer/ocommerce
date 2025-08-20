@@ -2,8 +2,8 @@ package com.ocommerce.services.order.mapper;
 
 import com.ocommerce.services.order.domain.Order;
 import com.ocommerce.services.order.domain.OrderItem;
-import com.ocommerce.services.order.dto.OrderResponseDTO;
-import com.ocommerce.services.order.dto.OrderItemResponseDTO;
+import com.ocommerce.services.order.dto.OrderResponse;
+import com.ocommerce.services.order.dto.OrderItemResponse;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,9 +13,9 @@ import java.util.List;
 public interface OrderMapper {
 
     @Mapping(target = "totalPrice", expression = "java(orderItem.getTotalPrice())")
-    OrderItemResponseDTO toOrderItemResponseDTO(OrderItem orderItem);
+    OrderItemResponse toOrderItemResponse(OrderItem orderItem);
 
-    List<OrderItemResponseDTO> toOrderItemResponseDTOList(List<OrderItem> items);
+    List<OrderItemResponse> toOrderItemResponseList(List<OrderItem> items);
 
-    OrderResponseDTO toOrderResponseDTO(Order order);
+    OrderResponse toOrderResponse(Order order);
 }

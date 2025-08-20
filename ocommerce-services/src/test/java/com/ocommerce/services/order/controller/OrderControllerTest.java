@@ -4,8 +4,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ocommerce.services.config.WithCustomUser;
 import com.ocommerce.services.order.domain.Order;
 import com.ocommerce.services.order.domain.OrderStatus;
-import com.ocommerce.services.order.dto.CreateOrderRequestDTO;
-import com.ocommerce.services.order.dto.OrderResponseDTO;
+import com.ocommerce.services.order.dto.CreateOrderRequest;
+import com.ocommerce.services.order.dto.OrderResponse;
 import com.ocommerce.services.order.mapper.OrderMapper;
 import com.ocommerce.services.order.service.OrderService;
 import com.ocommerce.services.security.JwtUtil;
@@ -67,8 +67,8 @@ class OrderControllerTest {
     private JwtUtil jwtUtil;
 
     private Order order;
-    private OrderResponseDTO orderResponseDTO;
-    private CreateOrderRequestDTO createOrderRequestDTO;
+    private OrderResponse OrderResponse;
+    private CreateOrderRequest CreateOrderRequest;
     private UUID userId;
 
     @BeforeEach
@@ -85,34 +85,34 @@ class OrderControllerTest {
         order.setCreatedAt(Instant.now());
         order.setUpdatedAt(Instant.now());
 
-        orderResponseDTO = new OrderResponseDTO();
-        orderResponseDTO.setId(order.getId());
-        orderResponseDTO.setUserId(userId);
-        orderResponseDTO.setShippingAddressId(order.getShippingAddressId());
-        orderResponseDTO.setBillingAddressId(order.getBillingAddressId());
-        orderResponseDTO.setOrderStatus(OrderStatus.PENDING);
-        orderResponseDTO.setTotalAmount(BigDecimal.valueOf(200));
-        orderResponseDTO.setItems(new ArrayList<>());
+        OrderResponse = new OrderResponse();
+        OrderResponse.setId(order.getId());
+        OrderResponse.setUserId(userId);
+        OrderResponse.setShippingAddressId(order.getShippingAddressId());
+        OrderResponse.setBillingAddressId(order.getBillingAddressId());
+        OrderResponse.setOrderStatus(OrderStatus.PENDING);
+        OrderResponse.setTotalAmount(BigDecimal.valueOf(200));
+        OrderResponse.setItems(new ArrayList<>());
 
-        createOrderRequestDTO = new CreateOrderRequestDTO();
-        createOrderRequestDTO.setShippingAddressId(UUID.randomUUID());
-        createOrderRequestDTO.setBillingAddressId(UUID.randomUUID());
+        CreateOrderRequest = new CreateOrderRequest();
+        CreateOrderRequest.setShippingAddressId(UUID.randomUUID());
+        CreateOrderRequest.setBillingAddressId(UUID.randomUUID());
     }
 
     @Test
     void createOrder_shouldCreateOrderSuccessfully() throws Exception {
         // Given
         when(orderService.createOrderFromCart(eq(userId), any(UUID.class), any(UUID.class))).thenReturn(order);
-        when(orderMapper.toOrderResponseDTO(order)).thenReturn(orderResponseDTO);
+        when(orderMapper.toOrderResponse(order)).thenReturn(OrderResponse);
 
         // When & Then
         mockMvc.perform(post("/api/v1/orders")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(createOrderRequestDTO)))
+                        .content(objectMapper.writeValueAsString(CreateOrderRequest)))
                 .andExpect(status().isCreated())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(orderResponseDTO.getId().toString()))
+                .andExpect(jsonPath("$.id").value(OrderResponse.getId().toString()))
                 .andExpect(jsonPath("$.userId").value(userId.toString()))
                 .andExpect(jsonPath("$.orderStatus").value("PENDING"));
     }
@@ -120,7 +120,7 @@ class OrderControllerTest {
     @Test
     void createOrder_shouldReturn400ForInvalidRequest() throws Exception {
         // Given
-        CreateOrderRequestDTO invalidRequest = new CreateOrderRequestDTO();
+        CreateOrderRequest invalidRequest = new CreateOrderRequest();
         // Missing required fields
 
         // When & Then
@@ -136,7 +136,7 @@ class OrderControllerTest {
         // Given
         UUID orderId = order.getId();
         when(orderService.getOrderById(orderId, userId)).thenReturn(Optional.of(order));
-        when(orderMapper.toOrderResponseDTO(order)).thenReturn(orderResponseDTO);
+        when(orderMapper.toOrderResponse(order)).thenReturn(OrderResponse);
 
         // When & Then
         mockMvc.perform(get("/api/v1/orders/{id}", orderId))
@@ -161,10 +161,10 @@ class OrderControllerTest {
     void getUserOrders_shouldReturnPagedOrders() throws Exception {
         // Given
         Page<Order> orderPage = new PageImpl<>(List.of(order), PageRequest.of(0, 10), 1);
-        Page<OrderResponseDTO> responsePage = new PageImpl<>(List.of(orderResponseDTO), PageRequest.of(0, 10), 1);
+        Page<OrderResponse> responsePage = new PageImpl<>(List.of(OrderResponse), PageRequest.of(0, 10), 1);
 
         when(orderService.getUserOrders(eq(userId), any())).thenReturn(orderPage);
-        when(orderMapper.toOrderResponseDTO(order)).thenReturn(orderResponseDTO);
+        when(orderMapper.toOrderResponse(order)).thenReturn(OrderResponse);
 
         // When & Then
         mockMvc.perform(get("/api/v1/orders")
@@ -173,7 +173,7 @@ class OrderControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
                 .andExpect(jsonPath("$.content").isArray())
-                .andExpect(jsonPath("$.content[0].id").value(orderResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.content[0].id").value(OrderResponse.getId().toString()));
     }
 
     @Test
@@ -181,10 +181,10 @@ class OrderControllerTest {
         // Given
         UUID orderId = order.getId();
         order.setOrderStatus(OrderStatus.CANCELLED);
-        orderResponseDTO.setOrderStatus(OrderStatus.CANCELLED);
+        OrderResponse.setOrderStatus(OrderStatus.CANCELLED);
 
         when(orderService.cancelOrder(orderId, userId)).thenReturn(order);
-        when(orderMapper.toOrderResponseDTO(order)).thenReturn(orderResponseDTO);
+        when(orderMapper.toOrderResponse(order)).thenReturn(OrderResponse);
 
         // When & Then
         mockMvc.perform(put("/api/v1/orders/{id}/cancel", orderId)

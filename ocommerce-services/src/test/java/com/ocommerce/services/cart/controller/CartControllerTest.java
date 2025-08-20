@@ -2,10 +2,10 @@ package com.ocommerce.services.cart.controller;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.ocommerce.services.cart.domain.Cart;
-import com.ocommerce.services.cart.domain.CartItem;
-import com.ocommerce.services.cart.dto.CartItemRequestDTO;
-import com.ocommerce.services.cart.dto.CartRequestDTO;
-import com.ocommerce.services.cart.dto.CartResponseDTO;
+import com.ocommerce.services.cart.dto.CartItemRequest;
+import com.ocommerce.services.cart.dto.CartItemRequest;
+import com.ocommerce.services.cart.dto.CartRequest;
+import com.ocommerce.services.cart.dto.CartResponse;
 import com.ocommerce.services.cart.mapper.CartMapper;
 import com.ocommerce.services.cart.service.CartService;
 import com.ocommerce.services.config.WithCustomUser;
@@ -13,11 +13,9 @@ import com.ocommerce.services.security.JwtUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.mock.mockito.MockBean;
 import org.springframework.http.MediaType;
-import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -64,8 +62,8 @@ class CartControllerTest {
     private JwtUtil jwtUtil;
 
     private Cart cart;
-    private CartResponseDTO cartResponseDTO;
-    private CartItemRequestDTO cartItemRequestDTO;
+    private CartResponse CartResponse;
+    private CartItemRequest cartItemRequest;
     private UUID userId;
 
     @BeforeEach
@@ -77,27 +75,27 @@ class CartControllerTest {
         cart.setUserId(userId);
         cart.setItems(new ArrayList<>());
 
-        cartResponseDTO = new CartResponseDTO();
-        cartResponseDTO.setId(cart.getId());
-        cartResponseDTO.setUserId(userId);
-        cartResponseDTO.setTotalAmount(BigDecimal.ZERO);
+        CartResponse = new CartResponse();
+        CartResponse.setId(cart.getId());
+        CartResponse.setUserId(userId);
+        CartResponse.setTotalAmount(BigDecimal.ZERO);
 
-        cartItemRequestDTO = new CartItemRequestDTO();
-        cartItemRequestDTO.setProductId(UUID.randomUUID());
-        cartItemRequestDTO.setQuantity(2);
+        cartItemRequest = new CartItemRequest();
+        cartItemRequest.setProductId(UUID.randomUUID());
+        cartItemRequest.setQuantity(2);
     }
 
     @Test
     void getCart_shouldReturnCart() throws Exception {
         // Given
         when(cartService.getCartByUserId(userId)).thenReturn(Optional.of(cart));
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(get("/api/v1/cart"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()))
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()))
                 .andExpect(jsonPath("$.userId").value(userId.toString()));
     }
 
@@ -114,24 +112,24 @@ class CartControllerTest {
     @Test
     void addItem_shouldAddItemToCart() throws Exception {
         // Given
-        when(cartService.addItem(eq(userId), eq(cartItemRequestDTO.getProductId()),
-                                eq(cartItemRequestDTO.getVariantId()), eq(cartItemRequestDTO.getQuantity()))).thenReturn(cart);
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartService.addItem(eq(userId), eq(cartItemRequest.getProductId()),
+                                eq(cartItemRequest.getVariantId()), eq(cartItemRequest.getQuantity()))).thenReturn(cart);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(post("/api/v1/cart/items")
                         .with(csrf())
                         .contentType(MediaType.APPLICATION_JSON)
-                        .content(objectMapper.writeValueAsString(cartItemRequestDTO)))
+                        .content(objectMapper.writeValueAsString(cartItemRequest)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()));
     }
 
     @Test
     void addItem_shouldReturn400ForInvalidRequest() throws Exception {
         // Given
-        CartItemRequestDTO invalidRequest = new CartItemRequestDTO();
+        CartItemRequest invalidRequest = new CartItemRequest();
         // Missing required fields
 
         // When & Then
@@ -147,7 +145,7 @@ class CartControllerTest {
         // Given
         UUID itemId = UUID.randomUUID();
         when(cartService.updateItemQuantity(userId, itemId, 5)).thenReturn(cart);
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(put("/api/v1/cart/items/{itemId}", itemId)
@@ -155,7 +153,7 @@ class CartControllerTest {
                         .param("quantity", "5"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()));
     }
 
     @Test
@@ -163,23 +161,23 @@ class CartControllerTest {
         // Given
         UUID itemId = UUID.randomUUID();
         when(cartService.removeItem(userId, itemId)).thenReturn(cart);
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(delete("/api/v1/cart/items/{itemId}", itemId)
                         .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()));
     }
 
     @Test
     void setShippingAddress_shouldSetAddress() throws Exception {
         // Given
-        CartRequestDTO requestDTO = new CartRequestDTO();
+        CartRequest requestDTO = new CartRequest();
         requestDTO.setShippingAddressId(UUID.randomUUID());
         when(cartService.setShippingAddress(userId, requestDTO.getShippingAddressId())).thenReturn(cart);
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(put("/api/v1/cart/shipping-address")
@@ -188,16 +186,16 @@ class CartControllerTest {
                         .content(objectMapper.writeValueAsString(requestDTO)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()));
     }
 
     @Test
     void setBillingAddress_shouldSetAddress() throws Exception {
         // Given
-        CartRequestDTO requestDTO = new CartRequestDTO();
+        CartRequest requestDTO = new CartRequest();
         requestDTO.setBillingAddressId(UUID.randomUUID());
         when(cartService.setBillingAddress(userId, requestDTO.getBillingAddressId())).thenReturn(cart);
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(put("/api/v1/cart/billing-address")
@@ -206,7 +204,7 @@ class CartControllerTest {
                         .content(objectMapper.writeValueAsString(requestDTO)))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()));
     }
 
     @Test
@@ -214,14 +212,14 @@ class CartControllerTest {
         // Given
         UUID orderId = UUID.randomUUID();
         when(cartService.copyItemsFromOrder(userId, orderId)).thenReturn(cart);
-        when(cartMapper.toCartResponseDTO(cart)).thenReturn(cartResponseDTO);
+        when(cartMapper.toCartResponse(cart)).thenReturn(CartResponse);
 
         // When & Then
         mockMvc.perform(post("/api/v1/cart/copy-from-order/{orderId}", orderId)
                         .with(csrf()))
                 .andExpect(status().isOk())
                 .andExpect(content().contentType(MediaType.APPLICATION_JSON))
-                .andExpect(jsonPath("$.id").value(cartResponseDTO.getId().toString()));
+                .andExpect(jsonPath("$.id").value(CartResponse.getId().toString()));
     }
 
     @Test

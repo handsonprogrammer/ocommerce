@@ -43,14 +43,14 @@ public class CartController {
     @Operation(summary = "Get user's cart", description = "Retrieve the current authenticated user's shopping cart with all items and calculated totals")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Cart retrieved successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Cart not found for user")
     })
-    public ResponseEntity<CartResponseDTO> getCart(@AuthenticationPrincipal User user) {
+    public ResponseEntity<CartResponse> getCart(@AuthenticationPrincipal User user) {
         log.info("Get cart request for user: {}", user.getId());
         return cartService.getCartByUserId(user.getId())
-                .map(cartMapper::toCartResponseDTO)
+                .map(cartMapper::toCartResponse)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
@@ -62,15 +62,15 @@ public class CartController {
     @Operation(summary = "Add item to cart", description = "Add a product or variant to the user's shopping cart with validated pricing from catalog")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Item added to cart successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid request data or insufficient stock"),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Product or variant not found")
     })
-    public ResponseEntity<CartResponseDTO> addItem(
+    public ResponseEntity<CartResponse> addItem(
             @AuthenticationPrincipal User user,
             @Parameter(description = "Cart item details including product ID, variant ID (optional), and quantity", required = true)
-            @Valid @RequestBody CartItemRequestDTO itemDto) {
+            @Valid @RequestBody CartItemRequest itemDto) {
 
         log.info("Add item to cart request for user: {}, product: {}, quantity: {}",
                 user.getId(), itemDto.getProductId(), itemDto.getQuantity());
@@ -81,7 +81,7 @@ public class CartController {
             itemDto.getVariantId(),
             itemDto.getQuantity()
         );
-        return ResponseEntity.ok(cartMapper.toCartResponseDTO(cart));
+        return ResponseEntity.ok(cartMapper.toCartResponse(cart));
     }
 
     /**
@@ -91,12 +91,12 @@ public class CartController {
     @Operation(summary = "Update cart item quantity", description = "Update the quantity of a specific item in the user's cart")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Item quantity updated successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid quantity or insufficient stock"),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Cart item not found")
     })
-    public ResponseEntity<CartResponseDTO> updateItemQuantity(
+    public ResponseEntity<CartResponse> updateItemQuantity(
             @AuthenticationPrincipal User user,
             @Parameter(description = "Cart item ID", required = true, example = "550e8400-e29b-41d4-a716-446655440000")
             @PathVariable UUID itemId,
@@ -107,7 +107,7 @@ public class CartController {
                 user.getId(), itemId, quantity);
 
         var cart = cartService.updateItemQuantity(user.getId(), itemId, quantity);
-        return ResponseEntity.ok(cartMapper.toCartResponseDTO(cart));
+        return ResponseEntity.ok(cartMapper.toCartResponse(cart));
     }
 
     /**
@@ -117,11 +117,11 @@ public class CartController {
     @Operation(summary = "Remove item from cart", description = "Remove a specific item from the user's shopping cart")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Item removed from cart successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Cart item not found")
     })
-    public ResponseEntity<CartResponseDTO> removeItem(
+    public ResponseEntity<CartResponse> removeItem(
             @AuthenticationPrincipal User user,
             @Parameter(description = "Cart item ID to remove", required = true, example = "550e8400-e29b-41d4-a716-446655440000")
             @PathVariable UUID itemId) {
@@ -129,7 +129,7 @@ public class CartController {
         log.info("Remove cart item request for user: {}, item: {}", user.getId(), itemId);
 
         var cart = cartService.removeItem(user.getId(), itemId);
-        return ResponseEntity.ok(cartMapper.toCartResponseDTO(cart));
+        return ResponseEntity.ok(cartMapper.toCartResponse(cart));
     }
 
     /**
@@ -139,21 +139,21 @@ public class CartController {
     @Operation(summary = "Set shipping address", description = "Set or update the shipping address for the user's cart")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Shipping address set successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid address data"),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Address not found")
     })
-    public ResponseEntity<CartResponseDTO> setShippingAddress(
+    public ResponseEntity<CartResponse> setShippingAddress(
             @AuthenticationPrincipal User user,
             @Parameter(description = "Shipping address details", required = true)
-            @Valid @RequestBody CartRequestDTO dto) {
+            @Valid @RequestBody CartRequest dto) {
 
         log.info("Set shipping address request for user: {}, address: {}",
                 user.getId(), dto.getShippingAddressId());
 
         var cart = cartService.setShippingAddress(user.getId(), dto.getShippingAddressId());
-        return ResponseEntity.ok(cartMapper.toCartResponseDTO(cart));
+        return ResponseEntity.ok(cartMapper.toCartResponse(cart));
     }
 
     /**
@@ -163,21 +163,21 @@ public class CartController {
     @Operation(summary = "Set billing address", description = "Set or update the billing address for the user's cart")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Billing address set successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "400", description = "Invalid address data"),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Address not found")
     })
-    public ResponseEntity<CartResponseDTO> setBillingAddress(
+    public ResponseEntity<CartResponse> setBillingAddress(
             @AuthenticationPrincipal User user,
             @Parameter(description = "Billing address details", required = true)
-            @Valid @RequestBody CartRequestDTO dto) {
+            @Valid @RequestBody CartRequest dto) {
 
         log.info("Set billing address request for user: {}, address: {}",
                 user.getId(), dto.getBillingAddressId());
 
         var cart = cartService.setBillingAddress(user.getId(), dto.getBillingAddressId());
-        return ResponseEntity.ok(cartMapper.toCartResponseDTO(cart));
+        return ResponseEntity.ok(cartMapper.toCartResponse(cart));
     }
 
     /**
@@ -187,12 +187,12 @@ public class CartController {
     @Operation(summary = "Copy order items to cart", description = "Copy all items from a previous order into the current user's cart")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Order items copied to cart successfully",
-                    content = @Content(schema = @Schema(implementation = CartResponseDTO.class))),
+                    content = @Content(schema = @Schema(implementation = CartResponse.class))),
             @ApiResponse(responseCode = "400", description = "Some items may no longer be available"),
             @ApiResponse(responseCode = "401", description = "User not authenticated"),
             @ApiResponse(responseCode = "404", description = "Order not found")
     })
-    public ResponseEntity<CartResponseDTO> copyItemsFromOrder(
+    public ResponseEntity<CartResponse> copyItemsFromOrder(
             @AuthenticationPrincipal User user,
             @Parameter(description = "Order ID to copy items from", required = true, example = "550e8400-e29b-41d4-a716-446655440000")
             @PathVariable UUID orderId) {
@@ -200,7 +200,7 @@ public class CartController {
         log.info("Copy items from order request for user: {}, order: {}", user.getId(), orderId);
 
         var cart = cartService.copyItemsFromOrder(user.getId(), orderId);
-        return ResponseEntity.ok(cartMapper.toCartResponseDTO(cart));
+        return ResponseEntity.ok(cartMapper.toCartResponse(cart));
     }
 
     /**
