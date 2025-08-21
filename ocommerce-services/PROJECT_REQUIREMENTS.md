@@ -8,23 +8,19 @@
 
 ### 3. Catalog Domain [x]
 
-### 4. Cart Domain [ ]
+### 4. Cart, Order & Payment Domains [x]
 
-### 5. Order Domain [ ]
+### 5. Reviews Domain [ ]
 
-### 6. Payment Domain [ ]
+### 6. Notifications Domain [ ]
 
-### 7. Reviews Domain [ ]
-
-### 8. Notifications Domain [ ]
-
-### 9. Admin Domain [ ]
+### 7. Admin Domain [ ]
 
 # Mark each item as [x] when complete. Only start the next phase when requested.
 
 ## Branching Requirement
 
-- For each implementation phase, create a new git branch named after the phase (e.g., `feature/user-domain`, `feature/catalog-domain`). Merge to the main branch only after the phase is complete and reviewed. This ensures clean separation of work and easier code reviews.
+- For each implementation phase, create a new git branch named after the phase (e.g., `feature/user-domain`, `feature/catalog-domain`, `feature/cart-order-payment-domains`). Merge to the main branch only after the phase is complete and reviewed. This ensures clean separation of work and easier code reviews.
 
 ## Project Overview
 
@@ -161,98 +157,104 @@ Catalog Domain uses MongoDB for data storage.
 - Implement only GET APIs for now (e.g., get products, get categories, get product by ID, get category by ID).
 - Plan to add admin catalog APIs for Create, Update, Delete operations in the future.
 
-### Order Domain
+### Cart, Order & Payment Domains
+
+**Testing:**
+- Write unit, integration, and end-to-end tests for all three domains; use an in-memory database for DB-dependent tests (refer to User Domain test configuration for setup and usage; do not use TestContainers).
+
+<!-- Start implementation when requested -->
 
 **Database:**
-Order Domain uses PostgreSQL for data storage.
+All three domains use PostgreSQL for data storage.
 
-**Order Structure:**
+---
 
-Order includes:
+#### Cart Domain
 
-- Order ID
-- User reference
-- List of order items (product/variant, quantity, price)
-- Shipping address reference (FK to addresses.id)
-- Billing address reference (FK to addresses.id)
-- Order status (e.g., pending, confirmed, shipped, delivered, cancelled)
-- Payment status
-- Timestamps (created, updated)
-- (Optionally) snapshot of address details for historical accuracy
+**Cart Structure:**
+- Cart includes:
+  - Cart ID
+  - User reference
+  - List of cart items (product/variant, quantity)
+  - Shipping address reference (FK to addresses.id)
+  - Billing address reference (FK to addresses.id)
+  - Timestamps (created, updated)
 
 **API Endpoints:**
+- `[POST] /cart/items` — Add item to cart (authenticated)
+- `[DELETE] /cart/items/{itemId}` — Remove item from cart (authenticated)
+- `[GET] /cart` — Get current user's cart (authenticated)
+- `[PUT] /cart/items/{itemId}` — Update quantity of cart item (authenticated)
+- `[POST] /cart/copy-from-order/{orderId}` — Copy items from a previous order into the current user's cart (authenticated)
+- `[PUT] /cart/shipping-address` — Set or update shipping address for cart (authenticated)
+- `[PUT] /cart/billing-address` — Set or update billing address for cart (authenticated)
 
+**Repository:**
+- Create CRUD repository for Cart entity using Spring Data JPA.
+
+**Must-Have Requirements:**
+- Transactional consistency: Cart-to-order and payment operations must be atomic and consistent.
+- Inventory validation: Validate product/variant stock when converting cart to order.
+- Address validation: Ensure shipping/billing addresses exist and belong to the user before associating them with cart/order.
+- Security & authorization: All endpoints require authentication; users can only access/modify their own carts.
+- Error handling: Standardize error responses for all endpoints (e.g., insufficient stock, invalid address).
+- Idempotency: Implement idempotency for payment initiation to prevent duplicate charges.
+- Extensibility: Design entities/APIs to support future features (discounts, promotions, multiple payment methods).
+- API documentation: Document all endpoints in Swagger/OpenAPI.
+- Audit trail: Maintain audit logs for cart/order/payment status changes.
+- Testing: Cover all features with unit, integration, and end-to-end tests using an in-memory database (see User Domain for reference).
+
+**Notes:**
+- Cart persistence and validation for item addition/removal.
+- Support merging guest cart with user cart upon login.
+- Cart must capture shipping and billing address information, which are moved to the order when converting cart to order.
+- Cart is converted to an order during checkout.
+
+---
+
+#### Order Domain
+
+**Order Structure:**
+- Order includes:
+  - Order ID
+  - User reference
+  - List of order items (product/variant, quantity, price)
+  - Shipping address reference (FK to addresses.id)
+  - Billing address reference (FK to addresses.id)
+  - Order status (e.g., pending, confirmed, shipped, delivered, cancelled)
+  - Payment status
+  - Timestamps (created, updated)
+  - (Optionally) snapshot of address details for historical accuracy
+
+**API Endpoints:**
 - `[POST] /orders` — Create a new order (authenticated)
 - `[GET] /orders/{id}` — Get order details by ID (authenticated)
 - `[GET] /orders` — List orders for current user (authenticated)
 - `[PUT] /orders/{id}/cancel` — Cancel an order (authenticated)
 
 **Repository:**
-
 - Create CRUD repository for Order entity using Spring Data JPA.
 
-**Notes:**
+**Must-Have Requirements:**
+- Transactional consistency for order creation and payment.
+- Inventory validation before order confirmation.
+- Address validation for shipping/billing addresses.
+- Security & authorization for all endpoints.
+- Error handling and standardized responses.
+- Audit trail for order status changes and payment events.
+- Extensibility for future features (discounts, promotions).
+- API documentation in Swagger/OpenAPI.
+- Testing coverage for all features using an in-memory database (see User Domain for reference).
 
-- Implement validation for order creation and status transitions.
+**Notes:**
+- Validation for order creation and status transitions.
 - Integrate with payment and inventory systems as needed.
 
-### Cart Domain
+---
 
-**Testing:**
-
-- Write unit, integration, and end-to-end tests for the Cart domain; use test containers for DB-dependent tests.
-  **Testing:**
-- Write unit, integration, and end-to-end tests for the Order domain; use test containers for DB-dependent tests.
-
-<!-- Start implementation when requested -->
-<!-- Start implementation when requested -->
-
-**Database:**
-Cart Domain uses PostgreSQL for data storage.
-
-**Cart Structure:**
-
-- Cart includes:
-  - Cart ID
-  - User reference
-  - List of cart items (product/variant, quantity)
-  - Timestamps (created, updated)
-
-**API Endpoints:**
-
-- `[POST] /cart/items` — Add item to cart (authenticated)
-- `[DELETE] /cart/items/{itemId}` — Remove item from cart (authenticated)
-- `[GET] /cart` — Get current user's cart (authenticated)
-- `[PUT] /cart/items/{itemId}` — Update quantity of cart item (authenticated)
-
-**Repository:**
-
-- Create CRUD repository for Cart entity using Spring Data JPA.
-
-**Notes:**
-
-**Cart to Order Conversion:**
-
-- A cart is converted to an order when the user initiates the checkout process, provides/validates shipping and billing information, and successfully completes payment. Upon successful payment, the cart items are transformed into an order record with all relevant details.
-
-**Notes:**
-
-- Ensure cart persistence and proper validation for item addition/removal.
-- Support merging guest cart with user cart upon login.
-
-### Payment Domain
-
-**Testing:**
-
-- Write unit, integration, and end-to-end tests for the Payment domain; use test containers for DB-dependent tests.
-
-<!-- Start implementation when requested -->
-
-**Database:**
-Payment Domain uses PostgreSQL for data storage.
+#### Payment Domain
 
 **Payment Structure:**
-
 - Payment includes:
   - Payment ID
   - Order reference
@@ -262,62 +264,26 @@ Payment Domain uses PostgreSQL for data storage.
   - Timestamps (created, updated)
 
 **API Endpoints:**
-
 - `[POST] /payments` — Initiate payment for an order (authenticated)
 - `[GET] /payments/{id}` — Get payment details by ID (authenticated)
 - `[POST] /payments/{id}/refund` — Initiate refund for a payment (authenticated)
 
 **Repository:**
-
 - Create CRUD repository for Payment entity using Spring Data JPA.
 
+**Must-Have Requirements:**
+- Transactional consistency for payment operations.
+- Idempotency for payment initiation.
+- Security & authorization for all endpoints.
+- Error handling and standardized responses.
+- Audit trail for payment events.
+- Extensibility for future payment methods.
+- API documentation in Swagger/OpenAPI.
+- Testing coverage for all features using an in-memory database (see User Domain for reference).
+
 **Notes:**
-
 - Integrate with external payment gateways.
-- Implement proper error handling and status updates.
-
-### Other Domains
-
-**Reviews Domain:**
-
-**Testing:**
-
-- Write unit, integration, and end-to-end tests for the Reviews domain; use test containers for DB-dependent tests.
-
-<!-- Start implementation when requested -->
-
-- Allow users to leave reviews and ratings for products.
-- Store review text, rating, user reference, product reference, timestamps.
-- Implement GET APIs for fetching reviews by product and user.
-
-**Shipping Domain:**
-
-- Manage shipping methods, rates, and tracking information.
-- Store shipping address, carrier, tracking number, shipping status.
-- Implement GET APIs for available shipping methods and tracking info.
-
-**Notifications Domain:**
-
-**Testing:**
-
-- Write unit, integration, and end-to-end tests for the Notifications domain; use test containers for DB-dependent tests.
-
-<!-- Start implementation when requested -->
-
-- Send notifications to users for order status updates, promotions, etc.
-- Support email and in-app notifications.
-- Store notification content, user reference, read/unread status, timestamps.
-
-**Admin Domain:**
-
-**Testing:**
-
-- Write unit, integration, and end-to-end tests for the Admin domain; use test containers for DB-dependent tests.
-
-<!-- Start implementation when requested -->
-
-- Provide admin APIs for managing products, categories, orders, users, payments, etc.
-- Implement authentication and authorization for admin operations.
+- Error handling and status updates.
 
 ---
 
@@ -479,6 +445,6 @@ Admin Catalog Management:
 - Product variant management (e.g., different sizes, colors)
 - SEO-friendly URL and metadata management
 
-### Next Phase Ready: Cart Domain
+### Next Phase Ready: Cart, Order & Payment Domains
 
-The Catalog Domain implementation is production-ready and provides a solid foundation for the next phase. All original requirements have been met and significantly expanded upon with additional features and best practices.
+The Catalog Domain implementation is production-ready and provides a solid foundation for the next phase. All original requirements have been met and significantly expanded upon with additional features and best practices. The next phase will implement Cart, Order, and Payment domains together, enabling the full checkout and payment flow.
